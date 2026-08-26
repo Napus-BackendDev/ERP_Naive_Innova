@@ -1,0 +1,139 @@
+{
+  "items": [
+    { "_id": "000000000000000000000101", "itemType": "ingredient", "name": "Acacia Salicylic Acid", "unit": "ก." },
+    { "_id": "000000000000000000000102", "itemType": "packaging", "name": "ขวดปั๊ม Mock", "unit": "ชิ้น" },
+    { "_id": "000000000000000000000103", "itemType": "sampleProduct", "name": "Acacia Sample Mock", "unit": "ชิ้น" },
+    { "_id": "000000000000000000000104", "itemType": "fgLot", "name": "MOCK-LOT-20260819-01", "unit": "ชิ้น" }
+  ],
+  "logs": [
+    {
+      "_id": "000000000000000000001001",
+      "ownerId": "000000000000000000000001",
+      "actionType": "INGREDIENT",
+      "description": "ปรับปรุงสต็อก \"Acacia Salicylic Acid\": รับเข้า 1000 ก. (สต็อกคงเหลือปัจจุบัน: 6000 ก.) | หมายเหตุ: รับเข้าทดสอบ",
+      "operator": "Mock Operator",
+      "createdAt": "2026-08-19T02:52:14.000Z",
+      "stockMovement": {
+        "itemType": "ingredient",
+        "itemId": "000000000000000000000101",
+        "itemName": "Acacia Salicylic Acid",
+        "direction": "in",
+        "amount": 1000,
+        "unit": "ก.",
+        "beforeQuantity": 5000,
+        "afterQuantity": 6000,
+        "source": "manual-adjustment",
+        "stage": "รับเข้าสต็อก",
+        "note": "รับเข้าทดสอบ"
+      }
+    },
+    {
+      "_id": "000000000000000000001002",
+      "ownerId": "000000000000000000000001",
+      "actionType": "INGREDIENT",
+      "description": "ปรับปรุงสต็อก \"Acacia Salicylic Acid\": เบิกออก 1500 ก. (สต็อกคงเหลือปัจจุบัน: 4500 ก.)",
+      "operator": "Mock Operator",
+      "createdAt": "2026-08-19T03:00:00.000Z",
+      "stockMovement": {
+        "itemType": "ingredient",
+        "itemId": "000000000000000000000101",
+        "itemName": "Acacia Salicylic Acid",
+        "direction": "out",
+        "amount": 1500,
+        "unit": "ก.",
+        "beforeQuantity": 6000,
+        "afterQuantity": 4500,
+        "source": "bom-confirm",
+        "stage": "ยืนยัน BOM / ตัดสารเคมี"
+      }
+    },
+    {
+      "_id": "000000000000000000001003",
+      "ownerId": "000000000000000000000001",
+      "actionType": "PACKAGING",
+      "description": "ปรับปรุงสต็อก \"ขวดปั๊ม Mock\": เบิกออก 30 ชิ้น (สต็อกคงเหลือปัจจุบัน: 70 ชิ้น)",
+      "operator": "Mock Operator",
+      "createdAt": "2026-08-19T03:05:00.000Z",
+      "stockMovement": {
+        "itemType": "packaging",
+        "itemId": "000000000000000000000102",
+        "itemName": "ขวดปั๊ม Mock",
+        "direction": "out",
+        "amount": 30,
+        "unit": "ชิ้น",
+        "beforeQuantity": 100,
+        "afterQuantity": 70,
+        "source": "production-packaging",
+        "stage": "เข้าไลน์ผลิต / ตัดขวด"
+      }
+    },
+    {
+      "_id": "000000000000000000001004",
+      "ownerId": "000000000000000000000001",
+      "actionType": "STOCK",
+      "description": "ปรับปรุงสต็อก \"Acacia Sample Mock\": เบิกออก 2 ชิ้น (สต็อกคงเหลือปัจจุบัน: 18 ชิ้น)",
+      "operator": "Mock Operator",
+      "createdAt": "2026-08-19T03:10:00.000Z",
+      "stockMovement": {
+        "itemType": "sampleProduct",
+        "itemId": "000000000000000000000103",
+        "itemName": "Acacia Sample Mock",
+        "direction": "out",
+        "amount": 2,
+        "unit": "ชิ้น",
+        "beforeQuantity": 20,
+        "afterQuantity": 18,
+        "source": "sales-sample",
+        "stage": "สร้างออเดอร์ตัวอย่าง / ตัดสต็อก"
+      }
+    },
+    {
+      "_id": "000000000000000000001005",
+      "ownerId": "000000000000000000000001",
+      "actionType": "FG",
+      "description": "ปรับปรุงสต็อก \"MOCK-LOT-20260819-01\": รับเข้า 30 ชิ้น (สต็อกคงเหลือปัจจุบัน: 30 ชิ้น)",
+      "operator": "Mock Operator",
+      "createdAt": "2026-08-19T03:15:00.000Z",
+      "stockMovement": {
+        "itemType": "fgLot",
+        "itemId": "000000000000000000000104",
+        "itemName": "MOCK-LOT-20260819-01",
+        "direction": "in",
+        "amount": 30,
+        "unit": "ชิ้น",
+        "beforeQuantity": 0,
+        "afterQuantity": 30,
+        "source": "production-qc",
+        "stage": "ผ่าน QC / รับเข้า FG"
+      }
+    },
+    {
+      "_id": "000000000000000000001006",
+      "ownerId": "000000000000000000000001",
+      "actionType": "FG",
+      "description": "ปรับปรุงสต็อก \"MOCK-LOT-20260819-01\": เบิกออก 30 ชิ้น (สต็อกคงเหลือปัจจุบัน: 0 ชิ้น)",
+      "operator": "Mock Operator",
+      "createdAt": "2026-08-19T03:20:00.000Z",
+      "stockMovement": {
+        "itemType": "fgLot",
+        "itemId": "000000000000000000000104",
+        "itemName": "MOCK-LOT-20260819-01",
+        "direction": "out",
+        "amount": 30,
+        "unit": "ชิ้น",
+        "beforeQuantity": 30,
+        "afterQuantity": 0,
+        "source": "delivery",
+        "stage": "ส่งให้ลูกค้า / ตัด FG ออกจากคลัง"
+      }
+    },
+    {
+      "_id": "000000000000000000001007",
+      "ownerId": "000000000000000000000001",
+      "actionType": "INGREDIENT",
+      "description": "ปรับปรุงสต็อกวัตถุดิบสารเคมี \"Acacia Salicylic Acid\": รับเข้า 250 ก. (สต็อกคงเหลือปัจจุบัน: 4750 ก.)",
+      "operator": "Legacy Operator",
+      "createdAt": "2026-08-18T02:00:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "projectId": "920299b0-8d91-4db0-bf4c-7ae64137af13",
+  "shape": "package",
+  "pkg": "frontend",
+  "globalName": "NaiveOps",
+  "srcDir": "src/components",
+  "tsconfig": "jsconfig.json",
+  "cssEntry": ".ds-compiled.css",
+  "libOverrides": {
+    "source-kit.mjs": "plain-.js components with default exports — upstream scans only .tsx/.jsx and `export *` drops defaults"
+  },
+  "buildCmd": "cd frontend && node ../.ds-sync/node_modules/@tailwindcss/cli/dist/index.mjs -i src/app/globals.css -o .ds-compiled.css"
+}

@@ -1,0 +1,274 @@
+@import "tailwindcss";
+
+@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #10b981;
+  --color-on-primary: #ffffff;
+  --color-background: #f8fafc;
+  --color-surface-container-lowest: rgba(255, 255, 255, 0.8);
+  --color-on-background: #0f172a;
+  --color-on-surface-variant: #475569;
+  --color-outline-variant: rgba(226, 232, 240, 0.8);
+  --color-outline: #64748b;
+  --color-primary-fixed-dim: rgba(16, 185, 129, 0.15);
+  --color-secondary-fixed: rgba(59, 130, 246, 0.15);
+
+  /* Non-standard shades the codebase already uses (slate-455, slate-150, ...).
+     Tailwind silently generates NOTHING for unknown shades, so these elements
+     had no color at all. Defining them here turns the typo'd classes into real
+     interpolated colors instead of touching ~50 call sites. */
+  --color-slate-55: #f7f9fc;
+  --color-slate-150: #eaeff5;
+  --color-slate-350: #b0bccd;
+  --color-slate-355: #aeb9cb;
+  --color-slate-450: #7c8ba1;
+  --color-slate-455: #7a89a0;
+  --color-slate-650: #3d4b5f;
+  --color-slate-655: #3c4a5e;
+  --color-slate-750: #283548;
+  --color-slate-850: #172033;
+  --color-red-650: #d92b2b;
+
+  /* shadow-3xs is used 79x but doesn't exist in Tailwind v4 — one hair below 2xs. */
+  --shadow-3xs: 0 1px 1px rgb(0 0 0 / 0.04);
+
+  /* Global +2px type scale (owner's request): every named size bumped one notch
+     so text-xs renders 14px, text-sm 16px, etc. Arbitrary px sizes were
+     consolidated separately (18 sizes → 11/12/13/14px tiers). */
+  --text-xs: 1rem;
+  --text-xs--line-height: 1.45;
+  --text-sm: 1.125rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1.25rem;
+  --text-base--line-height: 1.55;
+  --text-lg: 1.375rem;
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.4;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.35;
+  --text-3xl: 2.125rem;
+  --text-3xl--line-height: 1.25;
+  --text-4xl: 2.5rem;
+  --text-4xl--line-height: 1.2;
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(226, 232, 240, 0.8);
+}
+
+/* ---------------------------------------------------------------------------
+   Dark mode.
+   Tailwind v4 utilities resolve colors through var(--color-*) at the element,
+   so remapping the tokens under .dark restyles every existing class — including
+   hover:/focus:/responsive variants — without editing components.
+   The slate scale is INVERTED (50 becomes a dark surface, 800 becomes light
+   text). 900/950 are left dark on purpose: they're used for overlays and dark
+   chips that must stay dark; the few text-slate-900 usages get a targeted
+   override below. Solid button colors (bg-*-500/600/700) are also untouched —
+   only the pastel tint scale (50–300) flips dark, and colored TEXT gets
+   lightened via utility-level overrides so buttons keep their white-on-color.
+--------------------------------------------------------------------------- */
+.dark {
+  color-scheme: dark;
+
+  --background: #0f172a;
+  --foreground: #e6ecf5;
+  --card-bg: rgba(30, 41, 59, 0.8);
+  --border-color: rgba(51, 65, 85, 0.8);
+
+  --color-background: #0f172a;
+  --color-on-background: #e6ecf5;
+  --color-surface-container-lowest: rgba(30, 41, 59, 0.8);
+  --color-on-surface-variant: #b6c2d4;
+  --color-outline-variant: rgba(51, 65, 85, 0.8);
+
+  /* surfaces */
+  --color-white: #1e293b;
+  --color-slate-50: #182234;
+  --color-slate-55: #182234;
+  --color-slate-100: #243046;
+  --color-slate-150: #2a3750;
+  --color-slate-200: #334155;
+  --color-slate-300: #475569;
+  --color-slate-350: #52627e;
+  --color-slate-355: #52627e;
+  /* text — a notch brighter than a straight inversion; muted labels were the
+     first thing readers reported as hard to see on dark. */
+  --color-slate-400: #93a2ba;
+  --color-slate-450: #9fadc2;
+  --color-slate-455: #9fadc2;
+  --color-slate-500: #abb8cc;
+  --color-slate-600: #bcc8d9;
+  --color-slate-650: #c6d1e0;
+  --color-slate-655: #c6d1e0;
+  --color-slate-700: #d3dce9;
+  --color-slate-750: #dbe3ee;
+  --color-slate-800: #e6ecf5;
+  --color-slate-850: #edf2f8;
+
+  /* Pastel tint scales (chip/badge backgrounds + their borders) → deep tints.
+     500-800 of each family intentionally untouched (solid buttons). */
+  --color-green-50: #0c2b1e;  --color-green-100: #123b29;  --color-green-200: #1b5138;  --color-green-300: #24684a;
+  --color-emerald-50: #0b2b21; --color-emerald-100: #10382c; --color-emerald-200: #194e3d; --color-emerald-300: #226550;
+  --color-red-50: #331416;    --color-red-100: #46191c;    --color-red-200: #5f2226;    --color-red-300: #7a2c31;
+  --color-blue-50: #14243d;   --color-blue-100: #182f52;   --color-blue-200: #1f406e;   --color-blue-300: #27528c;
+  --color-amber-50: #33260d;  --color-amber-100: #453310;  --color-amber-200: #5f4614;  --color-amber-300: #7a5a1a;
+  --color-yellow-50: #322a0d; --color-yellow-100: #443a10; --color-yellow-200: #5e4f14; --color-yellow-300: #78651a;
+  --color-purple-50: #291a3d; --color-purple-100: #372352; --color-purple-200: #4a2f6e; --color-purple-300: #5e3c8c;
+  --color-indigo-50: #1d2145; --color-indigo-100: #252b5c; --color-indigo-200: #31397a; --color-indigo-300: #3d4899;
+  --color-sky-50: #0f2740;    --color-sky-100: #133455;    --color-sky-200: #1a4771;    --color-sky-300: #215a8e;
+  --color-rose-50: #33141e;   --color-rose-100: #461a28;   --color-rose-200: #5f2336;   --color-rose-300: #7a2d45;
+  --color-orange-50: #331d0e; --color-orange-100: #452711; --color-orange-200: #5f3516; --color-orange-300: #7a441c;
+  --color-teal-50: #0d2b28;   --color-teal-100: #113a36;   --color-teal-200: #184f4a;   --color-teal-300: #1f655e;
+  --color-pink-50: #31142a;   --color-pink-100: #431b3a;   --color-pink-200: #5c254f;   --color-pink-300: #763064;
+}
+
+/* --- dark-mode surgical exceptions ---------------------------------------- */
+
+/* text-white must stay white (buttons are bg-green-600 text-white etc.) even
+   though --color-white is remapped to a surface tone above. */
+.dark .text-white { color: #ffffff; }
+
+/* slate-600/700/800 are remapped to LIGHT (they're 99% text) — the handful of
+   places using them as dark chips/borders keep their dark look here. */
+.dark .bg-slate-600 { background-color: #2a3a57; }
+.dark .bg-slate-700 { background-color: #1c2941; }
+.dark .bg-slate-800 { background-color: #0b1424; }
+.dark .border-slate-700 { border-color: #334155; }
+.dark .border-slate-800 { border-color: #334155; }
+.dark .hover\:bg-slate-800:hover { background-color: #1e293b; }
+
+/* slate-900/950 vars stay dark (overlays/chips) — flip the few text usages. */
+.dark .text-slate-900 { color: #f1f5f9; }
+.dark .hover\:text-slate-900:hover { color: #f8fafc; }
+
+/* slate-300/350 double as faint text AND borders. The border tone (#475569)
+   is right for lines but only ~2:1 as text on a dark card (audit-confirmed
+   unreadable), so text usages get their own lighter color. */
+.dark .text-slate-300 { color: #7e8fa9; }
+.dark .text-slate-350, .dark .text-slate-355 { color: #8b99b0; }
+
+/* Colored TEXT lightened per-utility (vars would drag solid buttons with them). */
+.dark .text-green-500 { color: #34d399; }
+.dark .text-green-600, .dark .hover\:text-green-600:hover { color: #34d399; }
+.dark .text-green-700, .dark .hover\:text-green-700:hover { color: #6ee7a7; }
+.dark .text-green-800 { color: #a7f3d0; }
+.dark .text-emerald-600 { color: #34d399; }
+.dark .text-emerald-700 { color: #6ee7b7; }
+.dark .text-emerald-800 { color: #a7f3d0; }
+.dark .text-red-500 { color: #f87171; }
+.dark .text-red-600, .dark .hover\:text-red-600:hover { color: #f87171; }
+.dark .text-red-700, .dark .hover\:text-red-700:hover { color: #fca5a5; }
+.dark .text-red-800 { color: #fecaca; }
+.dark .text-blue-500 { color: #60a5fa; }
+.dark .text-blue-600 { color: #60a5fa; }
+.dark .text-blue-700 { color: #93c5fd; }
+.dark .text-blue-800 { color: #bfdbfe; }
+.dark .text-amber-600 { color: #fbbf24; }
+.dark .text-amber-700 { color: #fcd34d; }
+.dark .text-amber-800 { color: #fde68a; }
+.dark .text-yellow-600 { color: #facc15; }
+.dark .text-yellow-700 { color: #fde047; }
+.dark .text-yellow-800 { color: #fef08a; }
+.dark .text-purple-600 { color: #c084fc; }
+.dark .text-purple-700 { color: #d8b4fe; }
+.dark .text-purple-800 { color: #e9d5ff; }
+.dark .text-indigo-600 { color: #818cf8; }
+.dark .text-indigo-700 { color: #a5b4fc; }
+.dark .text-sky-600 { color: #38bdf8; }
+.dark .text-sky-700 { color: #7dd3fc; }
+.dark .text-rose-600 { color: #fb7185; }
+.dark .text-rose-700 { color: #fda4af; }
+.dark .text-orange-600 { color: #fb923c; }
+.dark .text-orange-700 { color: #fdba74; }
+.dark .text-teal-600 { color: #2dd4bf; }
+.dark .text-teal-700 { color: #5eead4; }
+.dark .text-pink-600 { color: #f472b6; }
+.dark .text-pink-700 { color: #f9a8d4; }
+
+/* --- theme-switch animation ------------------------------------------------
+   The toggle uses the View Transitions API (crossfade) where available; this
+   class is the fallback — added for ~400ms around the flip so colors tween
+   instead of snapping. Kept OFF permanently (transitions on every element all
+   the time make normal hovers feel laggy). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
+html.theme-fade,
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease,
+    fill 0.3s ease, stroke 0.3s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+  html.theme-fade, html.theme-fade * { transition: none !important; }
+}
+
+/* Arbitrary-hex leftovers (login page cream panels, root bg). */
+.dark .bg-\[\#f8fafc\] { background-color: #0f172a; }
+.dark .bg-\[\#FAF6F0\] { background-color: #1b2435; }
+.dark .text-\[\#0f172a\] { color: #e6ecf5; }
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  /* --font-sarabun is injected by next/font in app/layout.js */
+  font-family: var(--font-sarabun), 'Sarabun', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+.dark ::-webkit-scrollbar-track { background: #16202f; }
+.dark ::-webkit-scrollbar-thumb { background: #3d4b5f; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #52627e; }
+
+/* ---------------------------------------------------------------------------
+   Brand artwork, light/dark pair.
+   This app implements dark mode by remapping the colour tokens under .dark —
+   it uses no `dark:` utilities anywhere, so Tailwind never generates that
+   variant here. A raster logo cannot follow a token remap, so the two artwork
+   files are swapped with plain CSS keyed off the same .dark class instead.
+--------------------------------------------------------------------------- */
+.brand-dark { display: none; }
+.dark .brand-light { display: none; }
+.dark .brand-dark { display: block; }

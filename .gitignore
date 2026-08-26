@@ -1,0 +1,76 @@
+# Dependency directories
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Build and distribution directories
+build/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# Explicit per-app env files (contain DB/JWT/OAuth secrets — never commit)
+backend/.env
+frontend/.env
+# Ignore all other environment variants while keeping safe templates.
+.env.*
+!.env.example
+**/.env.*
+!**/.env.example
+
+# Local runtime database files
+tmp/mock-mongodb/
+
+# Local browser/dev artifacts
+.playwright-cli/
+**/.tmp-*.log
+
+# MCP config (contains MongoDB connection string with credentials)
+.mcp.json
+
+# Package lock files (as requested)
+package-lock.json
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# AI coding tool artifacts (not committed)
+# Claude Code
+.claude/
+# Codex CLI
+.codex/
+# Antigravity / Agent tooling
+.agent
+.agents/
+# Agent instruction files (in any directory)
+AGENTS.md
+
+# Local orchestrator logs
+orchestrate/logs/
+backend/scripts/backup/
+
+# Customer photos uploaded through the app. Every image is also stored in
+# MongoDB, so the folder is a local cache — and these are real customer job
+# photos, which have no business in a git history.
+backend/public/uploads/
+
+# Role manuals and their capture harness: 4 PDFs plus 162 screenshots (~32 MB).
+# Rebuild with: node docs/tools/buildManuals.mjs && node docs/tools/capture.mjs
+docs/
+
+# One-off author rewrite, already applied.
+fix-author.sh
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+frontend/.ds-compiled.css

@@ -1,12 +1,12 @@
 # Naive Ops — Unified ERP: System Design Document (system.md)
 
-ระบบ **Naive Ops** เป็นการปฏิรูประบบการทำงานของ Naive Innova โดยรวม 5 ระบบเดิมที่แยกกันอยู่เข้าเป็นหนึ่งเดียว เพื่อให้ครอบคลุมและควบคุมเส้นทางการไหลของวัตถุดิบและข้อมูลทั้งหมด (Material & Sales Flow) แบบต้นน้ำยันปลายน้ำ
+**Naive Ops** is an overhaul of Naive Innova's operations that consolidates 5 previously separate systems into a single unified platform, providing comprehensive coverage and control over the entire Material & Sales Flow from upstream to downstream.
 
 ---
 
-## 1. ภาพรวมการไหลของระบบ (Swimlane Architecture & Workflow Diagram)
+## 1. System Flow Overview (Swimlane Architecture & Workflow Diagram)
 
-ระบบ Naive Ops จัดสรรการดำเนินงานแยกตามบทบาทแผนกผ่านสถาปัตยกรรมแถวเลนกิจกรรม (Swimlane Flow) ประสานงานข้อมูลและจุดควบคุมความปลอดภัยโดยสมบูรณ์ ดังแผนภาพจำลองระบบหลัก:
+Naive Ops organizes operations by department role through Swimlane Flow architecture, coordinating data and safety control points completely, as illustrated in the main system diagram:
 
 ```mermaid
 graph TD
@@ -91,114 +91,114 @@ graph TD
     F4 -->|Log dispatch| L4
 ```
 
-### รายละเอียดการทำงานรายแผนก (Swimlane Flow Processing Details)
+### Swimlane Flow Processing Details
 
-1. **1. Roles & Auth Swimlane (ระบบยืนยันตัวตนและคุมสิทธิ์)**:
-   - ผู้ใช้งานทุกคนต้องผ่าน Google OAuth เพื่อระบุตัวตนและจับคู่สิทธิ์การทำงาน
-   - **Admin/Manager**: เข้าถึงข้อมูลสต็อก ยอดเงิน ดีลขาย และการอนุมัติสูตร BOM ได้ทั้งหมด
-   - **QA/Operator**: ดำเนินการและตรวจเช็คขั้นตอนในไลน์ผลิตและตรวจสอบสต็อกคลังวัสดุ
-   - **Client**: ติดตามความคืบหน้าของล็อตสินค้าผ่านหน้าจอ Dashboard เฉพาะตัว
+1. **1. Roles & Auth Swimlane (Authentication & Authorization)**:
+   - All users must authenticate via Google OAuth to verify identity and match working permissions.
+   - **Admin/Manager**: Full access to stock data, balances, sales deals, and BOM formula approvals.
+   - **QA/Operator**: Execute and verify steps on the production line and audit the raw material warehouse stock.
+   - **Client**: Tracks the progress of their product lot through a dedicated Dashboard screen.
 
-2. **2. Sales CRM Swimlane (ระบบงานขายและการรับเงิน)**:
-   - ดีลงานของคลินิกคู่ค้าดำเนินตามท่อส่งงาน CRM (11 สถานะ)
-   - เมื่อระบบตรวจพบค่านำเข้าว่าดีลอยู่ที่สถานะ "ปิดการขาย (s11)" และระบบตรวจสอบเงินมัดจำ (Down Payment) ได้รับครบถ้วน 50% หรือ 100% ระบบจะส่งคำสั่งสร้างคิววางแผนผลิตโดยอัตโนมัติ (Trigger Production Plan)
+2. **2. Sales CRM Swimlane (Sales & Payment)**:
+   - Partner clinic deals follow a CRM pipeline (11 stages).
+   - When the imported value indicates the deal is at "Closed Won (s11)" and the Down Payment verification has been fully received (50% or 100%), the system automatically triggers the Production Plan queue creation.
 
-3. **3. BOM & Formula Swimlane (ระบบคำนวณและอนุมัติสูตรวัตถุดิบ)**:
-   - หลังบ้านจะดึงสูตรวัตถุดิบและอัตราส่วนผสมของตัว SKU สินค้าที่สั่งมาคำนวณหักปริมาณคลังสารเคมีดิบ
-   - หากยอดวัตถุดิบสารเคมีผ่านเกณฑ์ความพร้อม ระบบจะล็อก/จองสต็อกดิบเพื่อความปลอดภัย และอนุญาตให้ออกใบสั่งผลิต (BOM Formula Recipe Sheet) พร้อมเปิดสเต็ปในไลน์ผลิต
+3. **3. BOM & Formula Swimlane (Ingredient Calculation & Approval)**:
+   - The backend fetches the raw material formula and mixture ratios for the ordered SKU to calculate deductions against raw chemical stock.
+   - If raw chemical ingredient levels pass the readiness threshold, the system locks/reserves the raw stock for safety and issues the BOM Formula Recipe Sheet, while enabling the steps on the production line.
 
-4. **4. Inventory Swimlane (คลังสินค้าและระบบหักยอดบรรจุภัณฑ์)**:
-   - ระบบควบคุมยอดสต็อกแบบ Real-time แยกคลังระหว่าง: *สารเคมีผสม (Ingredients), ขวดบรรจุภัณฑ์ (Bottles), ฝาขวด/หัวปั๊ม (Caps/Pumps), ฉลากสินค้า (Stickers), และกล่องไปรษณีย์ (Postal Boxes)*
-   - สต็อกจะถูกหักจองตั้งแต่ขั้นตอนคำนวณ BOM และถูกตัดสต็อกจริงหลังยืนยันการบรรจุผลิตในไลน์ผลิตเสร็จสิ้น
+4. **4. Inventory Swimlane (Warehouse & Packaging Deduction)**:
+   - The system manages Real-time stock levels, separated by warehouse type: *Ingredients, Bottles, Caps/Pumps, Stickers, and Postal Boxes*.
+   - Stock is reserved from the BOM calculation stage and physically deducted once packaging and production on the line are confirmed complete.
 
-5. **5. Production Line Swimlane (ขั้นตอนสายผลิต 6-Step Wizard)**:
-   - ไลน์ผลิตดำเนินงานตามตัวช่วยสร้าง 6 ขั้นตอน (Wizard Steps):
-     - **Step 1**: ยืนยันวัตถุดิบ (ตรวจเช็คปริมาณลิตรของสารเคมีและระดับสต็อก ขวด, ฝา, สติกเกอร์)
-     - **Step 2**: ตรวจสอบคุณภาพรอบที่ 1 (อัปโหลดรูปภาพขวดเปล่า, หัวปั๊ม และคลิปวิดีโอประกอบความยาว > 5 วินาที)
-     - **Step 3**: ดำเนินการบรรจุผลิตภัณฑ์ (เช็กลิสต์ความเรียบร้อยการเตรียมขวด สติกเกอร์ สารเคมี และการบรรจุลงผลิตภัณฑ์)
-     - **Step 4**: ติดฉลาก & ห่อหุ้ม (เช็กลิสต์การติดฉลากสติกเกอร์ ยิงล็อตวันที่ ซีลปากถุงพลาสติกอบความร้อน)
-     - **Step 5**: ตรวจสอบคุณภาพรอบที่ 2 (อัปโหลดรูปถ่ายสินค้าสำเร็จรูป สติกเกอร์ ผลิตภัณฑ์เต็มตัว และคลิปหลักฐานความยาวไม่เกิน 5 วินาที)
-     - **Step 6**: เสร็จสิ้นขั้นตอนผลิต (รอลูกค้ายืนยันและจัดส่ง โดยจัดแสดงหลักฐานรูปภาพหน้าจอแชทคอนเฟิร์ม)
+5. **5. Production Line Swimlane (6-Step Wizard)**:
+   - The production line runs according to a 6-step wizard:
+     - **Step 1**: Confirm raw materials (check chemical volume in liters and stock level of bottles, caps, stickers).
+     - **Step 2**: Quality check round 1 (upload photos of empty bottles, pump heads, and supporting video clips longer than 5 seconds).
+     - **Step 3**: Carry out product filling (checklist for readiness of bottles, stickers, chemicals, and product filling).
+     - **Step 4**: Labeling & Wrapping (checklist for sticker labeling, stamping lot date, heat-sealing plastic bag opening).
+     - **Step 5**: Quality check round 2 (upload photos of finished products, stickers, full product, and evidence clips no longer than 5 seconds).
+     - **Step 6**: Production complete (wait for customer confirmation and dispatch, displaying chat confirmation screenshot evidence).
 
-6. **6. FG & Shipping Swimlane (คลังสินค้าสำเร็จรูปและการจัดส่ง FEFO)**:
-   - สินค้าที่ผลิตเสร็จสิ้นจะเข้าสู่ระบบคลัง FG และออกรหัสล็อตผลิตอ้างอิงจากวันเสร็จสิ้นงาน
-   - เมื่อมีธุรกรรมส่งมอบออกให้ลูกค้า ระบบจะรันคำนวณ **FEFO (First-Expired, First-Out)** เพื่อหยิบล็อตที่ใกล้หมดอายุก่อนมาทำการตัดจ่ายคลังสินค้า และส่งมอบสินค้าอย่างเป็นทางการ
+6. **6. FG & Shipping Swimlane (Finished Goods Warehouse & FEFO Dispatch)**:
+   - Finished products enter the FG warehouse system and receive a production lot number referencing the completion date.
+   - When a dispatch transaction is released to the customer, the system runs the **FEFO (First-Expired, First-Out)** calculation to pick the lot nearest to expiry first for warehouse deduction, and formally delivers the goods.
 
-7. **7. Audit Trails & Logs (จุดตรวจประวัติและควบคุมความปลอดภัย)**:
-   - **Checkpoint 1 (CRM)**: บันทึกข้อมูลใบเสร็จรับเงิน การปิดขาย และเวลาที่ดีลเปลี่ยนเป็นใบงานผลิต
-   - **Checkpoint 2 (BOM)**: บันทึกประวัติการคำนวณ การเบิกจ่ายจอง และชื่อผู้อนุมัติสูตรเคมี
-   - **Checkpoint 3 (Production & QA)**: บันทึกประวัติการติ๊กเช็กลิสต์ผลผลิต วันเวลาตรวจ และรูปถ่าย QA ทั้งหมด
-   - **Checkpoint 4 (FG & Sales Delivery)**: บันทึกประวัติการตัดล็อตสินค้าสำเร็จรูปด้วยหลัก FEFO และเวลาส่งมอบปลายทาง
+7. **7. Audit Trails & Logs (History Checkpoints & Security Control)**:
+   - **Checkpoint 1 (CRM)**: Records receipts, sales closing, and the time a deal becomes a production work order.
+   - **Checkpoint 2 (BOM)**: Records calculation history, reservation withdrawal, and the name of the chemical formula approver.
+   - **Checkpoint 3 (Production & QA)**: Records production checklist history, inspection date/time, and all QA photos.
+   - **Checkpoint 4 (FG & Sales Delivery)**: Records FG lot deduction under FEFO and end-destination delivery times.
 
-## 1.2 กฎทางธุรกิจและกระบวนการทำงานทางเลือก (Business Logic Options & Edge Cases)
+## 1.2 Business Logic Options & Edge Cases
 
-เนื่องจากระบบ MVP จริงต้องทำงานร่วมกับ API และฐานข้อมูลถาวร กฎการไหลของข้อมูลและสิทธิ์จึงมีสองทางเลือกหลักซึ่งระบุสเปกไว้ดังนี้:
+Since the real MVP system must work with an API and a persistent database, data flow and permission rules have two main options specified as follows:
 
-### A. การเชื่อมต่อระหว่าง CRM กับบอร์ดสั่งผลิต (Sales to Production Trigger)
-* **ทางเลือกที่ 1 (อัตโนมัติ):** เมื่อผู้ใช้เปลี่ยนสถานะ Lead เป็น "ปิดการขาย (s11)" ในโมดูลเซลล์ และมีการชำระเงินมัดจำ ระบบจะทำรายการสร้างตารางวางแผนผลิต (Production Queue) ในหลังบ้านโดยอัตโนมัติ
-* **ทางเลือกที่ 2 (แมนนวล):** ดีลที่ปิดการขายสำเร็จจะถูกแสดงผลในตารางพักคิวสั่งผลิต และหัวหน้าแผนกผลิตจะต้องมาตรวจสอบความพร้อมและกดยืนยันคำสั่งลงบอร์ดคำนวณ BOM ด้วยตัวเอง
+### A. Sales to Production Trigger
+* **Option 1 (Automatic):** When a user changes a Lead's status to "Closed Won (s11)" in the Sales module and a deposit payment is made, the system automatically creates a Production Queue record in the backend.
+* **Option 2 (Manual):** Successfully closed deals are displayed in a pending production queue table, and the production supervisor must inspect readiness and press confirm to push the order onto the BOM calculation board themselves.
 
-### B. สิทธิ์การมองเห็นข้อมูลตามบทบาท (Row Isolation & RBAC Matrix)
-ระบบต้องบังคับใช้การคุมสิทธิ์ข้ามบทบาท (Role-based Row Isolation) ดังนี้:
-1. **Sales (ฝ่ายขาย):**
-   - มองเห็นเฉพาะ Lead ลูกค้าที่ตนเองได้รับมอบหมาย (`assignee`) หรือที่ตนสร้างขึ้นเท่านั้น
-   - ไม่มีสิทธิ์เข้าถึงหน้าจอแก้ไขสูตร BOM หรือคลังวัตถุดิบสารเคมีหลัก
-2. **Operator (ฝ่ายผลิต/คลังวัตถุดิบ):**
-   - มองเห็นและคีย์ประวัติรับ-เบิกสารเคมีและบรรจุภัณฑ์ได้
-   - ไม่มีสิทธิ์ดูยอดเงินมัดจำหรือดีลการขายในหน้าเซลล์
-3. **Manager / Admin (ผู้จัดการ):**
-   - มองเห็นและแก้ไขข้อมูลได้ทุกแถวแบบข้ามผู้ใช้ (Bypass Row Isolation)
+### B. Row Isolation & RBAC Matrix
+The system must enforce cross-role permission control (Role-based Row Isolation) as follows:
+1. **Sales:**
+   - Can only see customer Leads assigned to them (`assignee`) or those they created.
+   - No access to the BOM formula editing screen or primary raw chemical stock.
+2. **Operator (Production/Ingredient Warehouse):**
+   - Can view and record raw chemical receipt/withdrawal history and packaging.
+   - Cannot view deposit amounts or sales deals in the Sales screen.
+3. **Manager / Admin:**
+   - Can view and edit all rows across users (Bypass Row Isolation).
 
-### C. ตรรกะการหักสต็อกบรรจุภัณฑ์ (Packaging Deduction Triggers)
-* **ระบบตัดยอดสต็อกอัตโนมัติเมื่อเริ่มผลิต (Auto Deduction on Production Start):**
-  - เมื่อกระบวนการผลิตผ่านขั้นตอนตรวจรับประกันคุณภาพรอบแรก (QA รอบที่ 1) ในสเต็ปที่ 2 เรียบร้อยแล้ว สถานะผลิตจะเข้าสู่สถานะ **"รอยืนยัน"** (รอยืนยันผลิต)
-  - เมื่อผู้ใช้กดปุ่ม **"ยืนยันเริ่มผลิต & ตัดสต็อกคลังบรรจุภัณฑ์"** ในสเต็ปที่ 3 บรรจุภัณฑ์ สถานะตัวใบสั่งผลิตในระบบจะเปลี่ยนผ่านเป็น **"กำลังผลิต"** ทันที
-  - ณ จังหวะกดยืนยันนี้ ระบบ API จะดึงรายการคลังวัสดุประกอบจริงในฐานข้อมูล ได้แก่ *ขวดบรรจุภัณฑ์ (Bottle)*, *ฝาขวด/หัวกดปั๊ม (Cap/Pump)*, และ *สติกเกอร์ฉลากสินค้า (Sticker/Label)* ที่ถูกจับคู่กับสินค้านั้นๆ มาหักสต็อกยอดจำนวนจริงที่สั่งลบออกจากสต็อกปัจจุบัน (`currentQuantity`)
-  - เพื่อความปลอดภัยและความแม่นยำ ระบบมีตัวควบคุมสถานะ `isStockDeducted: true` บันทึกควบคู่ในคอลเลกชันเพื่อป้องกันการดึงสคริปต์ตัดสต็อกซ้ำซ้อนอย่างเด็ดขาด
+### C. Packaging Deduction Triggers
+* **Auto Deduction on Production Start:**
+  - Once the production process passes the first quality assurance inspection (QA Round 1) in Step 2, the production status moves to **"Pending Confirmation"** (production pending).
+  - When the user presses the **"Confirm Production Start & Deduct Packaging Stock"** button in Step 3 (packaging), the work order status in the system immediately transitions to **"In Production"**.
+  - At the moment of confirmation, the system API fetches the actual packaging material stock items in the database, namely *Bottle*, *Cap/Pump*, and *Sticker/Label* associated with that product, and deducts the actual ordered quantity from the current stock (`currentQuantity`).
+  - For safety and accuracy, the system has a state guard `isStockDeducted: true` recorded alongside in the collection to decisively prevent duplicate stock-deduction scripts from being executed.
 
-### D. ตรรกะการตัดลอตหมดอายุแบบ FEFO (Finished Goods Slicing Algorithm)
-* ระบบจะทำการสแกนประวัติลอต (`FG_LOT`) ที่สอดคล้องกับตัวสินค้าสำเร็จรูป
-* ทำการเรียงลำดับลอตที่ `expDate` น้อยที่สุดขึ้นก่อน (หมดอายุก่อน)
-* หากจำนวนสินค้าที่ต้องเบิกจ่ายมากกว่าสินค้าที่มีอยู่ในลอตแรก ระบบจะตัดยอดลอตแรกจนเหลือ 0 ชิ้น และนำจำนวนที่เหลือไปตัดจากลอตถัดไปแบบอัตโนมัติ (Sequential Slicing) จนกว่าจะครบจำนวน
+### D. FEFO Finished Goods Slicing Algorithm
+* The system scans the `FG_LOT` history relevant to the finished product.
+* Orders lots by the smallest `expDate` first (those expiring soonest).
+* If the required withdrawal quantity exceeds what is available in the first lot, the system deducts the first lot until 0 pieces remain and automatically carries the remainder to the next lot (Sequential Slicing) until the required quantity is met.
 
 ---
 
-เพื่อรองรับการขยายตัวและการเปลี่ยนผ่านจาก In-memory Single-file HTML ไปเป็นเว็บแอปพลิเคชันระดับองค์กรที่เสถียรและยืดหยุ่นสูง เราเลือกใช้โครงสร้างสถาปัตยกรรมดังนี้:
+To support expansion and the transition from an In-memory Single-file HTML prototype to a stable, highly flexible enterprise web application, we have selected the following architectural structure:
 
-### สแต็กเทคโนโลยี (Tech Stack)
-* **Frontend (หน้าบ้าน)**:
-  * **Next.js (App Router)**: สำหรับจัดทำโครงสร้างเส้นทางหน้าเว็บ (Routing), Server-Side Rendering (SSR) ในส่วนที่ต้องการความเร็ว และ Client-Side components สำหรับหน้าจอโต้ตอบความเร็วสูง
-  * **Hero UI Framework**: ชุดคอมโพเนนต์สำเร็จรูปที่มีความสวยงามระดับพรีเมียม (Premium Aesthetics) รองรับ Dark/Light Mode และการตอบสนองที่ลื่นไหล
-  * **Tailwind CSS v4**: ควบคุมดีไซน์เน้นการใช้คลาสอรรถประโยชน์ (Utility-First) และแอนิเมชันขนาดเล็ก (Micro-animations)
-* **Backend (หลังบ้าน)**:
-  * **Express.js (Node.js)**: สำหรับเป็น RESTful API Server จัดการ Business Logic, คำนวณสต็อกวัตถุดิบ/บรรจุภัณฑ์, ประมวลผลการคำนวณ BOM, และเป็น OAuth callback handler
-  * **Google OAuth (Passport.js / Next-Auth)**: บริหารจัดการการเข้าสู่ระบบอย่างปลอดภัยผ่านบัญชี Google โดยกำหนดให้ **หน้าจอแรก (Landing Page) ของระบบต้องเป็นหน้า Login ผ่าน Google OAuth** และระบบจะทำการตรวจเช็คสถานะการเข้าสู่ระบบเสมอ หากพบคำขอที่ไม่มีสิทธิ์เข้าถึง (Unauthenticated) จะทำการดักหน้าและเปลี่ยนเส้นทาง (Redirect) กลับมายังหน้า Login โดยอัตโนมัติ
-* **Database (ระบบฐานข้อมูล)**:
-  * **MongoDB (Mongoose)**: จัดเก็บข้อมูลรูปแบบ Document ไร้โครงสร้างที่ยืดหยุ่นสูง (Schemaless) เหมาะกับการเก็บประวัติ Transaction, ข้อมูลสินค้าสำเร็จรูปที่มีหลายแอตทริบิวต์ และข้อมูล CRM ของลูกค้า
+### Tech Stack
+* **Frontend**:
+  * **Next.js (App Router)**: For page routing structure, Server-Side Rendering (SSR) where speed is needed, and Client-Side components for high-speed interactive screens.
+  * **Hero UI Framework**: A ready-made component set with premium aesthetics, supporting Dark/Light Mode and smooth responsiveness.
+  * **Tailwind CSS v4**: Design control emphasizing utility-first classes and micro-animations.
+* **Backend**:
+  * **Express.js (Node.js)**: As the RESTful API Server managing Business Logic, raw ingredient/packaging stock calculation, BOM computation, and acting as the OAuth callback handler.
+  * **Google OAuth (Passport.js / Next-Auth)**: Manages secure login via Google accounts, requiring that **the system's Landing Page must be a Google OAuth Login screen**, and the system always checks the login status. If an unauthenticated request is detected, it intercepts the page and redirects back to the Login screen automatically.
+* **Database**:
+  * **MongoDB (Mongoose)**: Stores flexible, schemaless document data suitable for Transaction history, finished product data with multiple attributes, and customer CRM data.
 
-### การแยกข้อมูลระดับแถว (Row Isolation & Multitenancy)
-ระบบจะทำการแยกสิทธิ์การมองเห็นข้อมูลตามระดับผู้ใช้หรือแผนก (Row Isolation) โดยใช้หลักการดังนี้:
-- เพิ่มฟิลด์ `userId` หรือ `tenantId` ในทุก ๆ Document ในฐานข้อมูล
-- ใช้ **Mongoose Query Middleware** (เช่น `pre('find')`, `pre('findOne')`) ในการกรองข้อมูลแบบอัตโนมัติ (Query Hook Filtering) เพื่อระบุเฉพาะแถวที่ผู้ใช้ที่เข้าสู่ระบบมีสิทธิ์เข้าถึงเท่านั้น
+### Row Isolation & Multitenancy
+The system segregates data visibility by user/team level (Row Isolation) using the following principles:
+- Add a `userId` or `tenantId` field to every Document in the database.
+- Use **Mongoose Query Middleware** (e.g., `pre('find')`, `pre('findOne')`) to filter data automatically (Query Hook Filtering), returning only rows the logged-in user is permitted to access.
 
-### ระบบส่งออกข้อมูล (Excel & CSV Export Engine)
-- **CSV Engine**: ใช้ `fast-csv` หรือ `json2csv` ในการแปลงข้อมูล JSON เป็น CSV เพื่อการประมวลผลที่รวดเร็ว
-- **Excel Engine (Goal of Excel)**: ใช้ `exceljs` หรือ `xlsx (SheetJS)` สำหรับแปลงหน้าตารางสรุปสต็อกและประวัติให้กลายเป็นไฟล์ Excel (.xlsx) ที่มีการจัดแต่งสีสันและรูปแบบชีตตามธีมการออกแบบของ Naive Ops
+### Excel & CSV Export Engine
+- **CSV Engine**: Use `fast-csv` or `json2csv` to convert JSON data to CSV for fast processing.
+- **Excel Engine (Goal of Excel)**: Use `exceljs` or `xlsx (SheetJS)` to turn stock summary tables and history into Excel (.xlsx) files styled with colors and sheet formatting matching the Naive Ops design theme.
 
-### แนวทางการออกแบบ UI/UX (UI/UX Design System Rules)
-1. **Premium Dark Theme**: ควบคุมการใช้งานธีมหลักด้วย Production OS theme (พื้นหลังมืดสนิทไล่ระดับ, หน้าการ์ดสีเทาเข้มแบบโปร่งแสง/Glassmorphism)
+### UI/UX Design System Rules
+1. **Premium Dark Theme**: Control the main theme using the Production OS theme (deep gradient dark background, dark gray translucent glassy cards / Glassmorphism).
 2. **Dynamic UI & Micro-animations**:
-   - เพิ่ม Hover effects บนปุ่มและลิงก์ทั้งหมด
-   - ใช้ Transition หน่วงเวลาสั้น ๆ (เช่น `transition-all duration-200`) เมื่อเปิด Modal/Drawer หรือย้ายการ์ด Kanban
+   - Add Hover effects to all buttons and links.
+   - Use short-delay transitions (e.g., `transition-all duration-200`) when opening Modals/Drawers or moving Kanban cards.
 3. **Data Scannability & Visual Hierarchy**:
-   - ตัวเลขจำนวนเงินหรือน้ำหนักวัตถุดิบเด่นชัด ใช้ Mono-spaced Font เพื่อความสม่ำเสมอในตาราง
-   - แท็กและ Badge สถานะ (เช่น ⚠️ ใกล้หมด, ❌ ขาด) ใช้สีพาสเทลบนพื้นหลังโปร่งแสง
+   - Amount numbers or raw material weights are emphasized, using mono-spaced Fonts for consistency in tables.
+   - Status tags and badges (e.g., ⚠️ low stock, ❌ out of stock) use pastel colors on translucent backgrounds.
 
 ---
 
-## 3. โครงสร้างฐานข้อมูล (Database Schemas)
+## 3. Database Schemas
 
-การออกแบบ Model หลักใน MongoDB (ผ่าน Mongoose) เพื่อเชื่อมต่อข้อมูลแต่ละส่วนและรองรับ Row Isolation กับ OAuth:
+The main MongoDB models (via Mongoose) design to connect each part and support Row Isolation with OAuth:
 
 ### A. User / Auth Model
 ```typescript
@@ -211,7 +211,7 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 ```
 
-### B. Sales / Lead Model (พร้อม Row Isolation)
+### B. Sales / Lead Model (with Row Isolation)
 ```typescript
 const SalesLeadSchema = new mongoose.Schema({
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Row Isolation field
@@ -233,12 +233,12 @@ const SalesLeadSchema = new mongoose.Schema({
 }, { timestamps: true });
 ```
 
-### C. Ingredient & BOM Model (พร้อม Row Isolation)
+### C. Ingredient & BOM Model (with Row Isolation)
 ```typescript
 const IngredientSchema = new mongoose.Schema({
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Row Isolation field
   name: { type: String, required: true, unique: true },
-  openingStock: { type: Number, required: true, default: 0 }, // กรัม
+  openingStock: { type: Number, required: true, default: 0 }, // grams
   supplier: { type: String },
   pricePerKg: { type: Number, default: 0 }
 });
@@ -247,34 +247,34 @@ const BomFormulaSchema = new mongoose.Schema({
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Row Isolation field
   name: { type: String, required: true, unique: true },
   color: { type: String, default: '#2E7D32' },
-  bom: { type: Map, of: Number } // Key: ชื่อวัตถุดิบ, Value: กรัมต่อ 1 กก.สูตร
+  bom: { type: Map, of: Number } // Key: ingredient name, Value: grams per 1 kg formula
 });
 ```
 
-### D. Packaging & Postal Box Model (พร้อม Row Isolation)
+### D. Packaging & Postal Box Model (with Row Isolation)
 ```typescript
 const PackagingItemSchema = new mongoose.Schema({
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Row Isolation field
   name: { type: String, required: true },
-  type: { type: String, enum: ['บรรจุภัณฑ์', 'สินค้าพร้อมส่ง', 'กล่อง&ซอง', 'อื่นๆ'] },
-  customer: { type: String, required: true }, // "ระบบ" หรือ ชื่อลูกค้าเฉพาะราย
+  type: { type: String, enum: ['Packaging', 'Ready to Ship', 'Boxes & Envelopes', 'Others'] },
+  customer: { type: String, required: true }, // "System" or a specific customer name
   initialQuantity: { type: Number, default: 0 },
   currentQuantity: { type: Number, default: 0 },
-  image: { type: String }, // Base64 หรือ URL รูปภาพ
+  image: { type: String }, // Base64 or image URL
   note: { type: String }
 });
 ```
 
-### E. Finished Goods (FG) & Lot Model (พร้อม Row Isolation)
+### E. Finished Goods (FG) & Lot Model (with Row Isolation)
 ```typescript
 const ProductSkuSchema = new mongoose.Schema({
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Row Isolation field
-  id: { type: String, required: true, unique: true }, // เช่น SH-BIO-120ML-DM-OEM
+  id: { type: String, required: true, unique: true }, // e.g., SH-BIO-120ML-DM-OEM
   name: { type: String, required: true },
   brand: { type: String },
   category: { type: String },
   minStock: { type: Number, default: 0 },
-  unit: { type: String, default: 'ชิ้น' }
+  unit: { type: String, default: 'piece' }
 });
 
 const ProductLotSchema = new mongoose.Schema({
@@ -290,46 +290,46 @@ const ProductLotSchema = new mongoose.Schema({
 
 ---
 
-## 3.1 โครงสร้างสายการผลิตและขั้นตอนผลิต (Production Line & 6-Step Wizard)
+## 3.1 Production Line & 6-Step Wizard
 
-เพื่อความสมบูรณ์ในการย้ายการผลิตลงสู่ฐานข้อมูล MongoDB ระบบมีการเก็บสถานะและหลักฐานรูปภาพจริงโดยแชร์โมเดลกับบัญชีลูกค้า (User Model) ดังนี้:
+To fully migrate production to the MongoDB database, the system stores status and real image evidence sharing the model with customer accounts (User Model) as follows:
 
-### A. ข้อมูลสถานะและไฟล์แนบของการผลิต (Production Fields in User Model)
-* `productionStatus`: สถานะขั้นตอนผลิตปัจจุบัน (เช่น `ยังไม่ผลิต`, `รอยืนยัน`, `กำลังผลิต (บรรจุ)`, `กำลังผลิต (ติดฉลาก)`, `รอตรวจ QA รอบที่ 2`, `รอลูกค้ายืนยัน`, `ลูกค้ายืนยันแล้ว`, `สำเร็จเสร็จสิ้น`)
-* `productionStep`: หมายเลขขั้นตอนปัจจุบัน (สเต็ป 1 ถึง 6)
-* `qa1BulkPhoto` / `qa1EmptyPackPhoto` / `qa1PackagingPhoto` / `qa1PumpPhoto` / `qa1StickerPhoto` / `qa1AssembledVideo`: รูปภาพและวิดีโอหลักฐานการตรวจ QA รอบที่ 1
-* `qaPackagingPhoto` / `qaPumpPhoto` / `qaStickerPhoto` / `qaAssembledVideo`: รูปภาพและวิดีโอหลักฐานการตรวจ QA รอบที่ 2 (ความยาวไม่เกิน 5 วินาที)
-* `chatScreenshotProof`: รูปภาพหลักฐานการแชทคอนเฟิร์มรับสินค้าจากลูกค้า (จัดเก็บเป็น Base64 ใน MongoDB)
-* `qaStatus`: สถานะการตรวจ (`pending`, `approved`, `rejected`)
+### A. Production Fields in User Model
+* `productionStatus`: Current production step status (e.g., `Not yet produced`, `Pending confirmation`, `In production (filling)`, `In production (labeling)`, `Awaiting QA round 2`, `Awaiting customer confirmation`, `Customer confirmed`, `Completed`).
+* `productionStep`: Current step number (step 1 to 6).
+* `qa1BulkPhoto` / `qa1EmptyPackPhoto` / `qa1PackagingPhoto` / `qa1PumpPhoto` / `qa1StickerPhoto` / `qa1AssembledVideo`: QA round 1 photo and video evidence.
+* `qaPackagingPhoto` / `qaPumpPhoto` / `qaStickerPhoto` / `qaAssembledVideo`: QA round 2 photo and video evidence (no longer than 5 seconds).
+* `chatScreenshotProof`: Chat confirmation screenshot evidence from the customer (stored as Base64 in MongoDB).
+* `qaStatus`: Inspection status (`pending`, `approved`, `rejected`).
 
-### B. จุดเชื่อมต่อข้อมูลสายการผลิต (Production API Endpoints)
-* `GET /api/production/orders`: ดึงรายการใบสั่งผลิตทั้งหมด แยกตามสิทธิ์บทบาท (Row Isolation)
-* `GET /api/production/orders/:id`: ดึงรายละเอียดใบสั่งผลิตรายบุคคล
-* `PUT /api/production/orders/:id/status`: อัปเดตสถานะการผลิต แนบรูปแชทยืนยันจากลูกค้าลงฐานข้อมูลโดยตรง
-* `PUT /api/production/orders/:id/step`: อัปเดตเช็กลิสต์การตรวจ ขั้นตอนสเต็ปการผลิต และข้อมูล Base64 ของไฟล์รูปถ่าย/คลิปวิดีโอในแต่ละขั้นตอน
+### B. Production API Endpoints
+* `GET /api/production/orders`: Fetch all production work orders, filtered by role permissions (Row Isolation).
+* `GET /api/production/orders/:id`: Fetch a single production work order detail.
+* `PUT /api/production/orders/:id/status`: Update production status, attaching customer chat confirmation screenshot directly to the database.
+* `PUT /api/production/orders/:id/step`: Update inspection checklists, production step, and Base64 photo/video files in each step.
 
 ---
 
-## 4. แผนงานการพัฒนาสู่ระบบจริง (Implementation MVP Plan)
+## 4. Implementation MVP Plan
 
-การพัฒนา Naive Ops ได้ดำเนินงานคืบหน้าตามแผนงานของระบบจริงดังนี้:
+Naive Ops development is progressing according to the real system plan as follows:
 
-* **[x] เฟส 1: โครงสร้างและการจัดเตรียมระบบหลังบ้าน (Backend Setup, DB Seed & Auth)**
-  - [x] ติดตั้งโปรเจกต์ Next.js, Express Server และทำการเชื่อมต่อ MongoDB
-  - [x] พัฒนาระบบ Auth และเชื่อมโยงผู้ใช้กับ API
-  - [x] ออกแบบโครงสร้าง Mongoose Models ครอบคลุมผู้ใช้, สูตร BOM, คลังสินค้า และบรรจุภัณฑ์
-* **[x] เฟส 2: การพัฒนาส่วนหน้าจอแสดงผลและคอมโพเนนต์ (Frontend Development & UI/UX)**
-  - [x] ประกอบโมดูลหลักเป็นคอมโพเนนต์ย่อยใน Next.js (Sales CRM, BOM, คลังสินค้า)
-  - [x] ออกแบบและปรับปรุงธีมสีแบรนด์เขียว/เทาเข้ม (Premium Green-Themed UI) ของระบบอย่างสวยงาม
-  - [x] ปรับรูปแบบหน้าจอยืนยันวัตถุดิบและรายการตรวจสอบ (Checklist 6 ขั้นตอน) ให้ลื่นไหล ตอบโจทย์การใช้งานจริง
-* **[x] เฟส 3: เชื่อมต่อหลังบ้านสายการผลิตและฐานข้อมูล (Production API & MongoDB Integration)**
-  - [x] เปลี่ยนผ่านระบบพักจำลอง `localStorage` สู่การเชื่อมต่อ API จริงผ่าน Axios ไปยังฐานข้อมูล MongoDB
-  - [x] พัฒนา API รับส่งรหัสโค้ดรูปภาพ/วิดีโอ (Base64) เซฟบันทึกจริงลงคอลเลกชัน MongoDB
-  - [x] แยกคอลัมน์ขั้นตอนที่ 1 เป็น 2 ฝั่ง (ฝั่งซ้าย: สูตร/ปริมาณลิตรเคมี, ฝั่งขวา: สถานะเช็คสต็อกบรรจุภัณฑ์) เพื่อให้อ่านและตรวจสอบความพร้อมในสายผลิตง่ายที่สุด
-  - [x] แบ่งเช็กลิสต์ย่อยขั้นตอนบรรจุหีบห่อเป็นขั้นตอนที่ 3 (บรรจุภัณฑ์) และขั้นตอนที่ 4 (ติดฉลาก & ห่อหุ้ม) แบบแนวนอน 4 ช่องแถวเดียว (Aspect Ratio 1:1) ชิดซ้าย พร้อมไอคอนสัญลักษณ์เข้าใจง่าย
-  - [x] จำกัดความยาวคลิปหลักฐานสเต็ป 5 (QA รอบที่ 2) ไม่เกิน 5 วินาที
-  - [x] ออกแบบหน้าจอนำเข้าภาพหลักฐานแชทยืนยันของลูกค้าเพื่ออนุมัติปิดล็อตในสเต็ปที่ 6
-* **[/] เฟส 4: ระบบการเบิกล็อตสินค้าสำเร็จรูปและ Export Engine**
-  - [x] เขียนโมดูลสรุปสถิติจำนวนรวมการผลิตและชาร์ตรายงานผลหน้า Dashboard
-  - [ ] พัฒนาระบบเบิกจ่ายสินค้าสำเร็จรูป Lotting FEFO
-  - [ ] จัดทำระบบส่งออกรายงานประวัติและสต็อก Excel (.xlsx) และ CSV
+* **[x] Phase 1: Backend Setup, DB Seed & Auth**
+  - [x] Set up the Next.js project, Express Server, and connect MongoDB.
+  - [x] Develop the Auth system and link users to the API.
+  - [x] Design Mongoose Models covering users, BOM formulas, warehousing, and packaging.
+* **[x] Phase 2: Frontend Development & UI/UX**
+  - [x] Assemble main modules into sub-components in Next.js (Sales CRM, BOM, Inventory).
+  - [x] Design and refine the premium green/dark gray branded theme (Premium Green-Themed UI).
+  - [x] Refine the raw material confirmation screen and the 6-step checklist to be smooth and practical for real use.
+* **[x] Phase 3: Production API & MongoDB Integration**
+  - [x] Transition from the in-memory `localStorage` mock to real API integration via Axios to MongoDB.
+  - [x] Develop APIs to send/receive Base64 image/video codes and save them to MongoDB collections.
+  - [x] Split step 1 into two columns (left: formula/chemical liters, right: packaging stock status) for the easiest reading and readiness checking on the production line.
+  - [x] Split the packaging checklist into Step 3 (Packaging) and Step 4 (Labeling & Wrapping) as a single horizontal row of 4 cells (Aspect Ratio 1:1), left-aligned, with easy-to-understand icons.
+  - [x] Limit the evidence clip for Step 5 (QA round 2) to no longer than 5 seconds.
+  - [x] Design the customer chat confirmation screenshot import screen to approve lot closing in Step 6.
+* **[/] Phase 4: FG Lot Withdrawal & Export Engine**
+  - [x] Write the production total statistics module and reporting charts on the Dashboard.
+  - [ ] Develop the FEFO Lotting finished goods withdrawal system.
+  - [ ] Build the Excel (.xlsx) and CSV history and stock report export system.

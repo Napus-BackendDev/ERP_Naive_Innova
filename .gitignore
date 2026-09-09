@@ -62,10 +62,6 @@ backend/scripts/backup/
 # photos, which have no business in a git history.
 backend/public/uploads/
 
-# Role manuals and their capture harness: 4 PDFs plus 162 screenshots (~32 MB).
-# Rebuild with: node docs/tools/buildManuals.mjs && node docs/tools/capture.mjs
-docs/
-
 # One-off author rewrite, already applied.
 fix-author.sh
 .ds-sync/

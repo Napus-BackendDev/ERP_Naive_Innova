@@ -831,3 +831,18 @@
         justify-self: start
     }
 }
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 20px;
+    color: #9ab4cc;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color .2s, transform .2s;
+}
+
+.backLink:hover { color: #3ecf5a; transform: translateX(-2px); }
+.backLink svg { color: currentColor; }

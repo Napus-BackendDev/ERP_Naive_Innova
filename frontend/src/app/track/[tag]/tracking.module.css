@@ -13,7 +13,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 18px;
-    padding: 20px;
+    padding: 0 20px;
     color: #9ab4cc;
     font-size: 14px
 }
@@ -664,83 +664,122 @@
 }
 
 .footer {
-    border-top: 1px solid #1e2d46;
-    background: #0d1928;
-    color: #7a98b4;
-    font-size: 13px
+    background: #080f1e;
+    border-top: 1px solid #1b2a41;
+    color: #91a9c2;
 }
 
-.footerTop {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 48px;
-    padding: 48px max(24px, calc((100% - 1050px)/2));
-    border-bottom: 1px solid #1e2d46
+.footerInner,
+.footerBottom {
+    width: min(736px, calc(100% - 32px));
+    margin: 0 auto;
+    display: flex;
 }
 
-.footerCol {
+.footerInner {
+    padding: 36px 0 24px;
+    font-size: 12px;
+    align-items: flex-start;
+}
+
+.footerInner>div {
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 6px;
 }
 
-.footerLogo {
-    height: 36px;
-    width: auto;
-    object-fit: contain;
-    align-self: flex-start;
-    margin-bottom: 4px
+.footerInner b {
+    color: #42d466;
+    font-size: 12px;
 }
 
-.footerCol strong {
+.footerInner strong {
     color: #fff;
     font-size: 14px;
-    letter-spacing: .5px
+    margin-top: 5px;
 }
 
-.footerCol p {
-    line-height: 1.7;
-    margin: 0
+.footerInner a {
+    color: #9ab4cc;
+    text-decoration: none;
 }
 
-.footerHeading {
-    color: #3ecf5a;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0 0 4px 0
+.footerInner a:hover {
+    color: #42d466;
 }
 
-.footerList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.company {
+    width: 34%;
+    padding-right: 36px;
+    border-right: 1px solid #243650;
+}
+
+.company img {
+    width: 63px;
+    height: auto;
+    margin: 0 auto 3px;
+}
+
+.company span {
+    line-height: 1.45;
+}
+
+.contact {
+    width: 33%;
+    padding: 0 31px;
+}
+
+.address {
+    width: 33%;
+    padding-left: 26px;
+}
+
+.contact a,
+.contact span,
+.address>span {
     display: flex;
-    flex-direction: column;
-    gap: 7px;
-    line-height: 1.5
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.45;
 }
 
-.footerAddr {
-    line-height: 1.7;
-    margin: 0 0 16px 0
+.contact svg,
+.address svg {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 auto;
+    color: #f472b6;
+    margin-top: 1px;
+}
+
+.address svg {
+    color: #42d466;
+}
+
+.serviceTitle {
+    margin-top: 7px;
 }
 
 .footerBottom {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 16px max(24px, calc((100% - 1050px)/2));
+    padding: 15px 0;
+    border-top: 1px solid #1e2d46;
     font-size: 11px;
-    color: #4a6a84
 }
 
-.statusDot {
-    color: #3ecf5a;
-    margin-right: 5px
+.footerBottom small:last-child {
+    color: #6f8ba6;
 }
 
+.footerBottom i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: #3ecf5a;
+    vertical-align: middle;
+}
 
 @keyframes pulse {
     50% {
@@ -812,14 +851,8 @@
         margin-left: 0
     }
 
-    .footerTop {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 32px 16px
-    }
-
-    .footerBottom {
-        padding: 14px 16px
+    .footer {
+        padding: 27px 16px
     }
 
     .phase {
@@ -831,18 +864,3 @@
         justify-self: start
     }
 }
-
-.backLink {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 20px;
-    color: #9ab4cc;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: color .2s, transform .2s;
-}
-
-.backLink:hover { color: #3ecf5a; transform: translateX(-2px); }
-.backLink svg { color: currentColor; }

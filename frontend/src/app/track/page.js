@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ClipboardList, Mail, MapPin, MessageCircle, PackageSearch, Phone, Search } from "lucide-react";
+import { ArrowRight, ClipboardList, Mail, MapPin, MessageCircle, PackageSearch, Phone, Search, Sun, Moon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import styles from "./search.module.css";
 
@@ -9,6 +9,7 @@ export default function TrackSearchPage() {
   const router = useRouter();
   const [tag, setTag] = useState("");
   const [message, setMessage] = useState("");
+  const [darkMode, setDarkMode] = useState(true);
 
   function submit(event) {
     event.preventDefault();
@@ -23,9 +24,23 @@ export default function TrackSearchPage() {
 
   return (
     <main className={styles.page}>
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         <img src="/logo-wordmark.png" alt="Naive Innova" className={styles.logo} />
         <span>ติดตามสถานะการผลิต</span>
+      </header> */}
+
+      <header className={styles.header}>
+        <div className={styles.headerLeft}>
+          <span>ติดตามสถานะการผลิต</span>
+        </div>
+        <div className={styles.brand}>
+          <img src="/logo-wordmark.png" alt="Naive Innova" className={styles.logo} />
+        </div>
+        <div className={styles.headerRight}>
+          <button className={styles.themeBtn} onClick={() => setDarkMode(!darkMode)} title={darkMode ? "เปลี่ยนเป็นโหมดสว่าง" : "เปลี่ยนเป็นโหมดมืด"}>
+            {darkMode ? <Sun size={19} /> : <Moon size={19} />}
+          </button>
+        </div>
       </header>
 
       <section className={styles.hero} aria-labelledby="track-title">
@@ -60,26 +75,39 @@ export default function TrackSearchPage() {
         <div className={styles.footerInner}>
           <div className={styles.company}>
             <img src="/logo-wordmark.png" alt="Naive Innova" />
-            <strong>Naive Innova</strong>
-            <span>OEM Pet Care &amp; Animal Health</span>
-            <span>บนเทคโนโลยีนาโนและสารสกัดธรรมชาติ</span>
-            <span>Spin-off จากคณะสัตวแพทย์ จุฬาฯ</span>
+            <p className={styles.companyDesc}>OEM Pet Care &amp; Animal Health บนเทคโนโลยีนาโนและสารสกัดธรรมชาติ<br />Spin-off จากคณะสัตวแพทย์ จุฬาฯ</p>
+            <div className={styles.contactRows}>
+              <a href="tel:0877149262" className={styles.contactRow}><span className={styles.contactIcon}><Phone size={14} /></span><span>087-714-9262 · 094-888-1184</span></a>
+              <a href="mailto:info@naiveinnova.com" className={styles.contactRow}><span className={styles.contactIcon}><Mail size={14} /></span><span>info@naiveinnova.com</span></a>
+              <span className={styles.contactRow}><span className={styles.contactIcon}><MessageCircle size={14} /></span><span>LINE: @naivepetcare</span></span>
+              <span className={styles.contactRow}><span className={styles.contactIcon}><MapPin size={14} /></span><span>144/1 ต.สายเหนือ อ.พาน จ.เชียงราย 57120</span></span>
+            </div>
           </div>
-          <div className={styles.contact}>
-            <b>ติดต่อเรา</b>
-            <a href="tel:0877149262"><Phone /> 087-714-9262</a>
-            <a href="tel:0948881184"><Phone /> 094-888-1184</a>
-            <a href="mailto:info@naiveinnova.com"><Mail /> info@naiveinnova.com</a>
-            <span><MessageCircle /> LINE: @naivepetcare</span>
+          <div className={styles.footerCol}>
+            <b className={styles.colTitle}>บริการ</b>
+            <a href="#">รับผลิต OEM</a>
+            <a href="#">Custom Formula</a>
+            <a href="#">Brand Building</a>
+            <a href="#">Regulatory Support</a>
           </div>
-          <div className={styles.address}>
-            <b>ที่อยู่</b>
-            <span><MapPin /> 144/1 ต.สายเหนือ อ.พาน<br />&nbsp;&nbsp;&nbsp;&nbsp;จ.เชียงราย 57120</span>
-            <b className={styles.serviceTitle}>บริการ</b>
-            <a href="/track">ติดตามออเดอร์</a><span>สถานะการผลิต</span><span>คลังสินค้า</span>
+          <div className={styles.footerCol}>
+            <b className={styles.colTitle}>ข้อมูล</b>
+            <a href="#">เกี่ยวกับเรา</a>
+            <a href="#">นวัตกรรม &amp; สารสกัด</a>
+            <a href="#">บทความ &amp; สื่อ</a>
+            <a href="#">วิดีโอ</a>
+          </div>
+          <div className={styles.footerCol}>
+            <b className={styles.colTitle}>ช่วยเหลือ</b>
+            <a href="#">นัดหมายสร้างแบรนด์</a>
+            <a href="#">คำถามที่พบบ่อย</a>
+            <a href="#">แผนที่โรงงาน</a>
+            <a href="#">Factory Tour</a>
           </div>
         </div>
-        <div className={styles.footerBottom}><small>© 2568 Naive Innova Co., Ltd. สงวนสิทธิ์ทุกประการ</small><small><i /> ระบบทำงานปกติ</small></div>
+        <div className={styles.footerBottom}>
+          <small className={styles.Copyright}>© 2026 NAIVE INNOVA CO., LTD. · ALL RIGHTS RESERVED · นวัตกรรมสัตว์เลี้ยง</small>
+        </div>
       </footer>
     </main>
   );

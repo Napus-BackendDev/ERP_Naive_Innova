@@ -24,11 +24,6 @@ export default function TrackSearchPage() {
 
   return (
     <main className={styles.page}>
-      {/* <header className={styles.header}>
-        <img src="/logo-wordmark.png" alt="Naive Innova" className={styles.logo} />
-        <span>ติดตามสถานะการผลิต</span>
-      </header> */}
-
       <header className={styles.header}>
         <div className={styles.headerLeft}>
           <span>ติดตามสถานะการผลิต</span>
@@ -77,36 +72,36 @@ export default function TrackSearchPage() {
             <img src="/logo-wordmark.png" alt="Naive Innova" />
             <p className={styles.companyDesc}>OEM Pet Care &amp; Animal Health บนเทคโนโลยีนาโนและสารสกัดธรรมชาติ<br />Spin-off จากคณะสัตวแพทย์ จุฬาฯ</p>
             <div className={styles.contactRows}>
-              <a href="tel:0877149262" className={styles.contactRow}><span className={styles.contactIcon}><Phone size={14} /></span><span>087-714-9262 · 094-888-1184</span></a>
-              <a href="mailto:info@naiveinnova.com" className={styles.contactRow}><span className={styles.contactIcon}><Mail size={14} /></span><span>info@naiveinnova.com</span></a>
-              <span className={styles.contactRow}><span className={styles.contactIcon}><MessageCircle size={14} /></span><span>LINE: @naivepetcare</span></span>
-              <span className={styles.contactRow}><span className={styles.contactIcon}><MapPin size={14} /></span><span>144/1 ต.สายเหนือ อ.พาน จ.เชียงราย 57120</span></span>
+              <a href="tel:0877149262" className={styles.contactRow}><span className={`${styles.contactIcon} ${styles.contactOdd}`}><Phone size={14} /></span><span>087-714-9262 · 094-888-1184</span></a>
+              <a href="mailto:info@naiveinnova.com" className={styles.contactRow}><span className={`${styles.contactIcon} ${styles.contactEven}`}><Mail size={14} /></span><span>info@naiveinnova.com</span></a>
+              <span className={styles.contactRow}><span className={`${styles.contactIcon} ${styles.contactOdd}`}><MessageCircle size={14} /></span><span>LINE: @naivepetcare</span></span>
+              <span className={styles.contactRow}><span className={`${styles.contactIcon} ${styles.contactEven}`}><MapPin size={14} /></span><span>144/1 ต.สายเหนือ อ.พาน จ.เชียงราย 57120</span></span>
             </div>
           </div>
           <div className={styles.footerCol}>
             <b className={styles.colTitle}>บริการ</b>
-            <a href="#">รับผลิต OEM</a>
-            <a href="#">Custom Formula</a>
-            <a href="#">Brand Building</a>
-            <a href="#">Regulatory Support</a>
+            <a href="https://www.naivepetcare.com/branding/steps">รับผลิต OEM</a>
+            <a href="https://www.naivepetcare.com/branding/innovation">Custom Formula</a>
+            <a href="https://www.naivepetcare.com/branding/steps">Brand Building</a>
+            <a href="https://www.naivepetcare.com/contact/faq">Regulatory Support</a>
           </div>
           <div className={styles.footerCol}>
             <b className={styles.colTitle}>ข้อมูล</b>
-            <a href="#">เกี่ยวกับเรา</a>
-            <a href="#">นวัตกรรม &amp; สารสกัด</a>
-            <a href="#">บทความ &amp; สื่อ</a>
-            <a href="#">วิดีโอ</a>
+            <a href="https://www.naivepetcare.com/branding/innovation">เกี่ยวกับเรา</a>
+            <a href="https://www.naivepetcare.com/branding/innovation">นวัตกรรม &amp; สารสกัด</a>
+            <a href="https://www.naivepetcare.com/news/activities-new">บทความ &amp; สื่อ</a>
+            <a href="https://www.naivepetcare.com/news/videos">วิดีโอ</a>
           </div>
           <div className={styles.footerCol}>
             <b className={styles.colTitle}>ช่วยเหลือ</b>
-            <a href="#">นัดหมายสร้างแบรนด์</a>
-            <a href="#">คำถามที่พบบ่อย</a>
-            <a href="#">แผนที่โรงงาน</a>
-            <a href="#">Factory Tour</a>
+            <a href="https://www.naivepetcare.com/content">นัดหมายสร้างแบรนด์</a>
+            <a href="https://www.naivepetcare.com/contact/faq">คำถามที่พบบ่อย</a>
+            <a href="https://www.naivepetcare.com/content">แผนที่โรงงาน</a>
+            <a href="https://www.naivepetcare.com/news/videos">Factory Tour</a>
           </div>
         </div>
         <div className={styles.footerBottom}>
-          <small className={styles.Copyright}>© 2026 NAIVE INNOVA CO., LTD. · ALL RIGHTS RESERVED · นวัตกรรมสัตว์เลี้ยง</small>
+          <small className={styles.copyright}>© 2026 NAIVE INNOVA CO., LTD. · ALL RIGHTS RESERVED · นวัตกรรมสัตว์เลี้ยง</small>
         </div>
       </footer>
     </main>

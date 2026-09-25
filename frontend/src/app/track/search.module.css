@@ -227,7 +227,7 @@
     align-items: flex-start;
 }
 
-.Copyright {
+.copyright {
     font-size: medium;
     margin: 0 auto;
 }
@@ -259,17 +259,27 @@
 
 .contactRow {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     color: #91a9c2;
     text-decoration: none;
     font-size: 12px;
     line-height: 1.45;
-    transition: color .2s
+    transition: color .2s;
 }
 
 a.contactRow:hover {
     color: #42d466
+}
+
+.contactOdd {
+    background: #CEFAFE;
+    color: #0092B8;
+}
+
+.contactEven {
+    background: #FAE8FF;
+    color: #C700DE;
 }
 
 .contactIcon {
@@ -279,10 +289,7 @@ a.contactRow:hover {
     width: 28px;
     height: 28px;
     flex: 0 0 28px;
-    border-radius: 8px;
-    background: #112235;
-    border: 1px solid #1e3050;
-    color: #4ade80;
+    border-radius: 100%;
 }
 
 .footerCol {
@@ -362,6 +369,10 @@ a.contactRow:hover {
         grid-template-columns: 1fr;
         gap: 28px;
         padding: 32px 0 24px;
+    }
+
+    .copyright {
+        font-size: small;
     }
 
     .company {

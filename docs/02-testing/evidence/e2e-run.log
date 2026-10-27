@@ -1,0 +1,27 @@
+> frontend@0.1.0 test:e2e
+> playwright test (E2E_EVIDENCE=1)
+
+Running 18 tests using 1 worker
+
+  ✓   1 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Dashboard loads for an admin (2.5s)
+  ✓   2 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Sales loads for an admin (1.1s)
+  ✓   3 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › R&D loads for an admin (946ms)
+  ✓   4 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Production loads for an admin (1.1s)
+  ✓   5 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Stock loads for an admin (921ms)
+  ✓   6 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Users loads for an admin (731ms)
+  ✓   7 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Customer log loads for an admin (789ms)
+  ✓   8 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Activity logs loads for an admin (808ms)
+  ✓   9 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Support loads for an admin (751ms)
+  ✓  10 [desktop-chrome] › e2e\admin-modules.spec.js:133:9 › admin core modules › Settings loads for an admin (890ms)
+  ✓  11 [desktop-chrome] › e2e\admin-modules.spec.js:140:7 › admin core modules › an admin sees the admin-only Users navigation item (1.0s)
+  ✓  12 [desktop-chrome] › e2e\admin-modules.spec.js:147:7 › admin core modules › a normal user does not see the Users navigation item (1.2s)
+  ✓  13 [desktop-chrome] › e2e\admin-modules.spec.js:157:7 › admin access guards › redirects to login when there is no stored session (968ms)
+  ✓  14 [desktop-chrome] › e2e\admin-modules.spec.js:162:7 › admin access guards › redirects to the pending-approval login when the server rejects the session (1.1s)
+  ✓  15 [desktop-chrome] › e2e\tracking.spec.js:4:7 › public order tracking › shows a validation message when the tag is empty (631ms)
+  ✓  16 [desktop-chrome] › e2e\tracking.spec.js:14:7 › public order tracking › uppercases the tag and opens the tracking detail page (1.6s)
+  ✓  17 [desktop-chrome] › e2e\tracking.spec.js:26:7 › public order tracking › tracking detail lists the ordered products (793ms)
+  ✓  18 [desktop-chrome] › e2e\tracking.spec.js:35:7 › login screen › explains an expired session to the user (807ms)
+
+  18 passed (23.6s)
+
+E2E evidence screenshots: 18/18

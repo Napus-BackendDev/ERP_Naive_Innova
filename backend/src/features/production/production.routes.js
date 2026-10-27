@@ -962,10 +962,18 @@ router.put("/orders/:id/schedule", async (req, res) => {
     const asDate = (v) => {
       if (typeof v !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return "";
       const d = new Date(`${v}T00:00:00`);
-      return isNaN(d.getTime()) ? "" : v;
+      if (isNaN(d.getTime())) return "";
+      const [year, month, day] = v.split("-").map(Number);
+      return d.getFullYear() === year && d.getMonth() + 1 === month && d.getDate() === day ? v : "";
     };
     let start = asDate(scheduleStartDate);
     let end = asDate(scheduleEndDate) || start;
+    if (scheduleStartDate && !start) {
+      return res.status(400).json({ message: "Invalid schedule start date." });
+    }
+    if (scheduleEndDate && !end) {
+      return res.status(400).json({ message: "Invalid schedule end date." });
+    }
     if (start && end && end < start) [start, end] = [end, start]; // ISO dates sort lexically
     if (!start) end = "";
 

@@ -1,0 +1,253 @@
+
+ RUN  v5.0.5 D:/ERP_Naive_Innova/backend
+
+ ✓ tests/integration/scheduler.test.js (8 tests) 9490ms
+   ✓ autoMoveLeads — rule evaluation (4)
+     ✓ does nothing when no CRM columns exist 1272ms
+ ✓ tests/integration/api.test.js (18 tests) 10609ms
+   ✓ app wiring and auth middleware (5)
+     ✓ health endpoint is public 1411ms
+   ✓ scents API (integration with MongoDB) (5)
+     ✓ creating the same scent twice is idempotent 352ms
+stdout | tests/integration/production-workflow.test.js > Production — packaging deduction > deducts bottle, cap and label once when entering production
+Deducted 10 units of bottle: Bottle A
+
+stdout | tests/integration/production-workflow.test.js > Production — packaging deduction > deducts bottle, cap and label once when entering production
+Deducted 10 units of cap: Cap A
+
+stdout | tests/integration/production-workflow.test.js > Production — packaging deduction > deducts bottle, cap and label once when entering production
+Deducted 10 units of label: Label A
+
+ ✓ tests/integration/dashboard.test.js (5 tests) 11469ms
+   ✓ Dashboard — module reachability (3)
+     ✓ every module list endpoint rejects unauthenticated requests 1271ms
+     ✓ an admin can load every module list endpoint 939ms
+     ✓ a normal user cannot load the admin-only Users module 652ms
+   ✓ Dashboard — cockpit composition (2)
+     ✓ the six cockpit data sources all return arrays 712ms
+     ✓ seeded operational data is reflected in the dashboard sources 748ms
+stdout | tests/integration/production-workflow.test.js > Production — packaging deduction > does not deduct packaging twice for the same product line
+Deducted 10 units of bottle: Bottle A
+
+stdout | tests/integration/production-workflow.test.js > Production — packaging deduction > does not deduct packaging twice for the same product line
+Deducted 10 units of cap: Cap A
+
+stdout | tests/integration/production-workflow.test.js > Production — packaging deduction > does not deduct packaging twice for the same product line
+Deducted 10 units of label: Label A
+
+stderr | tests/integration/users-settings.test.js > Users — first-login approval > approves a pending request and assigns the User role
+Failed to send approval decision emails: Missing required environment variable: GMAIL_USER
+
+ ✓ tests/integration/export-upload.test.js (8 tests) 13163ms
+   ✓ Export — raw-material workbook (3)
+     ✓ rejects unauthenticated exports 972ms
+     ✓ returns an xlsx workbook containing the owner's ingredients 2189ms
+     ✓ gives an admin every owner's ingredients in the workbook 824ms
+   ✓ Export — raw-material CSV (2)
+     ✓ returns a UTF-8 BOM CSV with the owner's rows 617ms
+     ✓ gives an admin every owner's rows in CSV 651ms
+   ✓ Image size guard (3)
+     ✓ rejects an oversized base64 image body before it reaches the route 922ms
+     ✓ rejects oversized images nested inside arrays 522ms
+     ✓ allows a small base64 image through to the route 510ms
+ ✓ tests/integration/auth-routes.test.js (13 tests) 14693ms
+   ✓ Auth — current session (6)
+     ✓ returns a null user when no token is supplied 1277ms
+     ✓ rejects an invalid token 537ms
+     ✓ returns the current user with a role name 608ms
+     ✓ blocks a pending user with PENDING_APPROVAL 533ms
+     ✓ blocks a rejected user with ACCESS_REJECTED 473ms
+     ✓ clears the auth cookie on logout 607ms
+   ✓ Auth — first-login approval links (5)
+     ✓ rejects a malformed approval token on GET 428ms
+     ✓ renders the approval form for a well-formed token 444ms
+     ✓ approves a pending user through a valid token 483ms
+     ✓ rejects a pending user through a valid token and locks for four hours 630ms
+     ✓ rejects an expired approval token without changing the user 509ms
+   ✓ Auth — mock login (2)
+     ✓ is disabled unless ENABLE_MOCK_LOGIN is true 490ms
+     ✓ creates and logs in the mock admin when enabled 563ms
+ ✓ tests/integration/bom-lifecycle.test.js (12 tests) 14799ms
+   ✓ BOM — raw-material import and adjustment (4)
+     ✓ rejects unauthenticated ingredient access 1017ms
+     ✓ bulk-imports ingredients and skips rows without a name 676ms
+     ✓ adjusts ingredient stock in and out with movement logs 572ms
+     ✓ rejects invalid ingredient transaction arguments 547ms
+   ✓ BOM — formula import, rename and archive (4)
+     ✓ bulk-imports formulas and increments the version on re-import 516ms
+     ✓ renames a formula and propagates the name to pending order lines 690ms
+     ✓ refuses to archive a formula still used by a pending order 487ms
+     ✓ archives an unused formula and hides it from the default list 506ms
+   ✓ BOM — production confirm and revert (4)
+     ✓ confirms production, deducts ingredients and creates an FG lot 556ms
+     ✓ blocks production confirmation for a development order 694ms
+     ✓ rejects confirmation when ingredient stock is insufficient 649ms
+     ✓ reverts production, restores ingredients and deletes the FG lot 714ms
+ ✓ tests/integration/sales.test.js (13 tests) 15334ms
+   ✓ Sales — authentication and listing (3)
+     ✓ rejects unauthenticated access 1071ms
+     ✓ lists only the owner's leads for a normal user 667ms
+     ✓ lists every lead for an admin 702ms
+   ✓ Sales — create (4)
+     ✓ creates a lead and normalizes legacy orderedProducts 733ms
+     ✓ reuses an existing customer with the same email instead of duplicating 642ms
+     ✓ rejects a sample order when sample stock is insufficient 547ms
+     ✓ deducts sample stock and writes a movement log on a valid sample order 554ms
+   ✓ Sales — update and delete (3)
+     ✓ updates a lead, changing section and writing an activity log 528ms
+     ✓ cannot update another owner's lead 649ms
+     ✓ deletes the owner's lead but not another owner's 724ms
+   ✓ Sales — Kanban columns (3)
+     ✓ returns the default columns when none are configured 563ms
+     ✓ rejects a non-array column payload 595ms
+     ✓ saves and reorders columns 562ms
+ ✓ tests/integration/rnd.test.js (11 tests) 15369ms
+   ✓ R&D — formula create (4)
+     ✓ rejects unauthenticated access 1111ms
+     ✓ rejects an empty formula name 1562ms
+     ✓ creates a formula with a normalized name and version 1 698ms
+     ✓ rejects a duplicate active formula name 658ms
+   ✓ R&D — formula list and update (4)
+     ✓ lists only the owner's active formulas 1006ms
+     ✓ updates a formula and bumps the version when content changes 580ms
+     ✓ cannot update another owner's formula 702ms
+     ✓ rejects renaming to an existing formula name 612ms
+   ✓ R&D — formula archive (3)
+     ✓ archives an unreferenced formula 552ms
+     ✓ refuses to archive a formula used by a pending production order 670ms
+     ✓ cannot archive another owner's formula 497ms
+ ✓ tests/integration/production-workflow.test.js (12 tests) 16687ms
+   ✓ Production — uploads (4)
+     ✓ uploads a small image as an inline data URL 1919ms
+     ✓ rejects non-image uploads 603ms
+     ✓ rejects an upload with no file 532ms
+     ✓ rejects images larger than 1 MB 691ms
+   ✓ Production — packaging deduction (4)
+     ✓ deducts bottle, cap and label once when entering production 761ms
+     ✓ does not deduct packaging twice for the same product line 1224ms
+     ✓ resolves a formula link and rejects another owner's formula 740ms
+     ✓ cannot update another owner's production order 586ms
+   ✓ Production — warehousing and delivery (4)
+     ✓ warehousing creates an FG lot and returns the deal to Retention 1 587ms
+     ✓ delivery marks the lot delivered and deducts the courier box 533ms
+     ✓ does not mark a development line's lot as delivered 514ms
+     ✓ per-line QC creates a lot for the selected product index 491ms
+ ✓ tests/integration/fg-lifecycle.test.js (15 tests) 16997ms
+   ✓ FG — lot receiving (5)
+     ✓ rejects unauthenticated lot access 1127ms
+     ✓ rejects a receive without the required lot fields 709ms
+     ✓ receives a lot with a formula snapshot and writes an FG movement 1413ms
+     ✓ rejects receive for an archived or unknown formula 1240ms
+     ✓ lists lots filtered by formula and hides delivered stock by default 596ms
+   ✓ FG — lot edits and deletion (4)
+     ✓ adjusts a lot quantity and writes a movement log 528ms
+     ✓ performs a full lot update through PUT 686ms
+     ✓ keeps lot edits owner-scoped 594ms
+     ✓ deletes a lot but reports missing lots 561ms
+   ✓ FG — FEFO issue (3)
+     ✓ issues stock from the earliest-expiring lot first 546ms
+     ✓ rejects an issue that exceeds available stock without changing it 482ms
+     ✓ rejects an invalid issue payload 610ms
+   ✓ FG — prefixes and SKUs (3)
+     ✓ upserts a lot prefix by formula and lists it 568ms
+     ✓ deletes a prefix config and reports missing ones 488ms
+     ✓ lists SKUs owner-scoped 433ms
+ ✓ tests/integration/machines-catalog.test.js (13 tests) 17121ms
+   ✓ Machines — CRUD and queue (7)
+     ✓ rejects unauthenticated access 1512ms
+     ✓ rejects a machine without a name 742ms
+     ✓ creates a machine and drops invalid queue ids 919ms
+     ✓ lists owner machines for a user and all machines for an admin 605ms
+     ✓ updates machine fields and preserves the original queue timestamp 548ms
+     ✓ replaces the queue through the dedicated queue route 682ms
+     ✓ keeps machine update and delete owner-scoped 585ms
+   ✓ Nozzles — catalog mutations (4)
+     ✓ creates a nozzle and reuses the duplicate name 651ms
+     ✓ renames a nozzle and keeps edits owner-scoped 652ms
+     ✓ refuses to delete a nozzle referenced by a customer order 498ms
+     ✓ deletes an unused nozzle 488ms
+   ✓ Products — sample generation (2)
+     ✓ generates one sample per owner formula and is idempotent 534ms
+     ✓ does not list normal products as samples 377ms
+ ✓ tests/integration/logs-support-customer.test.js (15 tests) 17484ms
+   ✓ Activity Logs — listing, search and filters (8)
+     ✓ rejects unauthenticated access 998ms
+     ✓ returns an envelope with totals and category counts 870ms
+     ✓ filters by category 538ms
+     ✓ searches descriptions and escapes regex characters 674ms
+     ✓ is owner-scoped for normal users but global for admins 724ms
+     ✓ applies inclusive date range filters 520ms
+     ✓ an invalid stock item id yields an empty result instead of a 500 615ms
+     ✓ creates a log entry owned by the caller 529ms
+   ✓ Support — tickets (4)
+     ✓ rejects unauthenticated access 458ms
+     ✓ rejects a ticket without a title 528ms
+     ✓ creates a ticket, defaults an invalid severity and mirrors to the activity log 484ms
+     ✓ shows only the owner's tickets to a normal user, all to an admin 460ms
+   ✓ Customer Log — traceability read model (3)
+     ✓ rejects unauthenticated access 434ms
+     ✓ returns only customers with activity for the owner, including lots 486ms
+     ✓ shows every customer with activity to an admin 420ms
+ ✓ tests/integration/production-stock.test.js (18 tests) 17446ms
+   ✓ Production — order visibility (4)
+     ✓ rejects unauthenticated access 1093ms
+     ✓ excludes sample orders and includes lot/development orders for the owner 710ms
+     ✓ cannot read another owner's production order 491ms
+     ✓ returns 404 for a missing production order 641ms
+   ✓ Production — status, step and schedule (5)
+     ✓ rejects an out-of-range production step 621ms
+     ✓ updates status and step and writes a production log 700ms
+     ✓ updates a production step through the dedicated step route 621ms
+     ✓ schedules a product line on a machine and swaps a reversed date range 702ms
+     ✓ clears a product line schedule when no machine is supplied 711ms
+   ✓ Production — QC and finished goods (3)
+     ✓ requires at least one QC evidence item 513ms
+     ✓ passing QC creates a finished-goods lot and is idempotent 688ms
+     ✓ cannot pass QC on another owner's order 549ms
+   ✓ Stock — packaging transactions (4)
+     ✓ creates a packaging item and adjusts stock in both directions 631ms
+     ✓ never drives packaging stock below zero 460ms
+     ✓ rejects an invalid packaging transaction 452ms
+     ✓ cannot adjust another owner's packaging item 450ms
+   ✓ Stock — finished goods lots (2)
+     ✓ hides delivered lots by default and includes them on request 438ms
+     ✓ is owner-scoped 345ms
+ ✓ tests/integration/users-settings.test.js (25 tests) 19496ms
+   ✓ Users — admin-only access (4)
+     ✓ rejects unauthenticated requests 1074ms
+     ✓ blocks a normal user from every user-management route 648ms
+     ✓ returns the system roles to an admin 494ms
+     ✓ lists all users with populated roles 576ms
+   ✓ Users — create and update (6)
+     ✓ rejects a missing name or email 521ms
+     ✓ rejects a duplicate email 579ms
+     ✓ creates a pre-approved user with the default User role 507ms
+     ✓ rejects an unknown role on update 466ms
+     ✓ returns 404 when updating a missing user 434ms
+     ✓ promotes a user to Admin 594ms
+   ✓ Users — first-login approval (3)
+     ✓ rejects an invalid decision 501ms
+     ✓ approves a pending request and assigns the User role 491ms
+     ✓ rejects an already-approved account 461ms
+   ✓ Users — deletion safety (2)
+     ✓ refuses to delete the last approved admin 591ms
+     ✓ deletes a normal user and reports whether it was self-deletion 495ms
+   ✓ Settings — packaging categories (6)
+     ✓ rejects an empty packaging type name 453ms
+     ✓ creates, lists and rejects a duplicate packaging type 530ms
+     ✓ cannot delete a packaging type that is still in use 427ms
+     ✓ deletes an unused packaging type and reports missing ones 470ms
+     ✓ packaging subtypes require a parent type 384ms
+     ✓ creates a packaging subtype under a parent 363ms
+   ✓ Settings — catalog and lot prefixes (4)
+     ✓ nozzles require a name and are idempotent by name 396ms
+     ✓ lot prefix configs require formulaName and prefix, then normalize the prefix 444ms
+     ✓ rejects a lot prefix for an unknown formula id 414ms
+     ✓ lot prefix configs are owner-scoped for deletion 326ms
+
+ Test Files  14 passed (14)
+      Tests  186 passed (186)
+   Start at  19:49:54
+   Duration  23.94s (tests 80%, import 19%, transform 1%)
+
+JSON report written to D:/ERP_Naive_Innova/docs/02-testing/evidence/.reports/integration.json

@@ -1,0 +1,10 @@
+
+ RUN  v5.0.5 D:/ERP_Naive_Innova/backend
+
+ ↓ tests/live/external-services.test.js (6 tests | 6 skipped)
+
+ Test Files  1 skipped (1)
+      Tests  6 skipped (6)
+   Start at  19:51:04
+   Duration  2.27s (import 89%, transform 11%)
+

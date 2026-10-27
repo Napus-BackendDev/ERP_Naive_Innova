@@ -923,7 +923,11 @@ router.post("/revert-production", async (req, res) => {
       custUser.orderedProducts = custUser.orderedProducts.map(p => {
         if ((lot.formulaId && String(p.formulaId || "") === String(lot.formulaId)) || p.formulaName === lot.formulaName || p.name === lot.formulaName) {
           const cleanProd = { ...p };
-          delete cleanProd.isConfirmed;
+          // Mongoose keeps an existing subdocument path when the key is merely
+          // deleted from a plain object; assign undefined so the revert really
+          // clears the confirmed flag and the per-line lot link.
+          cleanProd.isConfirmed = undefined;
+          cleanProd.producedLotId = undefined;
           if (lot.formulaName && lot.formulaName.includes("สูตรเฉพาะตัว ของ")) {
             cleanProd.formulaName = "ผลิตสูตรเอง";
           }

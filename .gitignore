@@ -30,6 +30,11 @@ tmp/mock-mongodb/
 # Local browser/dev artifacts
 .playwright-cli/
 **/.tmp-*.log
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+frontend/coverage/
+backend/coverage/
 
 # MCP config (contains MongoDB connection string with credentials)
 .mcp.json

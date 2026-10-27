@@ -1,0 +1,14 @@
+> frontend@0.1.0 test:unit
+> vitest run tests/unit
+
+RUN  v5.0.5 D:/ERP_Naive_Innova/frontend
+
+ ✓ tests/unit/logCategory.test.js (12 tests) 6ms
+ ✓ tests/unit/lotDates.test.js (11 tests) 9ms
+ ✓ tests/unit/chemAmount.test.js (5 tests) 51ms
+ ✓ tests/unit/stockMovement.test.js (10 tests) 60ms
+
+ Test Files  4 passed (4)
+      Tests  38 passed (38)
+   Start at  17:24:45
+   Duration  276ms (tests 40%, import 28%, transform 22%, worker 9%)

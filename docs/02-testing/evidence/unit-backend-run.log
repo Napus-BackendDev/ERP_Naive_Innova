@@ -1,0 +1,13 @@
+> naive-ops-backend@1.0.0 test:unit
+> vitest run tests/unit
+
+RUN  v5.0.5 D:/ERP_Naive_Innova/backend
+
+ ✓ tests/unit/logCategory.test.js (18 tests) 6ms
+ ✓ tests/unit/stockMovementLog.test.js (3 tests) 3ms
+ ✓ tests/unit/normalize.test.js (6 tests) 5ms
+
+ Test Files  3 passed (3)
+      Tests  27 passed (27)
+   Start at  17:24:32
+   Duration  848ms (import 91%, transform 6%, worker 1%, tests 1%)

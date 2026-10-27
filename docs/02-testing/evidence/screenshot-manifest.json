@@ -1,0 +1,3469 @@
+{
+  "generated_at": "2026-10-27",
+  "levels": {
+    "unit": [
+      {
+        "id": "SEC-UT-001",
+        "module": "Security & Token Logic",
+        "title": "[Positive] คืนค่าเป็น hexadecimal ความยาว 64 ตัวอักษร",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Basic Flow › [Positive] คืนค่าเป็น hexadecimal ความยาว 64 ตัวอักษร",
+        "status": "Passed",
+        "expected": "[Positive] คืนค่าเป็น hexadecimal ความยาว 64 ตัวอักษร"
+      },
+      {
+        "id": "SEC-UT-002",
+        "module": "Security & Token Logic",
+        "title": "[Positive] ผลลัพธ์ตรงกับ SHA-256 ที่คำนวณจาก crypto มาตรฐาน",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Basic Flow › [Positive] ผลลัพธ์ตรงกับ SHA-256 ที่คำนวณจาก crypto มาตรฐาน",
+        "status": "Passed",
+        "expected": "[Positive] ผลลัพธ์ตรงกับ SHA-256 ที่คำนวณจาก crypto มาตรฐาน"
+      },
+      {
+        "id": "SEC-UT-003",
+        "module": "Security & Token Logic",
+        "title": "[Positive] token ต่างกันได้คนละ hash",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Alternative Flow › [Positive] token ต่างกันได้คนละ hash",
+        "status": "Passed",
+        "expected": "[Positive] token ต่างกันได้คนละ hash"
+      },
+      {
+        "id": "SEC-UT-004",
+        "module": "Security & Token Logic",
+        "title": "[Positive] token เดิมให้ผลลัพธ์เดิมทุกครั้ง ( deterministic )",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Alternative Flow › [Positive] token เดิมให้ผลลัพธ์เดิมทุกครั้ง ( deterministic )",
+        "status": "Passed",
+        "expected": "[Positive] token เดิมให้ผลลัพธ์เดิมทุกครั้ง ( deterministic )"
+      },
+      {
+        "id": "SEC-UT-005",
+        "module": "Security & Token Logic",
+        "title": "[Positive] ข้อความไทย/อักขระพิเศษถูก hash ได้โดยไม่ผิดเพี้ยน",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Alternative Flow › [Positive] ข้อความไทย/อักขระพิเศษถูก hash ได้โดยไม่ผิดเพี้ยน",
+        "status": "Passed",
+        "expected": "[Positive] ข้อความไทย/อักขระพิเศษถูก hash ได้โดยไม่ผิดเพี้ยน"
+      },
+      {
+        "id": "SEC-UT-006",
+        "module": "Security & Token Logic",
+        "title": "[Negative] ไม่รองรับ null / undefined และโยนข้อผิดพลาด",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Exception Flow › [Negative] ไม่รองรับ null / undefined และโยนข้อผิดพลาด",
+        "status": "Passed",
+        "expected": "[Negative] ไม่รองรับ null / undefined และโยนข้อผิดพลาด"
+      },
+      {
+        "id": "SEC-UT-007",
+        "module": "Security & Token Logic",
+        "title": "[Negative] ไม่รองรับตัวเลขและ object และโยนข้อผิดพลาด",
+        "script": "backend/tests/unit/approvalToken.test.js › hashApprovalToken — SHA-256 ของ token อนุมัติเข้าใช้ › Exception Flow › [Negative] ไม่รองรับตัวเลขและ object และโยนข้อผิดพลาด",
+        "status": "Passed",
+        "expected": "[Negative] ไม่รองรับตัวเลขและ object และโยนข้อผิดพลาด"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-001",
+        "module": "Activity Logs – Logic",
+        "title": "SALES_CRM -> sales",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › SALES_CRM -> sales",
+        "status": "Passed",
+        "expected": "SALES_CRM -> sales"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-002",
+        "module": "Activity Logs – Logic",
+        "title": "sales -> sales",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › sales -> sales",
+        "status": "Passed",
+        "expected": "sales -> sales"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-003",
+        "module": "Activity Logs – Logic",
+        "title": "QUOTATION -> sales",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › QUOTATION -> sales",
+        "status": "Passed",
+        "expected": "QUOTATION -> sales"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-004",
+        "module": "Activity Logs – Logic",
+        "title": "FORMULA -> rnd",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › FORMULA -> rnd",
+        "status": "Passed",
+        "expected": "FORMULA -> rnd"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-005",
+        "module": "Activity Logs – Logic",
+        "title": "BOM -> rnd",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › BOM -> rnd",
+        "status": "Passed",
+        "expected": "BOM -> rnd"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-006",
+        "module": "Activity Logs – Logic",
+        "title": "PRODUCTION -> production",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › PRODUCTION -> production",
+        "status": "Passed",
+        "expected": "PRODUCTION -> production"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-007",
+        "module": "Activity Logs – Logic",
+        "title": "production_schedule -> production",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › production_schedule -> production",
+        "status": "Passed",
+        "expected": "production_schedule -> production"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-008",
+        "module": "Activity Logs – Logic",
+        "title": "QC -> production",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › QC -> production",
+        "status": "Passed",
+        "expected": "QC -> production"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-009",
+        "module": "Activity Logs – Logic",
+        "title": "INGREDIENT -> stock",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › INGREDIENT -> stock",
+        "status": "Passed",
+        "expected": "INGREDIENT -> stock"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-010",
+        "module": "Activity Logs – Logic",
+        "title": "FG -> stock",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › FG -> stock",
+        "status": "Passed",
+        "expected": "FG -> stock"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-011",
+        "module": "Activity Logs – Logic",
+        "title": "USER -> user",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › USER -> user",
+        "status": "Passed",
+        "expected": "USER -> user"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-012",
+        "module": "Activity Logs – Logic",
+        "title": "AUTH -> user",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › AUTH -> user",
+        "status": "Passed",
+        "expected": "AUTH -> user"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-013",
+        "module": "Activity Logs – Logic",
+        "title": "actionType wins even when the description mentions another module",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › actionType wins even when the description mentions another module",
+        "status": "Passed",
+        "expected": "actionType wins even when the description mentions another module"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-014",
+        "module": "Activity Logs – Logic",
+        "title": "unknown actionType falls back to description keywords",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › unknown actionType falls back to description keywords",
+        "status": "Passed",
+        "expected": "unknown actionType falls back to description keywords"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-015",
+        "module": "Activity Logs – Logic",
+        "title": "falls back to other when nothing matches",
+        "script": "backend/tests/unit/logCategory.test.js › categoryOfLog — actionType is the authority › falls back to other when nothing matches",
+        "status": "Passed",
+        "expected": "falls back to other when nothing matches"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-016",
+        "module": "Activity Logs – Logic",
+        "title": "returns every actionType that maps to the category",
+        "script": "backend/tests/unit/logCategory.test.js › actionTypesForCategory › returns every actionType that maps to the category",
+        "status": "Passed",
+        "expected": "returns every actionType that maps to the category"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-017",
+        "module": "Activity Logs – Logic",
+        "title": "unknown category returns an empty list",
+        "script": "backend/tests/unit/logCategory.test.js › actionTypesForCategory › unknown category returns an empty list",
+        "status": "Passed",
+        "expected": "unknown category returns an empty list"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-018",
+        "module": "Activity Logs – Logic",
+        "title": "category list is stable",
+        "script": "backend/tests/unit/logCategory.test.js › actionTypesForCategory › category list is stable",
+        "status": "Passed",
+        "expected": "category list is stable"
+      },
+      {
+        "id": "RND-UT-001",
+        "module": "R&D – Name Normalization",
+        "title": "trims, lowercases and normalizes unicode",
+        "script": "backend/tests/unit/normalize.test.js › normalizeFormulaName › trims, lowercases and normalizes unicode",
+        "status": "Passed",
+        "expected": "trims, lowercases and normalizes unicode"
+      },
+      {
+        "id": "RND-UT-002",
+        "module": "R&D – Name Normalization",
+        "title": "removes zero-width and non-breaking spaces",
+        "script": "backend/tests/unit/normalize.test.js › normalizeFormulaName › removes zero-width and non-breaking spaces",
+        "status": "Passed",
+        "expected": "removes zero-width and non-breaking spaces"
+      },
+      {
+        "id": "RND-UT-003",
+        "module": "R&D – Name Normalization",
+        "title": "treats blank input as an empty key",
+        "script": "backend/tests/unit/normalize.test.js › normalizeFormulaName › treats blank input as an empty key",
+        "status": "Passed",
+        "expected": "treats blank input as an empty key"
+      },
+      {
+        "id": "RND-UT-004",
+        "module": "R&D – Name Normalization",
+        "title": "ignores case, whitespace and punctuation",
+        "script": "backend/tests/unit/normalize.test.js › normalizeIngredientName › ignores case, whitespace and punctuation",
+        "status": "Passed",
+        "expected": "ignores case, whitespace and punctuation"
+      },
+      {
+        "id": "RND-UT-005",
+        "module": "R&D – Name Normalization",
+        "title": "removes invisible marks",
+        "script": "backend/tests/unit/normalize.test.js › normalizeIngredientName › removes invisible marks",
+        "status": "Passed",
+        "expected": "removes invisible marks"
+      },
+      {
+        "id": "RND-UT-006",
+        "module": "R&D – Name Normalization",
+        "title": "blank input yields an empty key",
+        "script": "backend/tests/unit/normalize.test.js › normalizeIngredientName › blank input yields an empty key",
+        "status": "Passed",
+        "expected": "blank input yields an empty key"
+      },
+      {
+        "id": "STOCK-UT-001",
+        "module": "Stock – Movement Description",
+        "title": "[Positive] รับเข้า แสดงจำนวน หน่วย และสต็อกคงเหลือครบทุกส่วน",
+        "script": "backend/tests/unit/stockMovementDescription.flow.test.js › stockMovementDescription — flow ข้อความ audit การปรับสต็อก › Basic Flow › [Positive] รับเข้า แสดงจำนวน หน่วย และสต็อกคงเหลือครบทุกส่วน",
+        "status": "Passed",
+        "expected": "[Positive] รับเข้า แสดงจำนวน หน่วย และสต็อกคงเหลือครบทุกส่วน"
+      },
+      {
+        "id": "STOCK-UT-002",
+        "module": "Stock – Movement Description",
+        "title": "[Positive] เบิกออก แสดงเครื่องหมายหักออกพร้อมสต็อกคงเหลือ",
+        "script": "backend/tests/unit/stockMovementDescription.flow.test.js › stockMovementDescription — flow ข้อความ audit การปรับสต็อก › Basic Flow › [Positive] เบิกออก แสดงเครื่องหมายหักออกพร้อมสต็อกคงเหลือ",
+        "status": "Passed",
+        "expected": "[Positive] เบิกออก แสดงเครื่องหมายหักออกพร้อมสต็อกคงเหลือ"
+      },
+      {
+        "id": "STOCK-UT-003",
+        "module": "Stock – Movement Description",
+        "title": "[Positive] มีหมายเหตุจะถูกต่อท้ายด้วยเครื่องหมาย |",
+        "script": "backend/tests/unit/stockMovementDescription.flow.test.js › stockMovementDescription — flow ข้อความ audit การปรับสต็อก › Alternative Flow › [Positive] มีหมายเหตุจะถูกต่อท้ายด้วยเครื่องหมาย |",
+        "status": "Passed",
+        "expected": "[Positive] มีหมายเหตุจะถูกต่อท้ายด้วยเครื่องหมาย |"
+      },
+      {
+        "id": "STOCK-UT-004",
+        "module": "Stock – Movement Description",
+        "title": "[Positive] จำนวนทศนิยมถูกแสดงตามที่ส่งมาโดยไม่ปัดเศษ",
+        "script": "backend/tests/unit/stockMovementDescription.flow.test.js › stockMovementDescription — flow ข้อความ audit การปรับสต็อก › Alternative Flow › [Positive] จำนวนทศนิยมถูกแสดงตามที่ส่งมาโดยไม่ปัดเศษ",
+        "status": "Passed",
+        "expected": "[Positive] จำนวนทศนิยมถูกแสดงตามที่ส่งมาโดยไม่ปัดเศษ"
+      },
+      {
+        "id": "STOCK-UT-005",
+        "module": "Stock – Movement Description",
+        "title": "[Negative] direction ที่ไม่ตรงกับ in (รวมตัวพิมพ์ใหญ่) ถูกจัดเป็นการเบิกออก",
+        "script": "backend/tests/unit/stockMovementDescription.flow.test.js › stockMovementDescription — flow ข้อความ audit การปรับสต็อก › Exception Flow › [Negative] direction ที่ไม่ตรงกับ in (รวมตัวพิมพ์ใหญ่) ถูกจัดเป็นการเบิกออก",
+        "status": "Passed",
+        "expected": "[Negative] direction ที่ไม่ตรงกับ in (รวมตัวพิมพ์ใหญ่) ถูกจัดเป็นการเบิกออก"
+      },
+      {
+        "id": "STOCK-UT-006",
+        "module": "Stock – Movement Description",
+        "title": "[Negative] เรียกโดยไม่มี field ใดๆ จะแสดงเป็นค่าว่างและไม่โยน exception",
+        "script": "backend/tests/unit/stockMovementDescription.flow.test.js › stockMovementDescription — flow ข้อความ audit การปรับสต็อก › Exception Flow › [Negative] เรียกโดยไม่มี field ใดๆ จะแสดงเป็นค่าว่างและไม่โยน exception",
+        "status": "Passed",
+        "expected": "[Negative] เรียกโดยไม่มี field ใดๆ จะแสดงเป็นค่าว่างและไม่โยน exception"
+      },
+      {
+        "id": "STOCK-UT-007",
+        "module": "Stock – Movement Description",
+        "title": "formats an inbound movement",
+        "script": "backend/tests/unit/stockMovementLog.test.js › stockMovementDescription › formats an inbound movement",
+        "status": "Passed",
+        "expected": "formats an inbound movement"
+      },
+      {
+        "id": "STOCK-UT-008",
+        "module": "Stock – Movement Description",
+        "title": "formats an outbound movement",
+        "script": "backend/tests/unit/stockMovementLog.test.js › stockMovementDescription › formats an outbound movement",
+        "status": "Passed",
+        "expected": "formats an outbound movement"
+      },
+      {
+        "id": "STOCK-UT-009",
+        "module": "Stock – Movement Description",
+        "title": "appends the note only when provided",
+        "script": "backend/tests/unit/stockMovementLog.test.js › stockMovementDescription › appends the note only when provided",
+        "status": "Passed",
+        "expected": "appends the note only when provided"
+      },
+      {
+        "id": "API-UT-001",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] เปิดระบบจากเครื่องอื่นในเน็ตเวิร์ก -> baseURL ชี้ไปยัง host นั้น",
+        "script": "frontend/tests/unit/api.hostname.test.js › api — baseURL เขียนทับ localhost ตาม hostname ของเครื่องผู้ใช้ › Alternative Flow › [Positive] เปิดระบบจากเครื่องอื่นในเน็ตเวิร์ก -> baseURL ชี้ไปยัง host นั้น",
+        "status": "Passed",
+        "expected": "[Positive] เปิดระบบจากเครื่องอื่นในเน็ตเวิร์ก -> baseURL ชี้ไปยัง host นั้น"
+      },
+      {
+        "id": "API-UT-002",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] assetUrl ต่อ baseURL ที่ถูกเขียนทับ ไม่ใช่ localhost",
+        "script": "frontend/tests/unit/api.hostname.test.js › api — baseURL เขียนทับ localhost ตาม hostname ของเครื่องผู้ใช้ › Alternative Flow › [Positive] assetUrl ต่อ baseURL ที่ถูกเขียนทับ ไม่ใช่ localhost",
+        "status": "Passed",
+        "expected": "[Positive] assetUrl ต่อ baseURL ที่ถูกเขียนทับ ไม่ใช่ localhost"
+      },
+      {
+        "id": "API-UT-003",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] มี token ในเครื่อง -> แนบ Authorization และปลดตัวนับ pending เมื่อจบ",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Basic Flow › [Positive] มี token ในเครื่อง -> แนบ Authorization และปลดตัวนับ pending เมื่อจบ",
+        "status": "Passed",
+        "expected": "[Positive] มี token ในเครื่อง -> แนบ Authorization และปลดตัวนับ pending เมื่อจบ"
+      },
+      {
+        "id": "API-UT-004",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] ไม่มี token -> ไม่แนบ Authorization แต่ยังนับ pending ตามปกติ",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Alternative Flow › [Positive] ไม่มี token -> ไม่แนบ Authorization แต่ยังนับ pending ตามปกติ",
+        "status": "Passed",
+        "expected": "[Positive] ไม่มี token -> ไม่แนบ Authorization แต่ยังนับ pending ตามปกติ"
+      },
+      {
+        "id": "API-UT-005",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] token ที่เพิ่งล็อกอินใหม่ถูกอ่านทุกครั้งที่ยิง request",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Alternative Flow › [Positive] token ที่เพิ่งล็อกอินใหม่ถูกอ่านทุกครั้งที่ยิง request",
+        "status": "Passed",
+        "expected": "[Positive] token ที่เพิ่งล็อกอินใหม่ถูกอ่านทุกครั้งที่ยิง request"
+      },
+      {
+        "id": "API-UT-006",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] 401 จาก endpoint ทั่วไป -> ลบ token ทั้ง local และ session แล้ว reject",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Exception Flow › [Negative] 401 จาก endpoint ทั่วไป -> ลบ token ทั้ง local และ session แล้ว reject",
+        "status": "Passed",
+        "expected": "[Negative] 401 จาก endpoint ทั่วไป -> ลบ token ทั้ง local และ session แล้ว reject"
+      },
+      {
+        "id": "API-UT-007",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] 401 จาก /auth/login ไม่ลบ token เพราะข้อความผิดพลาดต้องอยู่กับฟอร์ม",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Exception Flow › [Negative] 401 จาก /auth/login ไม่ลบ token เพราะข้อความผิดพลาดต้องอยู่กับฟอร์ม",
+        "status": "Passed",
+        "expected": "[Negative] 401 จาก /auth/login ไม่ลบ token เพราะข้อความผิดพลาดต้องอยู่กับฟอร์ม"
+      },
+      {
+        "id": "API-UT-008",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] code PENDING_APPROVAL -> ลบ token และพาไปหน้ารอการอนุมัติ",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Exception Flow › [Negative] code PENDING_APPROVAL -> ลบ token และพาไปหน้ารอการอนุมัติ",
+        "status": "Passed",
+        "expected": "[Negative] code PENDING_APPROVAL -> ลบ token และพาไปหน้ารอการอนุมัติ"
+      },
+      {
+        "id": "API-UT-009",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] code ACCESS_REJECTED -> ลบ token และพาไปหน้าแจ้งผลปฏิเสธ",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Exception Flow › [Negative] code ACCESS_REJECTED -> ลบ token และพาไปหน้าแจ้งผลปฏิเสธ",
+        "status": "Passed",
+        "expected": "[Negative] code ACCESS_REJECTED -> ลบ token และพาไปหน้าแจ้งผลปฏิเสธ"
+      },
+      {
+        "id": "API-UT-010",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] 401 ที่ไม่ใช่เรื่องระบบ login ก็ยัง reject ต่อให้หน้าจอไม่ได้เปลี่ยน",
+        "script": "frontend/tests/unit/api.interceptors.test.js › api — interceptor สอดแทรก token, ตัวนับ pending และตาข่าย 401 › Exception Flow › [Negative] 401 ที่ไม่ใช่เรื่องระบบ login ก็ยัง reject ต่อให้หน้าจอไม่ได้เปลี่ยน",
+        "status": "Passed",
+        "expected": "[Negative] 401 ที่ไม่ใช่เรื่องระบบ login ก็ยัง reject ต่อให้หน้าจอไม่ได้เปลี่ยน"
+      },
+      {
+        "id": "API-UT-011",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] pathname เป็น /login อยู่แล้ว -> ลบ token แต่ไม่พยายาม redirect ซ้ำ",
+        "script": "frontend/tests/unit/api.onLoginPage.test.js › api — 401 ขณะผู้ใช้อยู่บนหน้าล็อกอินอยู่แล้ว › Alternative Flow › [Positive] pathname เป็น /login อยู่แล้ว -> ลบ token แต่ไม่พยายาม redirect ซ้ำ",
+        "status": "Passed",
+        "expected": "[Positive] pathname เป็น /login อยู่แล้ว -> ลบ token แต่ไม่พยายาม redirect ซ้ำ"
+      },
+      {
+        "id": "API-UT-012",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] path ภายในถูกต่อท้าย base URL โดยตัด /api ออก",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Basic Flow › [Positive] path ภายในถูกต่อท้าย base URL โดยตัด /api ออก",
+        "status": "Passed",
+        "expected": "[Positive] path ภายในถูกต่อท้าย base URL โดยตัด /api ออก"
+      },
+      {
+        "id": "API-UT-013",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] URL ที่ขึ้นต้นด้วย http ถูกส่งผ่านโดยไม่แก้ไข",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Alternative Flow › [Positive] URL ที่ขึ้นต้นด้วย http ถูกส่งผ่านโดยไม่แก้ไข",
+        "status": "Passed",
+        "expected": "[Positive] URL ที่ขึ้นต้นด้วย http ถูกส่งผ่านโดยไม่แก้ไข"
+      },
+      {
+        "id": "API-UT-014",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] data: URL (base64) ถูกส่งผ่านโดยไม่แต่งเติม",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Alternative Flow › [Positive] data: URL (base64) ถูกส่งผ่านโดยไม่แต่งเติม",
+        "status": "Passed",
+        "expected": "[Positive] data: URL (base64) ถูกส่งผ่านโดยไม่แต่งเติม"
+      },
+      {
+        "id": "API-UT-015",
+        "module": "API Client & Network Guard",
+        "title": "[Positive] path ที่มีโฟลเดอร์ย่อยหลายชั้นถูกต่อท้ายครบ",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Alternative Flow › [Positive] path ที่มีโฟลเดอร์ย่อยหลายชั้นถูกต่อท้ายครบ",
+        "status": "Passed",
+        "expected": "[Positive] path ที่มีโฟลเดอร์ย่อยหลายชั้นถูกต่อท้ายครบ"
+      },
+      {
+        "id": "API-UT-016",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] ค่าว่าง (empty string) คืนค่าเป็นสตริงว่าง",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Exception Flow › [Negative] ค่าว่าง (empty string) คืนค่าเป็นสตริงว่าง",
+        "status": "Passed",
+        "expected": "[Negative] ค่าว่าง (empty string) คืนค่าเป็นสตริงว่าง"
+      },
+      {
+        "id": "API-UT-017",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] null / undefined ไม่ทำให้เกิด TypeError และคืนค่าว่าง",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Exception Flow › [Negative] null / undefined ไม่ทำให้เกิด TypeError และคืนค่าว่าง",
+        "status": "Passed",
+        "expected": "[Negative] null / undefined ไม่ทำให้เกิด TypeError และคืนค่าว่าง"
+      },
+      {
+        "id": "API-UT-018",
+        "module": "API Client & Network Guard",
+        "title": "[Negative] ค่าประเภทอื่น (ตัวเลข 0) ถูกจัดเป็นค่าว่าง ไม่ทำให้ระบบล่ม",
+        "script": "frontend/tests/unit/api.test.js › assetUrl — /uploads path ไปยัง backend root › Exception Flow › [Negative] ค่าประเภทอื่น (ตัวเลข 0) ถูกจัดเป็นค่าว่าง ไม่ทำให้ระบบล่ม",
+        "status": "Passed",
+        "expected": "[Negative] ค่าประเภทอื่น (ตัวเลข 0) ถูกจัดเป็นค่าว่าง ไม่ทำให้ระบบล่ม"
+      },
+      {
+        "id": "BOM-UT-001",
+        "module": "BOM – Exact Chemical Amount",
+        "title": "removes IEEE-754 float noise only",
+        "script": "frontend/tests/unit/chemAmount.test.js › exactChem — never round a weighed amount › removes IEEE-754 float noise only",
+        "status": "Passed",
+        "expected": "removes IEEE-754 float noise only"
+      },
+      {
+        "id": "BOM-UT-002",
+        "module": "BOM – Exact Chemical Amount",
+        "title": "keeps every real digit",
+        "script": "frontend/tests/unit/chemAmount.test.js › exactChem — never round a weighed amount › keeps every real digit",
+        "status": "Passed",
+        "expected": "keeps every real digit"
+      },
+      {
+        "id": "BOM-UT-003",
+        "module": "BOM – Exact Chemical Amount",
+        "title": "coerces strings and guards invalid values",
+        "script": "frontend/tests/unit/chemAmount.test.js › exactChem — never round a weighed amount › coerces strings and guards invalid values",
+        "status": "Passed",
+        "expected": "coerces strings and guards invalid values"
+      },
+      {
+        "id": "BOM-UT-004",
+        "module": "BOM – Exact Chemical Amount",
+        "title": "formats without padding or rounding",
+        "script": "frontend/tests/unit/chemAmount.test.js › fmtChem — exact value with thousands separators › formats without padding or rounding",
+        "status": "Passed",
+        "expected": "formats without padding or rounding"
+      },
+      {
+        "id": "BOM-UT-005",
+        "module": "BOM – Exact Chemical Amount",
+        "title": "never shows the float artifact",
+        "script": "frontend/tests/unit/chemAmount.test.js › fmtChem — exact value with thousands separators › never shows the float artifact",
+        "status": "Passed",
+        "expected": "never shows the float artifact"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-019",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "SALES_CRM -> sales",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › SALES_CRM -> sales",
+        "status": "Passed",
+        "expected": "SALES_CRM -> sales"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-020",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "QUOTATION -> sales",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › QUOTATION -> sales",
+        "status": "Passed",
+        "expected": "QUOTATION -> sales"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-021",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "FORMULA -> rnd",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › FORMULA -> rnd",
+        "status": "Passed",
+        "expected": "FORMULA -> rnd"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-022",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "BOM -> rnd",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › BOM -> rnd",
+        "status": "Passed",
+        "expected": "BOM -> rnd"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-023",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "PRODUCTION -> production",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › PRODUCTION -> production",
+        "status": "Passed",
+        "expected": "PRODUCTION -> production"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-024",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "QC -> production",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › QC -> production",
+        "status": "Passed",
+        "expected": "QC -> production"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-025",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "INGREDIENT -> stock",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › INGREDIENT -> stock",
+        "status": "Passed",
+        "expected": "INGREDIENT -> stock"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-026",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "WAREHOUSE -> stock",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › WAREHOUSE -> stock",
+        "status": "Passed",
+        "expected": "WAREHOUSE -> stock"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-027",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "USER -> user",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › USER -> user",
+        "status": "Passed",
+        "expected": "USER -> user"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-028",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "AUTH -> user",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › AUTH -> user",
+        "status": "Passed",
+        "expected": "AUTH -> user"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-029",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "unknown or missing types fall back to other",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › unknown or missing types fall back to other",
+        "status": "Passed",
+        "expected": "unknown or missing types fall back to other"
+      },
+      {
+        "id": "ACTIVITYLOG-UT-030",
+        "module": "Activity Logs – Logic (Frontend Mirror)",
+        "title": "every category has a label",
+        "script": "frontend/tests/unit/logCategory.test.js › categoryOfLog (frontend mirror) › every category has a label",
+        "status": "Passed",
+        "expected": "every category has a label"
+      },
+      {
+        "id": "FGLOT-UT-001",
+        "module": "FG Lots – Date Logic",
+        "title": "slices ISO strings instead of shifting the UTC day",
+        "script": "frontend/tests/unit/lotDates.test.js › toDateOnly › slices ISO strings instead of shifting the UTC day",
+        "status": "Passed",
+        "expected": "slices ISO strings instead of shifting the UTC day"
+      },
+      {
+        "id": "FGLOT-UT-002",
+        "module": "FG Lots – Date Logic",
+        "title": "handles Date objects in local time",
+        "script": "frontend/tests/unit/lotDates.test.js › toDateOnly › handles Date objects in local time",
+        "status": "Passed",
+        "expected": "handles Date objects in local time"
+      },
+      {
+        "id": "FGLOT-UT-003",
+        "module": "FG Lots – Date Logic",
+        "title": "returns empty for missing or invalid values",
+        "script": "frontend/tests/unit/lotDates.test.js › toDateOnly › returns empty for missing or invalid values",
+        "status": "Passed",
+        "expected": "returns empty for missing or invalid values"
+      },
+      {
+        "id": "FGLOT-UT-004",
+        "module": "FG Lots – Date Logic",
+        "title": "adds the two-year shelf life by default",
+        "script": "frontend/tests/unit/lotDates.test.js › addYears › adds the two-year shelf life by default",
+        "status": "Passed",
+        "expected": "adds the two-year shelf life by default"
+      },
+      {
+        "id": "FGLOT-UT-005",
+        "module": "FG Lots – Date Logic",
+        "title": "clamps Feb 29 to Feb 28 in non-leap years",
+        "script": "frontend/tests/unit/lotDates.test.js › addYears › clamps Feb 29 to Feb 28 in non-leap years",
+        "status": "Passed",
+        "expected": "clamps Feb 29 to Feb 28 in non-leap years"
+      },
+      {
+        "id": "FGLOT-UT-006",
+        "module": "FG Lots – Date Logic",
+        "title": "supports negative years and empty input",
+        "script": "frontend/tests/unit/lotDates.test.js › addYears › supports negative years and empty input",
+        "status": "Passed",
+        "expected": "supports negative years and empty input"
+      },
+      {
+        "id": "FGLOT-UT-007",
+        "module": "FG Lots – Date Logic",
+        "title": "prefers explicit MFG, then the production lot stamp",
+        "script": "frontend/tests/unit/lotDates.test.js › resolveMfgDate / resolveExpDate › prefers explicit MFG, then the production lot stamp",
+        "status": "Passed",
+        "expected": "prefers explicit MFG, then the production lot stamp"
+      },
+      {
+        "id": "FGLOT-UT-008",
+        "module": "FG Lots – Date Logic",
+        "title": "prefers explicit EXP, then the lot stamp",
+        "script": "frontend/tests/unit/lotDates.test.js › resolveMfgDate / resolveExpDate › prefers explicit EXP, then the lot stamp",
+        "status": "Passed",
+        "expected": "prefers explicit EXP, then the lot stamp"
+      },
+      {
+        "id": "FGLOT-UT-009",
+        "module": "FG Lots – Date Logic",
+        "title": "falls back to MFG + shelf life so a sheet never prints a blank EXP",
+        "script": "frontend/tests/unit/lotDates.test.js › resolveMfgDate / resolveExpDate › falls back to MFG + shelf life so a sheet never prints a blank EXP",
+        "status": "Passed",
+        "expected": "falls back to MFG + shelf life so a sheet never prints a blank EXP"
+      },
+      {
+        "id": "FGLOT-UT-010",
+        "module": "FG Lots – Date Logic",
+        "title": "fills both dates before save",
+        "script": "frontend/tests/unit/lotDates.test.js › withLotDates › fills both dates before save",
+        "status": "Passed",
+        "expected": "fills both dates before save"
+      },
+      {
+        "id": "FGLOT-UT-011",
+        "module": "FG Lots – Date Logic",
+        "title": "uses today when MFG is missing",
+        "script": "frontend/tests/unit/lotDates.test.js › withLotDates › uses today when MFG is missing",
+        "status": "Passed",
+        "expected": "uses today when MFG is missing"
+      },
+      {
+        "id": "FGLOT-UT-012",
+        "module": "FG Lots – Date Logic",
+        "title": "[Positive] คืนค่าวันที่รูปแบบ YYYY-MM-DD ตรงกับวันนี้",
+        "script": "frontend/tests/unit/lotDates.test.js › todayDateOnly — วันที่วันนี้ในเวลาเครื่อง › Basic Flow › [Positive] คืนค่าวันที่รูปแบบ YYYY-MM-DD ตรงกับวันนี้",
+        "status": "Passed",
+        "expected": "[Positive] คืนค่าวันที่รูปแบบ YYYY-MM-DD ตรงกับวันนี้"
+      },
+      {
+        "id": "FGLOT-UT-013",
+        "module": "FG Lots – Date Logic",
+        "title": "[Positive] ใช้เวลาในเครื่อง (local) ไม่ใช่ UTC จึงไม่เพี้ยนข้ามวัน",
+        "script": "frontend/tests/unit/lotDates.test.js › todayDateOnly — วันที่วันนี้ในเวลาเครื่อง › Alternative Flow › [Positive] ใช้เวลาในเครื่อง (local) ไม่ใช่ UTC จึงไม่เพี้ยนข้ามวัน",
+        "status": "Passed",
+        "expected": "[Positive] ใช้เวลาในเครื่อง (local) ไม่ใช่ UTC จึงไม่เพี้ยนข้ามวัน"
+      },
+      {
+        "id": "FGLOT-UT-014",
+        "module": "FG Lots – Date Logic",
+        "title": "[Positive] withLotDates ใช้วันนี้เมื่อ MFG ว่างและต่ออายุ +2 ปี",
+        "script": "frontend/tests/unit/lotDates.test.js › todayDateOnly — วันที่วันนี้ในเวลาเครื่อง › Alternative Flow › [Positive] withLotDates ใช้วันนี้เมื่อ MFG ว่างและต่ออายุ +2 ปี",
+        "status": "Passed",
+        "expected": "[Positive] withLotDates ใช้วันนี้เมื่อ MFG ว่างและต่ออายุ +2 ปี"
+      },
+      {
+        "id": "FGLOT-UT-015",
+        "module": "FG Lots – Date Logic",
+        "title": "[Negative] MFG ที่ไม่ใช่วันที่จริงจะถูกทิ้งและใช้วันนี้แทน",
+        "script": "frontend/tests/unit/lotDates.test.js › todayDateOnly — วันที่วันนี้ในเวลาเครื่อง › Exception Flow › [Negative] MFG ที่ไม่ใช่วันที่จริงจะถูกทิ้งและใช้วันนี้แทน",
+        "status": "Passed",
+        "expected": "[Negative] MFG ที่ไม่ใช่วันที่จริงจะถูกทิ้งและใช้วันนี้แทน"
+      },
+      {
+        "id": "FGLOT-UT-016",
+        "module": "FG Lots – Date Logic",
+        "title": "[Negative] expDate ที่กรอกไว้เองไม่ถูกเขียนทับ",
+        "script": "frontend/tests/unit/lotDates.test.js › todayDateOnly — วันที่วันนี้ในเวลาเครื่อง › Exception Flow › [Negative] expDate ที่กรอกไว้เองไม่ถูกเขียนทับ",
+        "status": "Passed",
+        "expected": "[Negative] expDate ที่กรอกไว้เองไม่ถูกเขียนทับ"
+      },
+      {
+        "id": "NET-UT-001",
+        "module": "Network Request Counter",
+        "title": "[Positive] เริ่ม request หนึ่งตัวแล้วจบ ตัวนับกลับเป็น 0",
+        "script": "frontend/tests/unit/pendingRequests.test.js › pendingRequests — ตัวนับ API request ระหว่างทาง › Basic Flow › [Positive] เริ่ม request หนึ่งตัวแล้วจบ ตัวนับกลับเป็น 0",
+        "status": "Passed",
+        "expected": "[Positive] เริ่ม request หนึ่งตัวแล้วจบ ตัวนับกลับเป็น 0"
+      },
+      {
+        "id": "NET-UT-002",
+        "module": "Network Request Counter",
+        "title": "[Positive] request พร้อมกันสองตัว นับได้ 2 และลดทีละ 1",
+        "script": "frontend/tests/unit/pendingRequests.test.js › pendingRequests — ตัวนับ API request ระหว่างทาง › Basic Flow › [Positive] request พร้อมกันสองตัว นับได้ 2 และลดทีละ 1",
+        "status": "Passed",
+        "expected": "[Positive] request พร้อมกันสองตัว นับได้ 2 และลดทีละ 1"
+      },
+      {
+        "id": "NET-UT-003",
+        "module": "Network Request Counter",
+        "title": "[Positive] ผู้ติดตามได้รับค่าปัจจุบันทันทีที่ลงทะเบียน",
+        "script": "frontend/tests/unit/pendingRequests.test.js › pendingRequests — ตัวนับ API request ระหว่างทาง › Alternative Flow › [Positive] ผู้ติดตามได้รับค่าปัจจุบันทันทีที่ลงทะเบียน",
+        "status": "Passed",
+        "expected": "[Positive] ผู้ติดตามได้รับค่าปัจจุบันทันทีที่ลงทะเบียน"
+      },
+      {
+        "id": "NET-UT-004",
+        "module": "Network Request Counter",
+        "title": "[Positive] ผู้ติดตามถูกแจ้งทุกครั้งที่ค่าเปลี่ยน และ unsubscribe หยุดการแจ้ง",
+        "script": "frontend/tests/unit/pendingRequests.test.js › pendingRequests — ตัวนับ API request ระหว่างทาง › Alternative Flow › [Positive] ผู้ติดตามถูกแจ้งทุกครั้งที่ค่าเปลี่ยน และ unsubscribe หยุดการแจ้ง",
+        "status": "Passed",
+        "expected": "[Positive] ผู้ติดตามถูกแจ้งทุกครั้งที่ค่าเปลี่ยน และ unsubscribe หยุดการแจ้ง"
+      },
+      {
+        "id": "NET-UT-005",
+        "module": "Network Request Counter",
+        "title": "[Negative] endRequest โดยยังไม่ได้เริ่ม ไม่ทำให้ตัวนับติดลบ",
+        "script": "frontend/tests/unit/pendingRequests.test.js › pendingRequests — ตัวนับ API request ระหว่างทาง › Exception Flow › [Negative] endRequest โดยยังไม่ได้เริ่ม ไม่ทำให้ตัวนับติดลบ",
+        "status": "Passed",
+        "expected": "[Negative] endRequest โดยยังไม่ได้เริ่ม ไม่ทำให้ตัวนับติดลบ"
+      },
+      {
+        "id": "NET-UT-006",
+        "module": "Network Request Counter",
+        "title": "[Negative] interceptor ที่ยิงทั้ง success และ error (จบคู่ซ้ำ) ไม่ทำให้ตัวนับติดลบ",
+        "script": "frontend/tests/unit/pendingRequests.test.js › pendingRequests — ตัวนับ API request ระหว่างทาง › Exception Flow › [Negative] interceptor ที่ยิงทั้ง success และ error (จบคู่ซ้ำ) ไม่ทำให้ตัวนับติดลบ",
+        "status": "Passed",
+        "expected": "[Negative] interceptor ที่ยิงทั้ง success และ error (จบคู่ซ้ำ) ไม่ทำให้ตัวนับติดลบ"
+      },
+      {
+        "id": "STOCK-UT-010",
+        "module": "Stock – Movement Formatting",
+        "title": "ingredients -> ingredient",
+        "script": "frontend/tests/unit/stockMovement.test.js › stockItemTypeForTab › ingredients -> ingredient",
+        "status": "Passed",
+        "expected": "ingredients -> ingredient"
+      },
+      {
+        "id": "STOCK-UT-011",
+        "module": "Stock – Movement Formatting",
+        "title": "packagings -> packaging",
+        "script": "frontend/tests/unit/stockMovement.test.js › stockItemTypeForTab › packagings -> packaging",
+        "status": "Passed",
+        "expected": "packagings -> packaging"
+      },
+      {
+        "id": "STOCK-UT-012",
+        "module": "Stock – Movement Formatting",
+        "title": "sampleProducts -> sampleProduct",
+        "script": "frontend/tests/unit/stockMovement.test.js › stockItemTypeForTab › sampleProducts -> sampleProduct",
+        "status": "Passed",
+        "expected": "sampleProducts -> sampleProduct"
+      },
+      {
+        "id": "STOCK-UT-013",
+        "module": "Stock – Movement Formatting",
+        "title": "fglots -> fgLot",
+        "script": "frontend/tests/unit/stockMovement.test.js › stockItemTypeForTab › fglots -> fgLot",
+        "status": "Passed",
+        "expected": "fglots -> fgLot"
+      },
+      {
+        "id": "STOCK-UT-014",
+        "module": "Stock – Movement Formatting",
+        "title": "unknown tabs return an empty type",
+        "script": "frontend/tests/unit/stockMovement.test.js › stockItemTypeForTab › unknown tabs return an empty type",
+        "status": "Passed",
+        "expected": "unknown tabs return an empty type"
+      },
+      {
+        "id": "STOCK-UT-015",
+        "module": "Stock – Movement Formatting",
+        "title": "formats an inbound movement with all fields",
+        "script": "frontend/tests/unit/stockMovement.test.js › formatStructuredMovement › formats an inbound movement with all fields",
+        "status": "Passed",
+        "expected": "formats an inbound movement with all fields"
+      },
+      {
+        "id": "STOCK-UT-016",
+        "module": "Stock – Movement Formatting",
+        "title": "formats an outbound movement with defaults",
+        "script": "frontend/tests/unit/stockMovement.test.js › formatStructuredMovement › formats an outbound movement with defaults",
+        "status": "Passed",
+        "expected": "formats an outbound movement with defaults"
+      },
+      {
+        "id": "STOCK-UT-017",
+        "module": "Stock – Movement Formatting",
+        "title": "returns empty text for a missing movement",
+        "script": "frontend/tests/unit/stockMovement.test.js › formatStructuredMovement › returns empty text for a missing movement",
+        "status": "Passed",
+        "expected": "returns empty text for a missing movement"
+      },
+      {
+        "id": "STOCK-UT-018",
+        "module": "Stock – Movement Formatting",
+        "title": "renders a UTC timestamp in Bangkok time",
+        "script": "frontend/tests/unit/stockMovement.test.js › formatThaiStockDateTime › renders a UTC timestamp in Bangkok time",
+        "status": "Passed",
+        "expected": "renders a UTC timestamp in Bangkok time"
+      },
+      {
+        "id": "STOCK-UT-019",
+        "module": "Stock – Movement Formatting",
+        "title": "returns a dash for empty input",
+        "script": "frontend/tests/unit/stockMovement.test.js › formatThaiStockDateTime › returns a dash for empty input",
+        "status": "Passed",
+        "expected": "returns a dash for empty input"
+      },
+      {
+        "id": "UI-UT-001",
+        "module": "UI Reusable Components",
+        "title": "[Positive] แสดงข้อความ children พร้อม dot ของ variant เริ่มต้น (success)",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Badge — แท็กสถานะ › Basic Flow › [Positive] แสดงข้อความ children พร้อม dot ของ variant เริ่มต้น (success)",
+        "status": "Passed",
+        "expected": "[Positive] แสดงข้อความ children พร้อม dot ของ variant เริ่มต้น (success)"
+      },
+      {
+        "id": "UI-UT-002",
+        "module": "UI Reusable Components",
+        "title": "[Positive] variant danger เปลี่ยนเป็นชุดสีแดง",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Badge — แท็กสถานะ › Alternative Flow › [Positive] variant danger เปลี่ยนเป็นชุดสีแดง",
+        "status": "Passed",
+        "expected": "[Positive] variant danger เปลี่ยนเป็นชุดสีแดง"
+      },
+      {
+        "id": "UI-UT-003",
+        "module": "UI Reusable Components",
+        "title": "[Positive] showDot=false ซ่อนจุดสีแต่ยังแสดงข้อความ",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Badge — แท็กสถานะ › Alternative Flow › [Positive] showDot=false ซ่อนจุดสีแต่ยังแสดงข้อความ",
+        "status": "Passed",
+        "expected": "[Positive] showDot=false ซ่อนจุดสีแต่ยังแสดงข้อความ"
+      },
+      {
+        "id": "UI-UT-004",
+        "module": "UI Reusable Components",
+        "title": "[Positive] className ที่ส่งมาถูกรวมเข้ากับคลาสของ Badge",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Badge — แท็กสถานะ › Alternative Flow › [Positive] className ที่ส่งมาถูกรวมเข้ากับคลาสของ Badge",
+        "status": "Passed",
+        "expected": "[Positive] className ที่ส่งมาถูกรวมเข้ากับคลาสของ Badge"
+      },
+      {
+        "id": "UI-UT-005",
+        "module": "UI Reusable Components",
+        "title": "[Negative] variant ที่ไม่มีในรายการไม่ตกทอดชุดสี success และไม่ทำให้ render ล่ม",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Badge — แท็กสถานะ › Exception Flow › [Negative] variant ที่ไม่มีในรายการไม่ตกทอดชุดสี success และไม่ทำให้ render ล่ม",
+        "status": "Passed",
+        "expected": "[Negative] variant ที่ไม่มีในรายการไม่ตกทอดชุดสี success และไม่ทำให้ render ล่ม"
+      },
+      {
+        "id": "UI-UT-006",
+        "module": "UI Reusable Components",
+        "title": "[Positive] ใช้ type=button ตามค่าเริ่มต้นและเรียก onClick เมื่อคลิก",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Button — ปุ่มกด › Basic Flow › [Positive] ใช้ type=button ตามค่าเริ่มต้นและเรียก onClick เมื่อคลิก",
+        "status": "Passed",
+        "expected": "[Positive] ใช้ type=button ตามค่าเริ่มต้นและเรียก onClick เมื่อคลิก"
+      },
+      {
+        "id": "UI-UT-007",
+        "module": "UI Reusable Components",
+        "title": "[Positive] variant และ size ที่กำหนดถูกนำไปใช้กับ className",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Button — ปุ่มกด › Alternative Flow › [Positive] variant และ size ที่กำหนดถูกนำไปใช้กับ className",
+        "status": "Passed",
+        "expected": "[Positive] variant และ size ที่กำหนดถูกนำไปใช้กับ className"
+      },
+      {
+        "id": "UI-UT-008",
+        "module": "UI Reusable Components",
+        "title": "[Positive] isLoading=true ทำให้ปุ่มไม่สามารถกดได้และติด aria-busy",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Button — ปุ่มกด › Alternative Flow › [Positive] isLoading=true ทำให้ปุ่มไม่สามารถกดได้และติด aria-busy",
+        "status": "Passed",
+        "expected": "[Positive] isLoading=true ทำให้ปุ่มไม่สามารถกดได้และติด aria-busy"
+      },
+      {
+        "id": "UI-UT-009",
+        "module": "UI Reusable Components",
+        "title": "[Positive] onClick ที่คืน Promise ทำให้ปุ่มยุ่งอัตโนมัติจนกว่าจะเสร็จ",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Button — ปุ่มกด › Alternative Flow › [Positive] onClick ที่คืน Promise ทำให้ปุ่มยุ่งอัตโนมัติจนกว่าจะเสร็จ",
+        "status": "Passed",
+        "expected": "[Positive] onClick ที่คืน Promise ทำให้ปุ่มยุ่งอัตโนมัติจนกว่าจะเสร็จ"
+      },
+      {
+        "id": "UI-UT-010",
+        "module": "UI Reusable Components",
+        "title": "[Negative] disabled=true ไม่ส่ง event ไปยัง onClick",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Button — ปุ่มกด › Exception Flow › [Negative] disabled=true ไม่ส่ง event ไปยัง onClick",
+        "status": "Passed",
+        "expected": "[Negative] disabled=true ไม่ส่ง event ไปยัง onClick"
+      },
+      {
+        "id": "UI-UT-011",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่ส่ง onClick มาด้วย การคลิกไม่ทำให้เกิดข้อผิดพลาด",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Button — ปุ่มกด › Exception Flow › [Negative] ไม่ส่ง onClick มาด้วย การคลิกไม่ทำให้เกิดข้อผิดพลาด",
+        "status": "Passed",
+        "expected": "[Negative] ไม่ส่ง onClick มาด้วย การคลิกไม่ทำให้เกิดข้อผิดพลาด"
+      },
+      {
+        "id": "UI-UT-012",
+        "module": "UI Reusable Components",
+        "title": "[Positive] แสดงเนื้อหาภายในพร้อมสไตล์พื้นฐาน",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Card — การ์ดพื้นฐาน › Basic Flow › [Positive] แสดงเนื้อหาภายในพร้อมสไตล์พื้นฐาน",
+        "status": "Passed",
+        "expected": "[Positive] แสดงเนื้อหาภายในพร้อมสไตล์พื้นฐาน"
+      },
+      {
+        "id": "UI-UT-013",
+        "module": "UI Reusable Components",
+        "title": "[Positive] hoverable=true เพิ่มเอฟเฟกต์ hover และ padding ที่กำหนดแทนค่าเดิม",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Card — การ์ดพื้นฐาน › Alternative Flow › [Positive] hoverable=true เพิ่มเอฟเฟกต์ hover และ padding ที่กำหนดแทนค่าเดิม",
+        "status": "Passed",
+        "expected": "[Positive] hoverable=true เพิ่มเอฟเฟกต์ hover และ padding ที่กำหนดแทนค่าเดิม"
+      },
+      {
+        "id": "UI-UT-014",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่ส่ง children ก็ยัง render ได้โดยไม่ล่ม",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Card — การ์ดพื้นฐาน › Exception Flow › [Negative] ไม่ส่ง children ก็ยัง render ได้โดยไม่ล่ม",
+        "status": "Passed",
+        "expected": "[Negative] ไม่ส่ง children ก็ยัง render ได้โดยไม่ล่ม"
+      },
+      {
+        "id": "UI-UT-015",
+        "module": "UI Reusable Components",
+        "title": "[Positive] แสดง label, placeholder และค่าที่กรอก",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Input — ช่องกรอกข้อความ › Basic Flow › [Positive] แสดง label, placeholder และค่าที่กรอก",
+        "status": "Passed",
+        "expected": "[Positive] แสดง label, placeholder และค่าที่กรอก"
+      },
+      {
+        "id": "UI-UT-016",
+        "module": "UI Reusable Components",
+        "title": "[Positive] required=true แสดงเครื่องหมาย * กำกับ label",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Input — ช่องกรอกข้อความ › Alternative Flow › [Positive] required=true แสดงเครื่องหมาย * กำกับ label",
+        "status": "Passed",
+        "expected": "[Positive] required=true แสดงเครื่องหมาย * กำกับ label"
+      },
+      {
+        "id": "UI-UT-017",
+        "module": "UI Reusable Components",
+        "title": "[Positive] suffix ที่ส่งมาแสดงผลในช่องกรอก",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Input — ช่องกรอกข้อความ › Alternative Flow › [Positive] suffix ที่ส่งมาแสดงผลในช่องกรอก",
+        "status": "Passed",
+        "expected": "[Positive] suffix ที่ส่งมาแสดงผลในช่องกรอก"
+      },
+      {
+        "id": "UI-UT-018",
+        "module": "UI Reusable Components",
+        "title": "[Positive] icon ที่ส่งมาแสดงด้านซ้ายและเว้นพื้นที่ให้ข้อความ",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Input — ช่องกรอกข้อความ › Alternative Flow › [Positive] icon ที่ส่งมาแสดงด้านซ้ายและเว้นพื้นที่ให้ข้อความ",
+        "status": "Passed",
+        "expected": "[Positive] icon ที่ส่งมาแสดงด้านซ้ายและเว้นพื้นที่ให้ข้อความ"
+      },
+      {
+        "id": "UI-UT-019",
+        "module": "UI Reusable Components",
+        "title": "[Negative] error แสดงข้อความผิดพลาดและแทนที่ helperText",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Input — ช่องกรอกข้อความ › Exception Flow › [Negative] error แสดงข้อความผิดพลาดและแทนที่ helperText",
+        "status": "Passed",
+        "expected": "[Negative] error แสดงข้อความผิดพลาดและแทนที่ helperText"
+      },
+      {
+        "id": "UI-UT-020",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่มี error และไม่มี helperText จะไม่แสดงข้อความกำกับด้านล่าง",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Input — ช่องกรอกข้อความ › Exception Flow › [Negative] ไม่มี error และไม่มี helperText จะไม่แสดงข้อความกำกับด้านล่าง",
+        "status": "Passed",
+        "expected": "[Negative] ไม่มี error และไม่มี helperText จะไม่แสดงข้อความกำกับด้านล่าง"
+      },
+      {
+        "id": "UI-UT-021",
+        "module": "UI Reusable Components",
+        "title": "[Positive] แสดง placeholder เป็นตัวเลือกแรกและ list ครบทุกตัวเลือก",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Select — ช่องเลือกแบบ dropdown › Basic Flow › [Positive] แสดง placeholder เป็นตัวเลือกแรกและ list ครบทุกตัวเลือก",
+        "status": "Passed",
+        "expected": "[Positive] แสดง placeholder เป็นตัวเลือกแรกและ list ครบทุกตัวเลือก"
+      },
+      {
+        "id": "UI-UT-022",
+        "module": "UI Reusable Components",
+        "title": "[Positive] options เป็น array ของ string ก็แปลงเป็น value/label ได้",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Select — ช่องเลือกแบบ dropdown › Alternative Flow › [Positive] options เป็น array ของ string ก็แปลงเป็น value/label ได้",
+        "status": "Passed",
+        "expected": "[Positive] options เป็น array ของ string ก็แปลงเป็น value/label ได้"
+      },
+      {
+        "id": "UI-UT-023",
+        "module": "UI Reusable Components",
+        "title": "[Negative] error แสดงข้อความผิดพลาดใต้ช่องเลือก",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Select — ช่องเลือกแบบ dropdown › Exception Flow › [Negative] error แสดงข้อความผิดพลาดใต้ช่องเลือก",
+        "status": "Passed",
+        "expected": "[Negative] error แสดงข้อความผิดพลาดใต้ช่องเลือก"
+      },
+      {
+        "id": "UI-UT-024",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่มี options และไม่มี placeholder แสดง dropdown ว่างโดยไม่ล่ม",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Select — ช่องเลือกแบบ dropdown › Exception Flow › [Negative] ไม่มี options และไม่มี placeholder แสดง dropdown ว่างโดยไม่ล่ม",
+        "status": "Passed",
+        "expected": "[Negative] ไม่มี options และไม่มี placeholder แสดง dropdown ว่างโดยไม่ล่ม"
+      },
+      {
+        "id": "UI-UT-025",
+        "module": "UI Reusable Components",
+        "title": "[Positive] แสดง label, placeholder, ค่าที่กรอก และจำนวนแถวเริ่มต้น 3",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Textarea — ช่องกรอกข้อความหลายบรรทัด › Basic Flow › [Positive] แสดง label, placeholder, ค่าที่กรอก และจำนวนแถวเริ่มต้น 3",
+        "status": "Passed",
+        "expected": "[Positive] แสดง label, placeholder, ค่าที่กรอก และจำนวนแถวเริ่มต้น 3"
+      },
+      {
+        "id": "UI-UT-026",
+        "module": "UI Reusable Components",
+        "title": "[Positive] rows และ required ที่กำหนดถูกนำไปใช้แทนค่าเริ่มต้น",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Textarea — ช่องกรอกข้อความหลายบรรทัด › Alternative Flow › [Positive] rows และ required ที่กำหนดถูกนำไปใช้แทนค่าเริ่มต้น",
+        "status": "Passed",
+        "expected": "[Positive] rows และ required ที่กำหนดถูกนำไปใช้แทนค่าเริ่มต้น"
+      },
+      {
+        "id": "UI-UT-027",
+        "module": "UI Reusable Components",
+        "title": "[Positive] พิมพ์ข้อความใหม่จะเรียก onChange พร้อมค่าล่าสุด",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Textarea — ช่องกรอกข้อความหลายบรรทัด › Alternative Flow › [Positive] พิมพ์ข้อความใหม่จะเรียก onChange พร้อมค่าล่าสุด",
+        "status": "Passed",
+        "expected": "[Positive] พิมพ์ข้อความใหม่จะเรียก onChange พร้อมค่าล่าสุด"
+      },
+      {
+        "id": "UI-UT-028",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่ส่ง label มาก็ยังแสดงช่องกรอกได้โดยไม่ล่ม",
+        "script": "frontend/tests/unit/ui.components.test.jsx › Textarea — ช่องกรอกข้อความหลายบรรทัด › Exception Flow › [Negative] ไม่ส่ง label มาก็ยังแสดงช่องกรอกได้โดยไม่ล่ม",
+        "status": "Passed",
+        "expected": "[Negative] ไม่ส่ง label มาก็ยังแสดงช่องกรอกได้โดยไม่ล่ม"
+      },
+      {
+        "id": "UI-UT-029",
+        "module": "UI Reusable Components",
+        "title": "[Positive] render ได้พร้อมค่าที่กรอกและปรับความสูงหลัง mount",
+        "script": "frontend/tests/unit/ui.components.test.jsx › AutoGrowingTextarea — ช่องกรอกที่ขยายความสูงเอง › Basic Flow › [Positive] render ได้พร้อมค่าที่กรอกและปรับความสูงหลัง mount",
+        "status": "Passed",
+        "expected": "[Positive] render ได้พร้อมค่าที่กรอกและปรับความสูงหลัง mount"
+      },
+      {
+        "id": "UI-UT-030",
+        "module": "UI Reusable Components",
+        "title": "[Positive] เปลี่ยนค่าใหม่จะปรับความสูงซ้ำและส่ง event ให้ onChange",
+        "script": "frontend/tests/unit/ui.components.test.jsx › AutoGrowingTextarea — ช่องกรอกที่ขยายความสูงเอง › Alternative Flow › [Positive] เปลี่ยนค่าใหม่จะปรับความสูงซ้ำและส่ง event ให้ onChange",
+        "status": "Passed",
+        "expected": "[Positive] เปลี่ยนค่าใหม่จะปรับความสูงซ้ำและส่ง event ให้ onChange"
+      },
+      {
+        "id": "UI-UT-031",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่มี onChange มาก็พิมพ์ได้โดยไม่ทำให้ render ล่ม",
+        "script": "frontend/tests/unit/ui.components.test.jsx › AutoGrowingTextarea — ช่องกรอกที่ขยายความสูงเอง › Exception Flow › [Negative] ไม่มี onChange มาก็พิมพ์ได้โดยไม่ทำให้ render ล่ม",
+        "status": "Passed",
+        "expected": "[Negative] ไม่มี onChange มาก็พิมพ์ได้โดยไม่ทำให้ render ล่ม"
+      },
+      {
+        "id": "UI-UT-032",
+        "module": "UI Reusable Components",
+        "title": "[Negative] ไม่ส่ง value/label เลยก็ยังแสดงช่องกรอกว่างได้",
+        "script": "frontend/tests/unit/ui.components.test.jsx › AutoGrowingTextarea — ช่องกรอกที่ขยายความสูงเอง › Exception Flow › [Negative] ไม่ส่ง value/label เลยก็ยังแสดงช่องกรอกว่างได้",
+        "status": "Passed",
+        "expected": "[Negative] ไม่ส่ง value/label เลยก็ยังแสดงช่องกรอกว่างได้"
+      },
+      {
+        "id": "HOOK-UT-001",
+        "module": "Page Data & Auth Hook",
+        "title": "[Positive] มี token ในเครื่อง -> โหลดข้อมูลสำเร็จและจบด้วย loading=false",
+        "script": "frontend/tests/unit/usePageData.test.jsx › usePageData — โหลดข้อมูลหน้าพร้อม token guard › Basic Flow › [Positive] มี token ในเครื่อง -> โหลดข้อมูลสำเร็จและจบด้วย loading=false",
+        "status": "Passed",
+        "expected": "[Positive] มี token ในเครื่อง -> โหลดข้อมูลสำเร็จและจบด้วย loading=false"
+      },
+      {
+        "id": "HOOK-UT-002",
+        "module": "Page Data & Auth Hook",
+        "title": "[Positive] deps เปลี่ยนจะดึงข้อมูลใหม่โดยไม่ต้อง mount หน้าใหม่",
+        "script": "frontend/tests/unit/usePageData.test.jsx › usePageData — โหลดข้อมูลหน้าพร้อม token guard › Alternative Flow › [Positive] deps เปลี่ยนจะดึงข้อมูลใหม่โดยไม่ต้อง mount หน้าใหม่",
+        "status": "Passed",
+        "expected": "[Positive] deps เปลี่ยนจะดึงข้อมูลใหม่โดยไม่ต้อง mount หน้าใหม่"
+      },
+      {
+        "id": "HOOK-UT-003",
+        "module": "Page Data & Auth Hook",
+        "title": "[Positive] เรียก reload เพื่อดึงข้อมูลใหม่โดยคง error ว่างอยู่",
+        "script": "frontend/tests/unit/usePageData.test.jsx › usePageData — โหลดข้อมูลหน้าพร้อม token guard › Alternative Flow › [Positive] เรียก reload เพื่อดึงข้อมูลใหม่โดยคง error ว่างอยู่",
+        "status": "Passed",
+        "expected": "[Positive] เรียก reload เพื่อดึงข้อมูลใหม่โดยคง error ว่างอยู่"
+      },
+      {
+        "id": "HOOK-UT-004",
+        "module": "Page Data & Auth Hook",
+        "title": "[Positive] initialData และ errorMessage ที่กำหนดเองถูกใช้แทนค่าเริ่มต้น",
+        "script": "frontend/tests/unit/usePageData.test.jsx › usePageData — โหลดข้อมูลหน้าพร้อม token guard › Alternative Flow › [Positive] initialData และ errorMessage ที่กำหนดเองถูกใช้แทนค่าเริ่มต้น",
+        "status": "Passed",
+        "expected": "[Positive] initialData และ errorMessage ที่กำหนดเองถูกใช้แทนค่าเริ่มต้น"
+      },
+      {
+        "id": "HOOK-UT-005",
+        "module": "Page Data & Auth Hook",
+        "title": "[Negative] ไม่มี token -> เด้งไปหน้าล็อกอินและไม่ยิง request",
+        "script": "frontend/tests/unit/usePageData.test.jsx › usePageData — โหลดข้อมูลหน้าพร้อม token guard › Exception Flow › [Negative] ไม่มี token -> เด้งไปหน้าล็อกอินและไม่ยิง request",
+        "status": "Passed",
+        "expected": "[Negative] ไม่มี token -> เด้งไปหน้าล็อกอินและไม่ยิง request"
+      },
+      {
+        "id": "HOOK-UT-006",
+        "module": "Page Data & Auth Hook",
+        "title": "[Negative] request ล้มเหลว -> แสดงข้อความผิดพลาดตามค่าเริ่มต้น",
+        "script": "frontend/tests/unit/usePageData.test.jsx › usePageData — โหลดข้อมูลหน้าพร้อม token guard › Exception Flow › [Negative] request ล้มเหลว -> แสดงข้อความผิดพลาดตามค่าเริ่มต้น",
+        "status": "Passed",
+        "expected": "[Negative] request ล้มเหลว -> แสดงข้อความผิดพลาดตามค่าเริ่มต้น"
+      }
+    ],
+    "integration": [
+      {
+        "id": "AUTH-IT-001",
+        "module": "Authentication & API",
+        "title": "health endpoint is public",
+        "script": "backend/tests/integration/api.test.js › app wiring and auth middleware › health endpoint is public",
+        "status": "Passed",
+        "expected": "GET /health ตอบ 200 และ {status:'ok'} โดยไม่ต้องมี token"
+      },
+      {
+        "id": "AUTH-IT-002",
+        "module": "Authentication & API",
+        "title": "protected route rejects a missing token",
+        "script": "backend/tests/integration/api.test.js › app wiring and auth middleware › protected route rejects a missing token",
+        "status": "Passed",
+        "expected": "ตอบ 401 และ message ระบุ Unauthenticated"
+      },
+      {
+        "id": "AUTH-IT-003",
+        "module": "Authentication & API",
+        "title": "protected route rejects an invalid token",
+        "script": "backend/tests/integration/api.test.js › app wiring and auth middleware › protected route rejects an invalid token",
+        "status": "Passed",
+        "expected": "ตอบ 401 และ message ระบุ Invalid or expired"
+      },
+      {
+        "id": "AUTH-IT-004",
+        "module": "Authentication & API",
+        "title": "pending users are blocked with PENDING_APPROVAL",
+        "script": "backend/tests/integration/api.test.js › app wiring and auth middleware › pending users are blocked with PENDING_APPROVAL",
+        "status": "Passed",
+        "expected": "ตอบ 403 พร้อม code PENDING_APPROVAL"
+      },
+      {
+        "id": "AUTH-IT-005",
+        "module": "Authentication & API",
+        "title": "rejected users are blocked with ACCESS_REJECTED",
+        "script": "backend/tests/integration/api.test.js › app wiring and auth middleware › rejected users are blocked with ACCESS_REJECTED",
+        "status": "Passed",
+        "expected": "ตอบ 403 พร้อม code ACCESS_REJECTED"
+      },
+      {
+        "id": "MASTER-IT-001",
+        "module": "Master Data – Scents",
+        "title": "rejects an empty name",
+        "script": "backend/tests/integration/api.test.js › scents API (integration with MongoDB) › rejects an empty name",
+        "status": "Passed",
+        "expected": "ตอบ 400 และไม่สร้าง record"
+      },
+      {
+        "id": "MASTER-IT-002",
+        "module": "Master Data – Scents",
+        "title": "creates a scent, trims the name and reports it in the list",
+        "script": "backend/tests/integration/api.test.js › scents API (integration with MongoDB) › creates a scent, trims the name and reports it in the list",
+        "status": "Passed",
+        "expected": "สร้าง 201, ชื่อถูก trim เป็น Vanilla และแสดงใน list"
+      },
+      {
+        "id": "MASTER-IT-003",
+        "module": "Master Data – Scents",
+        "title": "creating the same scent twice is idempotent",
+        "script": "backend/tests/integration/api.test.js › scents API (integration with MongoDB) › creating the same scent twice is idempotent",
+        "status": "Passed",
+        "expected": "ครั้งแรก 201 ครั้งที่สอง 200 และได้ _id เดิม; มี record เดียว"
+      },
+      {
+        "id": "MASTER-IT-004",
+        "module": "Master Data – Scents",
+        "title": "list is owner-scoped",
+        "script": "backend/tests/integration/api.test.js › scents API (integration with MongoDB) › list is owner-scoped",
+        "status": "Passed",
+        "expected": "คืนเฉพาะ Scent ของ owner (Mine) ไม่รวมของ other"
+      },
+      {
+        "id": "MASTER-IT-005",
+        "module": "Master Data – Scents",
+        "title": "renames and deletes only the owner's scent",
+        "script": "backend/tests/integration/api.test.js › scents API (integration with MongoDB) › renames and deletes only the owner's scent",
+        "status": "Passed",
+        "expected": "owner เปลี่ยนชื่อ/ลบได้ 200; ลบของ other ได้ 404"
+      },
+      {
+        "id": "STOCK-IT-001",
+        "module": "Stock – Sample Products",
+        "title": "rejects a product without a name",
+        "script": "backend/tests/integration/api.test.js › products API — stock movement audit trail › rejects a product without a name",
+        "status": "Passed",
+        "expected": "ตอบ 400 และไม่สร้าง Product"
+      },
+      {
+        "id": "STOCK-IT-002",
+        "module": "Stock – Sample Products",
+        "title": "creating stock writes an inbound movement log",
+        "script": "backend/tests/integration/api.test.js › products API — stock movement audit trail › creating stock writes an inbound movement log",
+        "status": "Passed",
+        "expected": "สร้าง 201, currentQuantity=40 และมี ActivityLog STOCK movement in 40 (0→40)"
+      },
+      {
+        "id": "STOCK-IT-003",
+        "module": "Stock – Sample Products",
+        "title": "changing stock writes an outbound movement with exact arithmetic",
+        "script": "backend/tests/integration/api.test.js › products API — stock movement audit trail › changing stock writes an outbound movement with exact arithmetic",
+        "status": "Passed",
+        "expected": "อัปเดต 200, currentQuantity=15 และมี movement out 25 (40→15)"
+      },
+      {
+        "id": "STOCK-IT-004",
+        "module": "Stock – Sample Products",
+        "title": "products are owner-scoped and cannot be deleted by another owner",
+        "script": "backend/tests/integration/api.test.js › products API — stock movement audit trail › products are owner-scoped and cannot be deleted by another owner",
+        "status": "Passed",
+        "expected": "list เห็นเฉพาะของ owner; ลบของ other ได้ 404; ลบของตัวเองได้ 200"
+      },
+      {
+        "id": "RND-IT-001",
+        "module": "R&D – BOM Calculation",
+        "title": "calculates required grams, stock and shortage",
+        "script": "backend/tests/integration/api.test.js › BOM calculation — core production math › calculates required grams, stock and shortage",
+        "status": "Passed",
+        "expected": "Aqua required 600 stock 100 shortage 500; Glycerin required 400 stock 1000 sufficient=true shortage 0"
+      },
+      {
+        "id": "RND-IT-002",
+        "module": "R&D – BOM Calculation",
+        "title": "returns 404 for an unknown or archived formula",
+        "script": "backend/tests/integration/api.test.js › BOM calculation — core production math › returns 404 for an unknown or archived formula",
+        "status": "Passed",
+        "expected": "ทั้ง formulaId ที่ไม่มีและสูตร archived ตอบ 404"
+      },
+      {
+        "id": "RND-IT-003",
+        "module": "R&D – BOM Calculation",
+        "title": "empty or zero quantities produce an empty result set",
+        "script": "backend/tests/integration/api.test.js › BOM calculation — core production math › empty or zero quantities produce an empty result set",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ results เป็น []"
+      },
+      {
+        "id": "RND-IT-004",
+        "module": "R&D – BOM Calculation",
+        "title": "ingredient create reuses near-duplicate names instead of splitting stock",
+        "script": "backend/tests/integration/api.test.js › BOM calculation — core production math › ingredient create reuses near-duplicate names instead of splitting stock",
+        "status": "Passed",
+        "expected": "ครั้งแรก 201; ครั้งที่สอง 200, _reusedExisting=true และได้ _id เดิม; มี Ingredient เดียว"
+      },
+      {
+        "id": "SALES-IT-001",
+        "module": "Sales",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/sales.test.js › Sales — authentication and listing › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "SALES-IT-002",
+        "module": "Sales",
+        "title": "lists only the owner's leads for a normal user",
+        "script": "backend/tests/integration/sales.test.js › Sales — authentication and listing › lists only the owner's leads for a normal user",
+        "status": "Passed",
+        "expected": "คืนเฉพาะ lead ของ owner (Mine)"
+      },
+      {
+        "id": "SALES-IT-003",
+        "module": "Sales",
+        "title": "lists every lead for an admin",
+        "script": "backend/tests/integration/sales.test.js › Sales — authentication and listing › lists every lead for an admin",
+        "status": "Passed",
+        "expected": "Admin เห็นทั้ง Mine และ Theirs"
+      },
+      {
+        "id": "SALES-IT-004",
+        "module": "Sales",
+        "title": "creates a lead and normalizes legacy orderedProducts",
+        "script": "backend/tests/integration/sales.test.js › Sales — create › creates a lead and normalizes legacy orderedProducts",
+        "status": "Passed",
+        "expected": "สร้างข้อมูลสำเร็จและคืนค่าที่ถูกต้อง"
+      },
+      {
+        "id": "SALES-IT-005",
+        "module": "Sales",
+        "title": "reuses an existing customer with the same email instead of duplicating",
+        "script": "backend/tests/integration/sales.test.js › Sales — create › reuses an existing customer with the same email instead of duplicating",
+        "status": "Passed",
+        "expected": "ทั้งสองครั้งได้ _id เดียวกัน, ชื่ออัปเดตเป็น Renamed และมีลูกค้า 1 record"
+      },
+      {
+        "id": "SALES-IT-006",
+        "module": "Sales",
+        "title": "rejects a sample order when sample stock is insufficient",
+        "script": "backend/tests/integration/sales.test.js › Sales — create › rejects a sample order when sample stock is insufficient",
+        "status": "Passed",
+        "expected": "ตอบ 400, shortages[0] requested=5 available=2 และไม่สร้างลูกค้า"
+      },
+      {
+        "id": "SALES-IT-007",
+        "module": "Sales",
+        "title": "deducts sample stock and writes a movement log on a valid sample order",
+        "script": "backend/tests/integration/sales.test.js › Sales — create › deducts sample stock and writes a movement log on a valid sample order",
+        "status": "Passed",
+        "expected": "สร้าง 201; stock 10→6 และมี movement out 4"
+      },
+      {
+        "id": "SALES-IT-008",
+        "module": "Sales",
+        "title": "updates a lead, changing section and writing an activity log",
+        "script": "backend/tests/integration/sales.test.js › Sales — update and delete › updates a lead, changing section and writing an activity log",
+        "status": "Passed",
+        "expected": "อัปเดต 200, section=s11, notes=Closed และมี log SALES_CRM ที่ระบุ 'ย้ายสถานะ'"
+      },
+      {
+        "id": "SALES-IT-009",
+        "module": "Sales",
+        "title": "cannot update another owner's lead",
+        "script": "backend/tests/integration/sales.test.js › Sales — update and delete › cannot update another owner's lead",
+        "status": "Passed",
+        "expected": "ตอบ 404 และไม่แก้ไข lead"
+      },
+      {
+        "id": "SALES-IT-010",
+        "module": "Sales",
+        "title": "deletes the owner's lead but not another owner's",
+        "script": "backend/tests/integration/sales.test.js › Sales — update and delete › deletes the owner's lead but not another owner's",
+        "status": "Passed",
+        "expected": "other ลบได้ 404; owner ลบได้ 200 และ record ถูกลบ"
+      },
+      {
+        "id": "SALES-IT-011",
+        "module": "Sales",
+        "title": "returns the default columns when none are configured",
+        "script": "backend/tests/integration/sales.test.js › Sales — Kanban columns › returns the default columns when none are configured",
+        "status": "Passed",
+        "expected": "คืน columns id [s1,s2,s6,s10,s11]"
+      },
+      {
+        "id": "SALES-IT-012",
+        "module": "Sales",
+        "title": "rejects a non-array column payload",
+        "script": "backend/tests/integration/sales.test.js › Sales — Kanban columns › rejects a non-array column payload",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "SALES-IT-013",
+        "module": "Sales",
+        "title": "saves and reorders columns",
+        "script": "backend/tests/integration/sales.test.js › Sales — Kanban columns › saves and reorders columns",
+        "status": "Passed",
+        "expected": "บันทึก 200 ตามลำดับ s1,s2 และมี 2 records"
+      },
+      {
+        "id": "RND-IT-005",
+        "module": "R&D",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula create › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "RND-IT-006",
+        "module": "R&D",
+        "title": "rejects an empty formula name",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula create › rejects an empty formula name",
+        "status": "Passed",
+        "expected": "ตอบ 400 และไม่สร้างสูตร"
+      },
+      {
+        "id": "RND-IT-007",
+        "module": "R&D",
+        "title": "creates a formula with a normalized name and version 1",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula create › creates a formula with a normalized name and version 1",
+        "status": "Passed",
+        "expected": "สร้าง 201, ชื่อ trim เป็น Bio Shampoo, version=1 และ bom ถูกบันทึก"
+      },
+      {
+        "id": "RND-IT-008",
+        "module": "R&D",
+        "title": "rejects a duplicate active formula name",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula create › rejects a duplicate active formula name",
+        "status": "Passed",
+        "expected": "ตอบ 409 และไม่สร้างสูตรซ้ำ"
+      },
+      {
+        "id": "RND-IT-009",
+        "module": "R&D",
+        "title": "lists only the owner's active formulas",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula list and update › lists only the owner's active formulas",
+        "status": "Passed",
+        "expected": "ค่าเริ่มต้นเห็นเฉพาะสูตร active ของ owner; includeArchived=true เห็น archived ของ owner ด้วย"
+      },
+      {
+        "id": "RND-IT-010",
+        "module": "R&D",
+        "title": "updates a formula and bumps the version when content changes",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula list and update › updates a formula and bumps the version when content changes",
+        "status": "Passed",
+        "expected": "อัปเดต 200, version=2 และ bom ใหม่ถูกบันทึก"
+      },
+      {
+        "id": "RND-IT-011",
+        "module": "R&D",
+        "title": "cannot update another owner's formula",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula list and update › cannot update another owner's formula",
+        "status": "Passed",
+        "expected": "ตอบ 404 และไม่แก้ไขสูตรของ owner"
+      },
+      {
+        "id": "RND-IT-012",
+        "module": "R&D",
+        "title": "rejects renaming to an existing formula name",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula list and update › rejects renaming to an existing formula name",
+        "status": "Passed",
+        "expected": "ตอบ 409"
+      },
+      {
+        "id": "RND-IT-013",
+        "module": "R&D",
+        "title": "archives an unreferenced formula",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula archive › archives an unreferenced formula",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ isArchived=true"
+      },
+      {
+        "id": "RND-IT-014",
+        "module": "R&D",
+        "title": "refuses to archive a formula used by a pending production order",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula archive › refuses to archive a formula used by a pending production order",
+        "status": "Passed",
+        "expected": "ตอบ 409 พร้อม pendingOrderCount=1 และไม่ archive"
+      },
+      {
+        "id": "RND-IT-015",
+        "module": "R&D",
+        "title": "cannot archive another owner's formula",
+        "script": "backend/tests/integration/rnd.test.js › R&D — formula archive › cannot archive another owner's formula",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "PRODUCTION-IT-001",
+        "module": "Production",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/production-stock.test.js › Production — order visibility › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "PRODUCTION-IT-002",
+        "module": "Production",
+        "title": "excludes sample orders and includes lot/development orders for the owner",
+        "script": "backend/tests/integration/production-stock.test.js › Production — order visibility › excludes sample orders and includes lot/development orders for the owner",
+        "status": "Passed",
+        "expected": "เห็นเฉพาะ Dev Order และ Lot Order ของ owner; ไม่เห็น sample/ของ other"
+      },
+      {
+        "id": "PRODUCTION-IT-003",
+        "module": "Production",
+        "title": "cannot read another owner's production order",
+        "script": "backend/tests/integration/production-stock.test.js › Production — order visibility › cannot read another owner's production order",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "PRODUCTION-IT-004",
+        "module": "Production",
+        "title": "returns 404 for a missing production order",
+        "script": "backend/tests/integration/production-stock.test.js › Production — order visibility › returns 404 for a missing production order",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "PRODUCTION-IT-005",
+        "module": "Production",
+        "title": "rejects an out-of-range production step",
+        "script": "backend/tests/integration/production-stock.test.js › Production — status, step and schedule › rejects an out-of-range production step",
+        "status": "Passed",
+        "expected": "ตอบ 400 และ error ระบุช่วง 0-6"
+      },
+      {
+        "id": "PRODUCTION-IT-006",
+        "module": "Production",
+        "title": "updates status and step and writes a production log",
+        "script": "backend/tests/integration/production-stock.test.js › Production — status, step and schedule › updates status and step and writes a production log",
+        "status": "Passed",
+        "expected": "อัปเดต 200, status='กำลังผลิต', step=3 และมี log PRODUCTION 1 รายการ"
+      },
+      {
+        "id": "PRODUCTION-IT-007",
+        "module": "Production",
+        "title": "updates a production step through the dedicated step route",
+        "script": "backend/tests/integration/production-stock.test.js › Production — status, step and schedule › updates a production step through the dedicated step route",
+        "status": "Passed",
+        "expected": "อัปเดต 200, step=4 และมี log PRODUCTION_STEP 1 รายการ"
+      },
+      {
+        "id": "PRODUCTION-IT-008",
+        "module": "Production",
+        "title": "schedules a product line on a machine and swaps a reversed date range",
+        "script": "backend/tests/integration/production-stock.test.js › Production — status, step and schedule › schedules a product line on a machine and swaps a reversed date range",
+        "status": "Passed",
+        "expected": "บันทึก 200, วันที่ถูกสลับเป็น 08→10, queueNo=2 และ machine=m1"
+      },
+      {
+        "id": "PRODUCTION-IT-009",
+        "module": "Production",
+        "title": "clears a product line schedule when no machine is supplied",
+        "script": "backend/tests/integration/production-stock.test.js › Production — status, step and schedule › clears a product line schedule when no machine is supplied",
+        "status": "Passed",
+        "expected": "machine='', start='', queueNo=null"
+      },
+      {
+        "id": "PRODUCTION-IT-010",
+        "module": "Production",
+        "title": "requires at least one QC evidence item",
+        "script": "backend/tests/integration/production-stock.test.js › Production — QC and finished goods › requires at least one QC evidence item",
+        "status": "Passed",
+        "expected": "บังคับให้ระบุข้อมูลที่จำเป็น และตอบ 400 เมื่อขาด"
+      },
+      {
+        "id": "PRODUCTION-IT-011",
+        "module": "Production",
+        "title": "passing QC creates a finished-goods lot and is idempotent",
+        "script": "backend/tests/integration/production-stock.test.js › Production — QC and finished goods › passing QC creates a finished-goods lot and is idempotent",
+        "status": "Passed",
+        "expected": "สร้างข้อมูลสำเร็จและคืนค่าที่ถูกต้อง"
+      },
+      {
+        "id": "PRODUCTION-IT-012",
+        "module": "Production",
+        "title": "cannot pass QC on another owner's order",
+        "script": "backend/tests/integration/production-stock.test.js › Production — QC and finished goods › cannot pass QC on another owner's order",
+        "status": "Passed",
+        "expected": "ตอบ 404 และไม่เปิดเผย/ไม่แก้ไขข้อมูลของเจ้าของอื่น"
+      },
+      {
+        "id": "STOCK-IT-005",
+        "module": "Stock",
+        "title": "creates a packaging item and adjusts stock in both directions",
+        "script": "backend/tests/integration/production-stock.test.js › Stock — packaging transactions › creates a packaging item and adjusts stock in both directions",
+        "status": "Passed",
+        "expected": "สร้าง 201; รับเข้า 10; เบิกออกเหลือ 6 และมี movement out 4"
+      },
+      {
+        "id": "STOCK-IT-006",
+        "module": "Stock",
+        "title": "never drives packaging stock below zero",
+        "script": "backend/tests/integration/production-stock.test.js › Stock — packaging transactions › never drives packaging stock below zero",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ currentQuantity=0 (ไม่ติดลบ)"
+      },
+      {
+        "id": "STOCK-IT-007",
+        "module": "Stock",
+        "title": "rejects an invalid packaging transaction",
+        "script": "backend/tests/integration/production-stock.test.js › Stock — packaging transactions › rejects an invalid packaging transaction",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "STOCK-IT-008",
+        "module": "Stock",
+        "title": "cannot adjust another owner's packaging item",
+        "script": "backend/tests/integration/production-stock.test.js › Stock — packaging transactions › cannot adjust another owner's packaging item",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "STOCK-IT-009",
+        "module": "Stock",
+        "title": "hides delivered lots by default and includes them on request",
+        "script": "backend/tests/integration/production-stock.test.js › Stock — finished goods lots › hides delivered lots by default and includes them on request",
+        "status": "Passed",
+        "expected": "ค่าเริ่มต้นเห็นเฉพาะ active; includeDelivered=true เห็นทั้ง active และ delivered"
+      },
+      {
+        "id": "STOCK-IT-010",
+        "module": "Stock",
+        "title": "is owner-scoped",
+        "script": "backend/tests/integration/production-stock.test.js › Stock — finished goods lots › is owner-scoped",
+        "status": "Passed",
+        "expected": "จำกัดข้อมูลตาม owner"
+      },
+      {
+        "id": "USERS-IT-001",
+        "module": "Users",
+        "title": "rejects unauthenticated requests",
+        "script": "backend/tests/integration/users-settings.test.js › Users — admin-only access › rejects unauthenticated requests",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่เปิดเผยข้อมูล"
+      },
+      {
+        "id": "USERS-IT-002",
+        "module": "Users",
+        "title": "blocks a normal user from every user-management route",
+        "script": "backend/tests/integration/users-settings.test.js › Users — admin-only access › blocks a normal user from every user-management route",
+        "status": "Passed",
+        "expected": "GET และ POST /api/users ตอบ 403"
+      },
+      {
+        "id": "USERS-IT-003",
+        "module": "Users",
+        "title": "returns the system roles to an admin",
+        "script": "backend/tests/integration/users-settings.test.js › Users — admin-only access › returns the system roles to an admin",
+        "status": "Passed",
+        "expected": "คืน roles [Admin, User]"
+      },
+      {
+        "id": "USERS-IT-004",
+        "module": "Users",
+        "title": "lists all users with populated roles",
+        "script": "backend/tests/integration/users-settings.test.js › Users — admin-only access › lists all users with populated roles",
+        "status": "Passed",
+        "expected": "คืนผู้ใช้ 3 คนและ role ถูก populate"
+      },
+      {
+        "id": "USERS-IT-005",
+        "module": "Users",
+        "title": "rejects a missing name or email",
+        "script": "backend/tests/integration/users-settings.test.js › Users — create and update › rejects a missing name or email",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "USERS-IT-006",
+        "module": "Users",
+        "title": "rejects a duplicate email",
+        "script": "backend/tests/integration/users-settings.test.js › Users — create and update › rejects a duplicate email",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "USERS-IT-007",
+        "module": "Users",
+        "title": "creates a pre-approved user with the default User role",
+        "script": "backend/tests/integration/users-settings.test.js › Users — create and update › creates a pre-approved user with the default User role",
+        "status": "Passed",
+        "expected": "สร้างข้อมูลสำเร็จและคืนค่าที่ถูกต้อง"
+      },
+      {
+        "id": "USERS-IT-008",
+        "module": "Users",
+        "title": "rejects an unknown role on update",
+        "script": "backend/tests/integration/users-settings.test.js › Users — create and update › rejects an unknown role on update",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "USERS-IT-009",
+        "module": "Users",
+        "title": "returns 404 when updating a missing user",
+        "script": "backend/tests/integration/users-settings.test.js › Users — create and update › returns 404 when updating a missing user",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "USERS-IT-010",
+        "module": "Users",
+        "title": "promotes a user to Admin",
+        "script": "backend/tests/integration/users-settings.test.js › Users — create and update › promotes a user to Admin",
+        "status": "Passed",
+        "expected": "ผลลัพธ์ตรงตามเงื่อนไขของกรณีทดสอบ"
+      },
+      {
+        "id": "USERS-IT-011",
+        "module": "Users",
+        "title": "rejects an invalid decision",
+        "script": "backend/tests/integration/users-settings.test.js › Users — first-login approval › rejects an invalid decision",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "USERS-IT-012",
+        "module": "Users",
+        "title": "approves a pending request and assigns the User role",
+        "script": "backend/tests/integration/users-settings.test.js › Users — first-login approval › approves a pending request and assigns the User role",
+        "status": "Passed",
+        "expected": "ผลลัพธ์ตรงตามเงื่อนไขของกรณีทดสอบ"
+      },
+      {
+        "id": "USERS-IT-013",
+        "module": "Users",
+        "title": "rejects an already-approved account",
+        "script": "backend/tests/integration/users-settings.test.js › Users — first-login approval › rejects an already-approved account",
+        "status": "Passed",
+        "expected": "ตอบ 409"
+      },
+      {
+        "id": "USERS-IT-014",
+        "module": "Users",
+        "title": "refuses to delete the last approved admin",
+        "script": "backend/tests/integration/users-settings.test.js › Users — deletion safety › refuses to delete the last approved admin",
+        "status": "Passed",
+        "expected": "ตอบ 400, message ระบุ Admin และผู้ใช้ยังอยู่"
+      },
+      {
+        "id": "USERS-IT-015",
+        "module": "Users",
+        "title": "deletes a normal user and reports whether it was self-deletion",
+        "script": "backend/tests/integration/users-settings.test.js › Users — deletion safety › deletes a normal user and reports whether it was self-deletion",
+        "status": "Passed",
+        "expected": "ลบ 200, selfDeleted=false และผู้ใช้ถูกลบ"
+      },
+      {
+        "id": "SETTINGS-IT-001",
+        "module": "Settings",
+        "title": "rejects an empty packaging type name",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — packaging categories › rejects an empty packaging type name",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "SETTINGS-IT-002",
+        "module": "Settings",
+        "title": "creates, lists and rejects a duplicate packaging type",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — packaging categories › creates, lists and rejects a duplicate packaging type",
+        "status": "Passed",
+        "expected": "ครั้งแรก 201; ซ้ำ 400; list มี 1 รายการชื่อ Bottle"
+      },
+      {
+        "id": "SETTINGS-IT-003",
+        "module": "Settings",
+        "title": "cannot delete a packaging type that is still in use",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — packaging categories › cannot delete a packaging type that is still in use",
+        "status": "Passed",
+        "expected": "ตอบ 400 และ type ยังอยู่"
+      },
+      {
+        "id": "SETTINGS-IT-004",
+        "module": "Settings",
+        "title": "deletes an unused packaging type and reports missing ones",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — packaging categories › deletes an unused packaging type and reports missing ones",
+        "status": "Passed",
+        "expected": "ลบ type ว่าง 200; ลบ id ที่ไม่มี 404"
+      },
+      {
+        "id": "SETTINGS-IT-005",
+        "module": "Settings",
+        "title": "packaging subtypes require a parent type",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — packaging categories › packaging subtypes require a parent type",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "SETTINGS-IT-006",
+        "module": "Settings",
+        "title": "creates a packaging subtype under a parent",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — packaging categories › creates a packaging subtype under a parent",
+        "status": "Passed",
+        "expected": "สร้าง 201 และ parentType ตรงกับ type ที่เลือก"
+      },
+      {
+        "id": "SETTINGS-IT-007",
+        "module": "Settings",
+        "title": "nozzles require a name and are idempotent by name",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — catalog and lot prefixes › nozzles require a name and are idempotent by name",
+        "status": "Passed",
+        "expected": "ชื่อว่าง 400; ครั้งแรก 201; ครั้งที่สอง 200 และได้ _id เดิม"
+      },
+      {
+        "id": "SETTINGS-IT-008",
+        "module": "Settings",
+        "title": "lot prefix configs require formulaName and prefix, then normalize the prefix",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — catalog and lot prefixes › lot prefix configs require formulaName and prefix, then normalize the prefix",
+        "status": "Passed",
+        "expected": "ผลลัพธ์ตรงตามเงื่อนไขของกรณีทดสอบ"
+      },
+      {
+        "id": "SETTINGS-IT-009",
+        "module": "Settings",
+        "title": "rejects a lot prefix for an unknown formula id",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — catalog and lot prefixes › rejects a lot prefix for an unknown formula id",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "SETTINGS-IT-010",
+        "module": "Settings",
+        "title": "lot prefix configs are owner-scoped for deletion",
+        "script": "backend/tests/integration/users-settings.test.js › Settings — catalog and lot prefixes › lot prefix configs are owner-scoped for deletion",
+        "status": "Passed",
+        "expected": "other ลบ 404; owner ลบ 200"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-001",
+        "module": "Activity Logs",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-002",
+        "module": "Activity Logs",
+        "title": "returns an envelope with totals and category counts",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › returns an envelope with totals and category counts",
+        "status": "Passed",
+        "expected": "คืน items 3, total 3, counts {all:3,sales:1,stock:1,user:1,production:0}"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-003",
+        "module": "Activity Logs",
+        "title": "filters by category",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › filters by category",
+        "status": "Passed",
+        "expected": "category=stock คืนเฉพาะ FG/STOCK และ counts.stock=2"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-004",
+        "module": "Activity Logs",
+        "title": "searches descriptions and escapes regex characters",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › searches descriptions and escapes regex characters",
+        "status": "Passed",
+        "expected": "ค้นหา '(special)' ได้ 1 รายการ และไม่ตีความเป็น regex"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-005",
+        "module": "Activity Logs",
+        "title": "is owner-scoped for normal users but global for admins",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › is owner-scoped for normal users but global for admins",
+        "status": "Passed",
+        "expected": "User เห็น total 1 (Mine); Admin เห็น total 2"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-006",
+        "module": "Activity Logs",
+        "title": "applies inclusive date range filters",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › applies inclusive date range filters",
+        "status": "Passed",
+        "expected": "from/to 2026-01-01 ถึง 2026-12-31 คืนเฉพาะ Recent row"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-007",
+        "module": "Activity Logs",
+        "title": "an invalid stock item id yields an empty result instead of a 500",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › an invalid stock item id yields an empty result instead of a 500",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ items=[] (ไม่เกิด 500)"
+      },
+      {
+        "id": "ACTIVITYLOG-IT-008",
+        "module": "Activity Logs",
+        "title": "creates a log entry owned by the caller",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Activity Logs — listing, search and filters › creates a log entry owned by the caller",
+        "status": "Passed",
+        "expected": "สร้าง 201, ownerId=ผู้เรียก และ operator='Test User'"
+      },
+      {
+        "id": "SUPPORT-IT-001",
+        "module": "Support",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Support — tickets › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "SUPPORT-IT-002",
+        "module": "Support",
+        "title": "rejects a ticket without a title",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Support — tickets › rejects a ticket without a title",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "SUPPORT-IT-003",
+        "module": "Support",
+        "title": "creates a ticket, defaults an invalid severity and mirrors to the activity log",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Support — tickets › creates a ticket, defaults an invalid severity and mirrors to the activity log",
+        "status": "Passed",
+        "expected": "สร้าง 201, title trim, severity=low, status=open, reportedBy='Test User' และมี log SUPPORT"
+      },
+      {
+        "id": "SUPPORT-IT-004",
+        "module": "Support",
+        "title": "shows only the owner's tickets to a normal user, all to an admin",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Support — tickets › shows only the owner's tickets to a normal user, all to an admin",
+        "status": "Passed",
+        "expected": "User เห็นเฉพาะ Mine; Admin เห็นทั้ง Mine และ Theirs"
+      },
+      {
+        "id": "CUSTOMERLOG-IT-001",
+        "module": "Customer Log",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Customer Log — traceability read model › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "CUSTOMERLOG-IT-002",
+        "module": "Customer Log",
+        "title": "returns only customers with activity for the owner, including lots",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Customer Log — traceability read model › returns only customers with activity for the owner, including lots",
+        "status": "Passed",
+        "expected": "เห็นเฉพาะ Customer A; orderedProducts Formula A; lots 1 รายการ LOT-A-1"
+      },
+      {
+        "id": "CUSTOMERLOG-IT-003",
+        "module": "Customer Log",
+        "title": "shows every customer with activity to an admin",
+        "script": "backend/tests/integration/logs-support-customer.test.js › Customer Log — traceability read model › shows every customer with activity to an admin",
+        "status": "Passed",
+        "expected": "Admin เห็นทั้ง Customer A และ Customer B"
+      },
+      {
+        "id": "DASHBOARD-IT-001",
+        "module": "Dashboard",
+        "title": "every module list endpoint rejects unauthenticated requests",
+        "script": "backend/tests/integration/dashboard.test.js › Dashboard — module reachability › every module list endpoint rejects unauthenticated requests",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่เปิดเผยข้อมูล"
+      },
+      {
+        "id": "DASHBOARD-IT-002",
+        "module": "Dashboard",
+        "title": "an admin can load every module list endpoint",
+        "script": "backend/tests/integration/dashboard.test.js › Dashboard — module reachability › an admin can load every module list endpoint",
+        "status": "Passed",
+        "expected": "ทั้ง 18 endpoints ตอบ 200 และ body ไม่ว่าง"
+      },
+      {
+        "id": "DASHBOARD-IT-003",
+        "module": "Dashboard",
+        "title": "a normal user cannot load the admin-only Users module",
+        "script": "backend/tests/integration/dashboard.test.js › Dashboard — module reachability › a normal user cannot load the admin-only Users module",
+        "status": "Passed",
+        "expected": "ตอบ 404 และไม่เปิดเผย/ไม่แก้ไขข้อมูลของเจ้าของอื่น"
+      },
+      {
+        "id": "DASHBOARD-IT-004",
+        "module": "Dashboard",
+        "title": "the six cockpit data sources all return arrays",
+        "script": "backend/tests/integration/dashboard.test.js › Dashboard — cockpit composition › the six cockpit data sources all return arrays",
+        "status": "Passed",
+        "expected": "ทั้ง 6 sources ตอบ 200 เป็น array และ columns มี 5 รายการ"
+      },
+      {
+        "id": "DASHBOARD-IT-005",
+        "module": "Dashboard",
+        "title": "seeded operational data is reflected in the dashboard sources",
+        "script": "backend/tests/integration/dashboard.test.js › Dashboard — cockpit composition › seeded operational data is reflected in the dashboard sources",
+        "status": "Passed",
+        "expected": "sales/ingredients/packaging/lots/machines แสดงข้อมูลที่ seed อย่างละ 1 รายการ"
+      },
+      {
+        "id": "BOMLIFE-IT-001",
+        "module": "BOM Lifecycle",
+        "title": "rejects unauthenticated ingredient access",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — raw-material import and adjustment › rejects unauthenticated ingredient access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูลวัตถุดิบ"
+      },
+      {
+        "id": "BOMLIFE-IT-002",
+        "module": "BOM Lifecycle",
+        "title": "bulk-imports ingredients and skips rows without a name",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — raw-material import and adjustment › bulk-imports ingredients and skips rows without a name",
+        "status": "Passed",
+        "expected": "ตอบ 200, results มี 2 รายการ และสร้าง Ingredient 2 รายการ (ข้ามแถวที่ไม่มีชื่อ)"
+      },
+      {
+        "id": "BOMLIFE-IT-003",
+        "module": "BOM Lifecycle",
+        "title": "adjusts ingredient stock in and out with movement logs",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — raw-material import and adjustment › adjusts ingredient stock in and out with movement logs",
+        "status": "Passed",
+        "expected": "รับเข้าเหลือ 125 แล้วเบิกออกเหลือ 85; มี ActivityLog 2 รายการ และมี movement out 40 หนึ่งรายการ"
+      },
+      {
+        "id": "BOMLIFE-IT-004",
+        "module": "BOM Lifecycle",
+        "title": "rejects invalid ingredient transaction arguments",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — raw-material import and adjustment › rejects invalid ingredient transaction arguments",
+        "status": "Passed",
+        "expected": "ตอบ 400 และไม่ปรับสต็อก"
+      },
+      {
+        "id": "BOMLIFE-IT-005",
+        "module": "BOM Lifecycle",
+        "title": "bulk-imports formulas and increments the version on re-import",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — formula import, rename and archive › bulk-imports formulas and increments the version on re-import",
+        "status": "Passed",
+        "expected": "ตอบ 200, results 2 รายการ, version เป็น 1 และ 2 ตามลำดับ และมีสูตรเดียว"
+      },
+      {
+        "id": "BOMLIFE-IT-006",
+        "module": "BOM Lifecycle",
+        "title": "renames a formula and propagates the name to pending order lines",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — formula import, rename and archive › renames a formula and propagates the name to pending order lines",
+        "status": "Passed",
+        "expected": "ตอบ 200, version=2 และ formulaName ใน orderedProducts ของใบสั่งผลิตถูกเปลี่ยนเป็น New Formula"
+      },
+      {
+        "id": "BOMLIFE-IT-007",
+        "module": "BOM Lifecycle",
+        "title": "refuses to archive a formula still used by a pending order",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — formula import, rename and archive › refuses to archive a formula still used by a pending order",
+        "status": "Passed",
+        "expected": "ตอบ 409, pendingOrderCount=1 และสูตรยังไม่ถูก archive"
+      },
+      {
+        "id": "BOMLIFE-IT-008",
+        "module": "BOM Lifecycle",
+        "title": "archives an unused formula and hides it from the default list",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — formula import, rename and archive › archives an unused formula and hides it from the default list",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ isArchived=true; list ปกติไม่แสดง แต่ includeArchived=true แสดง"
+      },
+      {
+        "id": "BOMLIFE-IT-009",
+        "module": "BOM Lifecycle",
+        "title": "confirms production, deducts ingredients and creates an FG lot",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — production confirm and revert › confirms production, deducts ingredients and creates an FG lot",
+        "status": "Passed",
+        "expected": "ตอบ 201, ตัด Water 1000/Glycerin 600, สต็อกเหลือ 4000/4400, สร้าง FG lot qty 20 และผูก producedLotId กับใบสั่งผลิต"
+      },
+      {
+        "id": "BOMLIFE-IT-010",
+        "module": "BOM Lifecycle",
+        "title": "blocks production confirmation for a development order",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — production confirm and revert › blocks production confirmation for a development order",
+        "status": "Passed",
+        "expected": "ตอบ 409 และไม่สร้าง ProductLot"
+      },
+      {
+        "id": "BOMLIFE-IT-011",
+        "module": "BOM Lifecycle",
+        "title": "rejects confirmation when ingredient stock is insufficient",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — production confirm and revert › rejects confirmation when ingredient stock is insufficient",
+        "status": "Passed",
+        "expected": "ตอบ 400 พร้อมข้อความ 'ไม่เพียงพอ', สต็อกไม่เปลี่ยน และไม่สร้าง FG lot"
+      },
+      {
+        "id": "BOMLIFE-IT-012",
+        "module": "BOM Lifecycle",
+        "title": "reverts production, restores ingredients and deletes the FG lot",
+        "script": "backend/tests/integration/bom-lifecycle.test.js › BOM — production confirm and revert › reverts production, restores ingredients and deletes the FG lot",
+        "status": "Passed",
+        "expected": "ตอบ 200, คืนวัตถุดิบครบ, ลบ FG lot, สถานะกลับเป็น 'ยังไม่ผลิต' และเคลียร์ isConfirmed/producedLotId"
+      },
+      {
+        "id": "FGLIFE-IT-001",
+        "module": "FG Lifecycle",
+        "title": "rejects unauthenticated lot access",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot receiving › rejects unauthenticated lot access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล FG lot"
+      },
+      {
+        "id": "FGLIFE-IT-002",
+        "module": "FG Lifecycle",
+        "title": "rejects a receive without the required lot fields",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot receiving › rejects a receive without the required lot fields",
+        "status": "Passed",
+        "expected": "ตอบ 400 และไม่สร้าง ProductLot"
+      },
+      {
+        "id": "FGLIFE-IT-003",
+        "module": "FG Lifecycle",
+        "title": "receives a lot with a formula snapshot and writes an FG movement",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot receiving › receives a lot with a formula snapshot and writes an FG movement",
+        "status": "Passed",
+        "expected": "ตอบ 201, มี formulaName/formulaSnapshot ถูกต้อง และมี movement in 25 สำหรับ fgLot"
+      },
+      {
+        "id": "FGLIFE-IT-004",
+        "module": "FG Lifecycle",
+        "title": "rejects receive for an archived or unknown formula",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot receiving › rejects receive for an archived or unknown formula",
+        "status": "Passed",
+        "expected": "ตอบ 404"
+      },
+      {
+        "id": "FGLIFE-IT-005",
+        "module": "FG Lifecycle",
+        "title": "lists lots filtered by formula and hides delivered stock by default",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot receiving › lists lots filtered by formula and hides delivered stock by default",
+        "status": "Passed",
+        "expected": "ตอบ 200 และคืนเฉพาะ lot active 1 รายการของสูตรที่ระบุ (ซ่อน delivered)"
+      },
+      {
+        "id": "FGLIFE-IT-006",
+        "module": "FG Lifecycle",
+        "title": "adjusts a lot quantity and writes a movement log",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot edits and deletion › adjusts a lot quantity and writes a movement log",
+        "status": "Passed",
+        "expected": "ตอบ 200, quantity=17/customer ใหม่ และมี log manual-adjustment in 10→17"
+      },
+      {
+        "id": "FGLIFE-IT-007",
+        "module": "FG Lifecycle",
+        "title": "performs a full lot update through PUT",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot edits and deletion › performs a full lot update through PUT",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ lotNo/quantity/customer/mfgDate/expDate ถูกอัปเดตครบ"
+      },
+      {
+        "id": "FGLIFE-IT-008",
+        "module": "FG Lifecycle",
+        "title": "keeps lot edits owner-scoped",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot edits and deletion › keeps lot edits owner-scoped",
+        "status": "Passed",
+        "expected": "ผู้ใช้อื่นแก้ไข lot ได้ 404"
+      },
+      {
+        "id": "FGLIFE-IT-009",
+        "module": "FG Lifecycle",
+        "title": "deletes a lot but reports missing lots",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — lot edits and deletion › deletes a lot but reports missing lots",
+        "status": "Passed",
+        "expected": "ลบครั้งแรก 200 และ record หาย; ลบซ้ำ 404"
+      },
+      {
+        "id": "FGLIFE-IT-010",
+        "module": "FG Lifecycle",
+        "title": "issues stock from the earliest-expiring lot first",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — FEFO issue › issues stock from the earliest-expiring lot first",
+        "status": "Passed",
+        "expected": "ตัด FEFO-EARLY 5 (เหลือ 0) แล้ว FEFO-LATE 7 (เหลือ 13) และมี movement log 2 รายการ"
+      },
+      {
+        "id": "FGLIFE-IT-011",
+        "module": "FG Lifecycle",
+        "title": "rejects an issue that exceeds available stock without changing it",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — FEFO issue › rejects an issue that exceeds available stock without changing it",
+        "status": "Passed",
+        "expected": "ตอบ 400 พร้อม 'Insufficient inventory' และ quantity ของ lot ยังเป็น 3"
+      },
+      {
+        "id": "FGLIFE-IT-012",
+        "module": "FG Lifecycle",
+        "title": "rejects an invalid issue payload",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — FEFO issue › rejects an invalid issue payload",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "FGLIFE-IT-013",
+        "module": "FG Lifecycle",
+        "title": "upserts a lot prefix by formula and lists it",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — prefixes and SKUs › upserts a lot prefix by formula and lists it",
+        "status": "Passed",
+        "expected": "สร้าง 200 prefix=PFX; อัปเดตซ้ำ 200 description=second; มี config เดียว และ list แสดง NEW"
+      },
+      {
+        "id": "FGLIFE-IT-014",
+        "module": "FG Lifecycle",
+        "title": "deletes a prefix config and reports missing ones",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — prefixes and SKUs › deletes a prefix config and reports missing ones",
+        "status": "Passed",
+        "expected": "ลบครั้งแรก 200; ลบซ้ำ 404"
+      },
+      {
+        "id": "FGLIFE-IT-015",
+        "module": "FG Lifecycle",
+        "title": "lists SKUs owner-scoped",
+        "script": "backend/tests/integration/fg-lifecycle.test.js › FG — prefixes and SKUs › lists SKUs owner-scoped",
+        "status": "Passed",
+        "expected": "คืนเฉพาะ SKU ของ owner (MINE-1) ไม่รวมของ other"
+      },
+      {
+        "id": "PRODWF-IT-001",
+        "module": "Production Workflow",
+        "title": "uploads a small image as an inline data URL",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — uploads › uploads a small image as an inline data URL",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ secure_url เป็น data:image/png;base64,..."
+      },
+      {
+        "id": "PRODWF-IT-002",
+        "module": "Production Workflow",
+        "title": "rejects non-image uploads",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — uploads › rejects non-image uploads",
+        "status": "Passed",
+        "expected": "ตอบ 415"
+      },
+      {
+        "id": "PRODWF-IT-003",
+        "module": "Production Workflow",
+        "title": "rejects an upload with no file",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — uploads › rejects an upload with no file",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "PRODWF-IT-004",
+        "module": "Production Workflow",
+        "title": "rejects images larger than 1 MB",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — uploads › rejects images larger than 1 MB",
+        "status": "Passed",
+        "expected": "ตอบ 413"
+      },
+      {
+        "id": "PRODWF-IT-005",
+        "module": "Production Workflow",
+        "title": "deducts bottle, cap and label once when entering production",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — packaging deduction › deducts bottle, cap and label once when entering production",
+        "status": "Passed",
+        "expected": "ตอบ 200, isStockDeducted=true, consumedPackaging 3 รายการ, สต็อกแต่ละชิ้นเหลือ 90 และมี log production-packaging 3 รายการ"
+      },
+      {
+        "id": "PRODWF-IT-006",
+        "module": "Production Workflow",
+        "title": "does not deduct packaging twice for the same product line",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — packaging deduction › does not deduct packaging twice for the same product line",
+        "status": "Passed",
+        "expected": "เรียกซ้ำแล้วสต็อกยัง 90 และมี log ตัดบรรจุภัณฑ์เพียง 1 รายการ"
+      },
+      {
+        "id": "PRODWF-IT-007",
+        "module": "Production Workflow",
+        "title": "resolves a formula link and rejects another owner's formula",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — packaging deduction › resolves a formula link and rejects another owner's formula",
+        "status": "Passed",
+        "expected": "สูตรของ other ได้ 404; สูตรของ owner ได้ 200 และ formulaId ถูกผูก"
+      },
+      {
+        "id": "PRODWF-IT-008",
+        "module": "Production Workflow",
+        "title": "cannot update another owner's production order",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — packaging deduction › cannot update another owner's production order",
+        "status": "Passed",
+        "expected": "ผู้ใช้อื่นอัปเดตได้ 404"
+      },
+      {
+        "id": "PRODWF-IT-009",
+        "module": "Production Workflow",
+        "title": "warehousing creates an FG lot and returns the deal to Retention 1",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — warehousing and delivery › warehousing creates an FG lot and returns the deal to Retention 1",
+        "status": "Passed",
+        "expected": "ตอบ 200, section=retention_custom, isReturningCustomer=true, orderedProducts ว่าง, สร้าง FG lot active qty 12 source production-qc"
+      },
+      {
+        "id": "PRODWF-IT-010",
+        "module": "Production Workflow",
+        "title": "delivery marks the lot delivered and deducts the courier box",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — warehousing and delivery › delivery marks the lot delivered and deducts the courier box",
+        "status": "Passed",
+        "expected": "ตอบ 200, lot เป็น delivered, กล่องเหลือ 7 และมี movement delivery 3"
+      },
+      {
+        "id": "PRODWF-IT-011",
+        "module": "Production Workflow",
+        "title": "does not mark a development line's lot as delivered",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — warehousing and delivery › does not mark a development line's lot as delivered",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ lot ของ line development ยังเป็น active"
+      },
+      {
+        "id": "PRODWF-IT-012",
+        "module": "Production Workflow",
+        "title": "per-line QC creates a lot for the selected product index",
+        "script": "backend/tests/integration/production-workflow.test.js › Production — warehousing and delivery › per-line QC creates a lot for the selected product index",
+        "status": "Passed",
+        "expected": "ตอบ 200, line index 1 มี producedLotId, lot productIndex=1 qty=9 และ producedLotId ระดับ order ยังว่าง"
+      },
+      {
+        "id": "MACHINE-IT-001",
+        "module": "Machines & Catalog",
+        "title": "rejects unauthenticated access",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › rejects unauthenticated access",
+        "status": "Passed",
+        "expected": "ตอบ 401 และไม่คืนข้อมูล"
+      },
+      {
+        "id": "MACHINE-IT-002",
+        "module": "Machines & Catalog",
+        "title": "rejects a machine without a name",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › rejects a machine without a name",
+        "status": "Passed",
+        "expected": "ตอบ 400"
+      },
+      {
+        "id": "MACHINE-IT-003",
+        "module": "Machines & Catalog",
+        "title": "creates a machine and drops invalid queue ids",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › creates a machine and drops invalid queue ids",
+        "status": "Passed",
+        "expected": "ตอบ 201, queue เหลือ 1 รายการที่ถูกต้องและ orderId ตรงกับ order"
+      },
+      {
+        "id": "MACHINE-IT-004",
+        "module": "Machines & Catalog",
+        "title": "lists owner machines for a user and all machines for an admin",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › lists owner machines for a user and all machines for an admin",
+        "status": "Passed",
+        "expected": "User เห็นเฉพาะ Mine; Admin เห็นทั้ง Mine และ Theirs"
+      },
+      {
+        "id": "MACHINE-IT-005",
+        "module": "Machines & Catalog",
+        "title": "updates machine fields and preserves the original queue timestamp",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › updates machine fields and preserves the original queue timestamp",
+        "status": "Passed",
+        "expected": "ตอบ 200, name/color/allowedFormulas เปลี่ยน, queue มี 2 รายการ และ addedAt เดิมของรายการแรกคงอยู่"
+      },
+      {
+        "id": "MACHINE-IT-006",
+        "module": "Machines & Catalog",
+        "title": "replaces the queue through the dedicated queue route",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › replaces the queue through the dedicated queue route",
+        "status": "Passed",
+        "expected": "queue ใหม่ 1 รายการ; ส่ง non-array ได้ 400"
+      },
+      {
+        "id": "MACHINE-IT-007",
+        "module": "Machines & Catalog",
+        "title": "keeps machine update and delete owner-scoped",
+        "script": "backend/tests/integration/machines-catalog.test.js › Machines — CRUD and queue › keeps machine update and delete owner-scoped",
+        "status": "Passed",
+        "expected": "other update/delete ได้ 404; owner delete ได้ 200 และ record หาย"
+      },
+      {
+        "id": "MACHINE-IT-008",
+        "module": "Machines & Catalog",
+        "title": "creates a nozzle and reuses the duplicate name",
+        "script": "backend/tests/integration/machines-catalog.test.js › Nozzles — catalog mutations › creates a nozzle and reuses the duplicate name",
+        "status": "Passed",
+        "expected": "ครั้งแรก 201; ครั้งที่สอง 200 ได้ _id เดิม และมี nozzle เดียว"
+      },
+      {
+        "id": "MACHINE-IT-009",
+        "module": "Machines & Catalog",
+        "title": "renames a nozzle and keeps edits owner-scoped",
+        "script": "backend/tests/integration/machines-catalog.test.js › Nozzles — catalog mutations › renames a nozzle and keeps edits owner-scoped",
+        "status": "Passed",
+        "expected": "owner แก้ไข 200 ตามค่าใหม่; other แก้ไข 404"
+      },
+      {
+        "id": "MACHINE-IT-010",
+        "module": "Machines & Catalog",
+        "title": "refuses to delete a nozzle referenced by a customer order",
+        "script": "backend/tests/integration/machines-catalog.test.js › Nozzles — catalog mutations › refuses to delete a nozzle referenced by a customer order",
+        "status": "Passed",
+        "expected": "ตอบ 400 และ nozzle ยังอยู่"
+      },
+      {
+        "id": "MACHINE-IT-011",
+        "module": "Machines & Catalog",
+        "title": "deletes an unused nozzle",
+        "script": "backend/tests/integration/machines-catalog.test.js › Nozzles — catalog mutations › deletes an unused nozzle",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ nozzle ถูกลบ"
+      },
+      {
+        "id": "MACHINE-IT-012",
+        "module": "Machines & Catalog",
+        "title": "generates one sample per owner formula and is idempotent",
+        "script": "backend/tests/integration/machines-catalog.test.js › Products — sample generation › generates one sample per owner formula and is idempotent",
+        "status": "Passed",
+        "expected": "สร้าง sample 2 รายการ (SMP-001/002) จากสูตร owner; เรียกซ้ำยังได้ 2 รายการและไม่สร้างของ other"
+      },
+      {
+        "id": "MACHINE-IT-013",
+        "module": "Machines & Catalog",
+        "title": "does not list normal products as samples",
+        "script": "backend/tests/integration/machines-catalog.test.js › Products — sample generation › does not list normal products as samples",
+        "status": "Passed",
+        "expected": "GET /api/products?sample=true คืนเฉพาะ Sample Product"
+      },
+      {
+        "id": "EXPORT-IT-001",
+        "module": "Export & Upload",
+        "title": "rejects unauthenticated exports",
+        "script": "backend/tests/integration/export-upload.test.js › Export — raw-material workbook › rejects unauthenticated exports",
+        "status": "Passed",
+        "expected": "ตอบ 401"
+      },
+      {
+        "id": "EXPORT-IT-002",
+        "module": "Export & Upload",
+        "title": "returns an xlsx workbook containing the owner's ingredients",
+        "script": "backend/tests/integration/export-upload.test.js › Export — raw-material workbook › returns an xlsx workbook containing the owner's ingredients",
+        "status": "Passed",
+        "expected": "ตอบ 200 เป็น spreadsheetml ชื่อ raw_materials_stock.xlsx, sheet 'Raw Materials Stock' มีเฉพาะ Water และ rowCount=2"
+      },
+      {
+        "id": "EXPORT-IT-003",
+        "module": "Export & Upload",
+        "title": "gives an admin every owner's ingredients in the workbook",
+        "script": "backend/tests/integration/export-upload.test.js › Export — raw-material workbook › gives an admin every owner's ingredients in the workbook",
+        "status": "Passed",
+        "expected": "Admin ได้ workbook ที่มีวัตถุดิบของทุก owner (rowCount=3)"
+      },
+      {
+        "id": "EXPORT-IT-004",
+        "module": "Export & Upload",
+        "title": "returns a UTF-8 BOM CSV with the owner's rows",
+        "script": "backend/tests/integration/export-upload.test.js › Export — raw-material CSV › returns a UTF-8 BOM CSV with the owner's rows",
+        "status": "Passed",
+        "expected": "ตอบ 200 เป็น text/csv, ขึ้นต้นด้วย UTF-8 BOM, มีแถว Water และไม่มีข้อมูลของ other"
+      },
+      {
+        "id": "EXPORT-IT-005",
+        "module": "Export & Upload",
+        "title": "gives an admin every owner's rows in CSV",
+        "script": "backend/tests/integration/export-upload.test.js › Export — raw-material CSV › gives an admin every owner's rows in CSV",
+        "status": "Passed",
+        "expected": "CSV ของ Admin มีทั้ง Water และ Glycerin"
+      },
+      {
+        "id": "EXPORT-IT-006",
+        "module": "Export & Upload",
+        "title": "rejects an oversized base64 image body before it reaches the route",
+        "script": "backend/tests/integration/export-upload.test.js › Image size guard › rejects an oversized base64 image body before it reaches the route",
+        "status": "Passed",
+        "expected": "ตอบ 413 พร้อมข้อความ 1 MB และไม่สร้าง PackagingItem"
+      },
+      {
+        "id": "EXPORT-IT-007",
+        "module": "Export & Upload",
+        "title": "rejects oversized images nested inside arrays",
+        "script": "backend/tests/integration/export-upload.test.js › Image size guard › rejects oversized images nested inside arrays",
+        "status": "Passed",
+        "expected": "ตอบ 413 และ error ระบุ gallery[0].image"
+      },
+      {
+        "id": "EXPORT-IT-008",
+        "module": "Export & Upload",
+        "title": "allows a small base64 image through to the route",
+        "script": "backend/tests/integration/export-upload.test.js › Image size guard › allows a small base64 image through to the route",
+        "status": "Passed",
+        "expected": "ตอบ 201 และ image ถูกบันทึกตามค่าเดิม"
+      },
+      {
+        "id": "SCHEDULER-IT-001",
+        "module": "Scheduler",
+        "title": "does nothing when no CRM columns exist",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — rule evaluation › does nothing when no CRM columns exist",
+        "status": "Passed",
+        "expected": "คืน {moved:0, skipped:[]}"
+      },
+      {
+        "id": "SCHEDULER-IT-002",
+        "module": "Scheduler",
+        "title": "ignores columns with the rule disabled",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — rule evaluation › ignores columns with the rule disabled",
+        "status": "Passed",
+        "expected": "moved=0 และ lead ยังอยู่ source column เดิม"
+      },
+      {
+        "id": "SCHEDULER-IT-003",
+        "module": "Scheduler",
+        "title": "skips a rule that targets its own column",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — rule evaluation › skips a rule that targets its own column",
+        "status": "Passed",
+        "expected": "moved=0 และ skipped ระบุ 'กฎชี้กลับมาที่ตัวเอง'"
+      },
+      {
+        "id": "SCHEDULER-IT-004",
+        "module": "Scheduler",
+        "title": "skips a rule whose target column no longer exists",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — rule evaluation › skips a rule whose target column no longer exists",
+        "status": "Passed",
+        "expected": "moved=0 และ skipped ระบุ 'ไม่พบคอลัมน์ปลายทาง'"
+      },
+      {
+        "id": "SCHEDULER-IT-005",
+        "module": "Scheduler",
+        "title": "moves a stale lead to the target column and writes an activity log",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — moving stale leads › moves a stale lead to the target column and writes an activity log",
+        "status": "Passed",
+        "expected": "moved=1, lead ถูกย้ายไป retention_1, statusChangedAt อัปเดต และมี log SALES_CRM operator 'ระบบ (อัตโนมัติ)'"
+      },
+      {
+        "id": "SCHEDULER-IT-006",
+        "module": "Scheduler",
+        "title": "leaves a fresh lead in place",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — moving stale leads › leaves a fresh lead in place",
+        "status": "Passed",
+        "expected": "moved=0 และ lead ยังอยู่ stale_col"
+      },
+      {
+        "id": "SCHEDULER-IT-007",
+        "module": "Scheduler",
+        "title": "falls back to updatedAt when statusChangedAt is missing",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — moving stale leads › falls back to updatedAt when statusChangedAt is missing",
+        "status": "Passed",
+        "expected": "moved=1 และ lead ถูกย้ายไป retention_1 โดยใช้ updatedAt"
+      },
+      {
+        "id": "SCHEDULER-IT-008",
+        "module": "Scheduler",
+        "title": "moves only leads in the source column",
+        "script": "backend/tests/integration/scheduler.test.js › autoMoveLeads — moving stale leads › moves only leads in the source column",
+        "status": "Passed",
+        "expected": "moved=1 เฉพาะ lead ใน source column; lead ใน manual_col ไม่ถูกย้าย"
+      },
+      {
+        "id": "AUTHFLOW-IT-001",
+        "module": "Auth & Approval Routes",
+        "title": "returns a null user when no token is supplied",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — current session › returns a null user when no token is supplied",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ body เป็น {user:null}"
+      },
+      {
+        "id": "AUTHFLOW-IT-002",
+        "module": "Auth & Approval Routes",
+        "title": "rejects an invalid token",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — current session › rejects an invalid token",
+        "status": "Passed",
+        "expected": "ตอบ 401 พร้อม 'Invalid or expired token'"
+      },
+      {
+        "id": "AUTHFLOW-IT-003",
+        "module": "Auth & Approval Routes",
+        "title": "returns the current user with a role name",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — current session › returns the current user with a role name",
+        "status": "Passed",
+        "expected": "ตอบ 200, user.email=admin@test.local และ role=Admin"
+      },
+      {
+        "id": "AUTHFLOW-IT-004",
+        "module": "Auth & Approval Routes",
+        "title": "blocks a pending user with PENDING_APPROVAL",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — current session › blocks a pending user with PENDING_APPROVAL",
+        "status": "Passed",
+        "expected": "ตอบ 403 พร้อม code PENDING_APPROVAL"
+      },
+      {
+        "id": "AUTHFLOW-IT-005",
+        "module": "Auth & Approval Routes",
+        "title": "blocks a rejected user with ACCESS_REJECTED",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — current session › blocks a rejected user with ACCESS_REJECTED",
+        "status": "Passed",
+        "expected": "ตอบ 403 พร้อม code ACCESS_REJECTED"
+      },
+      {
+        "id": "AUTHFLOW-IT-006",
+        "module": "Auth & Approval Routes",
+        "title": "clears the auth cookie on logout",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — current session › clears the auth cookie on logout",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ Set-Cookie ล้าง token"
+      },
+      {
+        "id": "AUTHFLOW-IT-007",
+        "module": "Auth & Approval Routes",
+        "title": "rejects a malformed approval token on GET",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — first-login approval links › rejects a malformed approval token on GET",
+        "status": "Passed",
+        "expected": "redirect 302 ไป /login?approval=invalid"
+      },
+      {
+        "id": "AUTHFLOW-IT-008",
+        "module": "Auth & Approval Routes",
+        "title": "renders the approval form for a well-formed token",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — first-login approval links › renders the approval form for a well-formed token",
+        "status": "Passed",
+        "expected": "ตอบ 200 และ HTML มีข้อความ 'ยืนยันผู้เข้าใช้ระบบ' พร้อมค่า token"
+      },
+      {
+        "id": "AUTHFLOW-IT-009",
+        "module": "Auth & Approval Routes",
+        "title": "approves a pending user through a valid token",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — first-login approval links › approves a pending user through a valid token",
+        "status": "Passed",
+        "expected": "redirect 302 ไป approval=approved, user เป็น approved, มี approvedAt และส่ง notification 1 ครั้ง"
+      },
+      {
+        "id": "AUTHFLOW-IT-010",
+        "module": "Auth & Approval Routes",
+        "title": "rejects a pending user through a valid token and locks for four hours",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — first-login approval links › rejects a pending user through a valid token and locks for four hours",
+        "status": "Passed",
+        "expected": "redirect 302 ไป approval=rejected&lockHours=4, user เป็น rejected, rejectedUntil มากกว่า 3 ชั่วโมง และแจ้งเตือน 1 ครั้ง"
+      },
+      {
+        "id": "AUTHFLOW-IT-011",
+        "module": "Auth & Approval Routes",
+        "title": "rejects an expired approval token without changing the user",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — first-login approval links › rejects an expired approval token without changing the user",
+        "status": "Passed",
+        "expected": "redirect 302 ไป approval=invalid, user ยัง pending และไม่ส่ง notification"
+      },
+      {
+        "id": "AUTHFLOW-IT-012",
+        "module": "Auth & Approval Routes",
+        "title": "is disabled unless ENABLE_MOCK_LOGIN is true",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — mock login › is disabled unless ENABLE_MOCK_LOGIN is true",
+        "status": "Passed",
+        "expected": "ตอบ 404 เมื่อปิด mock login"
+      },
+      {
+        "id": "AUTHFLOW-IT-013",
+        "module": "Auth & Approval Routes",
+        "title": "creates and logs in the mock admin when enabled",
+        "script": "backend/tests/integration/auth-routes.test.js › Auth — mock login › creates and logs in the mock admin when enabled",
+        "status": "Passed",
+        "expected": "ตอบ 200, ได้ token/user mock.admin@naiveops.com role Admin, มี cookie และ /me คืนผู้ใช้เดียวกัน"
+      }
+    ],
+    "e2e": [
+      {
+        "id": "DASHBOARD-E2E-001",
+        "module": "Dashboard",
+        "title": "Dashboard loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Dashboard loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Cockpit แสดงข้อความ 'ระบบบริการจัดการโรงงานอัจฉริยะ' และโหลดได้โดยไม่ error"
+      },
+      {
+        "id": "SALES-E2E-001",
+        "module": "Sales",
+        "title": "Sales loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Sales loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Sales แสดงข้อความ 'ระบบจัดการข้อมูลการขาย' และตาราง/บอร์ดพร้อมใช้งาน"
+      },
+      {
+        "id": "RND-E2E-001",
+        "module": "R&D",
+        "title": "R&D loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › R&D loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า R&D แสดง 'ศูนย์วิจัยและพัฒนาสูตร' และแท็บงาน R&D"
+      },
+      {
+        "id": "PRODUCTION-E2E-001",
+        "module": "Production",
+        "title": "Production loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Production loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Production แสดง 'ระบบควบคุมสถานะลำดับคิว' และตารางใบสั่งผลิต"
+      },
+      {
+        "id": "STOCK-E2E-001",
+        "module": "Stock",
+        "title": "Stock loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Stock loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Stock แสดง 'คลังสินค้ารวม' และแท็บสต็อก"
+      },
+      {
+        "id": "USERS-E2E-001",
+        "module": "Users",
+        "title": "Users loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Users loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Users แสดง 'ระบบจัดการบัญชีผู้ใช้งาน' และรายการผู้ใช้/roles"
+      },
+      {
+        "id": "CUSTOMERLOG-E2E-001",
+        "module": "Customer Log",
+        "title": "Customer log loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Customer log loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Customer Log แสดง 'บันทึกประวัติลูกค้า (Customer Log DataTable)'"
+      },
+      {
+        "id": "ACTIVITYLOG-E2E-001",
+        "module": "Activity Logs",
+        "title": "Activity logs loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Activity logs loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Activity Logs แสดง 'ระบบบันทึกและตรวจสอบประวัติการปฏิบัติงาน'"
+      },
+      {
+        "id": "SUPPORT-E2E-001",
+        "module": "Support",
+        "title": "Support loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Support loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Support แสดง heading 'Support & Helpdesk'"
+      },
+      {
+        "id": "SETTINGS-E2E-001",
+        "module": "Settings",
+        "title": "Settings loads for an admin",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › Settings loads for an admin",
+        "status": "Passed",
+        "expected": "หน้า Settings แสดง 'ระบบตั้งค่าพารามิเตอร์'"
+      },
+      {
+        "id": "ACCESS-E2E-001",
+        "module": "Access Control",
+        "title": "An admin sees the admin-only Users navigation item",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › an admin sees the admin-only Users navigation item",
+        "status": "Passed",
+        "expected": "เมนู 'Users' แสดงและคลิกได้"
+      },
+      {
+        "id": "ACCESS-E2E-002",
+        "module": "Access Control",
+        "title": "A normal user does not see the Users navigation item",
+        "script": "frontend/e2e/admin-modules.spec.js › admin core modules › a normal user does not see the Users navigation item",
+        "status": "Passed",
+        "expected": "เมนู Dashboard แสดง แต่เมนู Users ไม่แสดง"
+      },
+      {
+        "id": "ACCESS-E2E-003",
+        "module": "Access Control",
+        "title": "Redirects to login when there is no stored session",
+        "script": "frontend/e2e/admin-modules.spec.js › admin access guards › redirects to login when there is no stored session",
+        "status": "Passed",
+        "expected": "ถูกพาไปที่ /login"
+      },
+      {
+        "id": "ACCESS-E2E-004",
+        "module": "Access Control",
+        "title": "Redirects to pending-approval login when server rejects session",
+        "script": "frontend/e2e/admin-modules.spec.js › admin access guards › redirects to the pending-approval login when the server rejects the session",
+        "status": "Passed",
+        "expected": "ถูกพาไปที่ /login?pendingApproval=1"
+      },
+      {
+        "id": "TRACKING-E2E-001",
+        "module": "Public Tracking",
+        "title": "Shows a validation message when the tag is empty",
+        "script": "frontend/e2e/tracking.spec.js › public order tracking › shows a validation message when the tag is empty",
+        "status": "Passed",
+        "expected": "แสดง alert 'กรุณากรอกเลขที่แท็ก หรือเลขที่งานก่อนค้นหา' และ URL ยังเป็น /track"
+      },
+      {
+        "id": "TRACKING-E2E-002",
+        "module": "Public Tracking",
+        "title": "Uppercases the tag and opens the tracking detail page",
+        "script": "frontend/e2e/tracking.spec.js › public order tracking › uppercases the tag and opens the tracking detail page",
+        "status": "Passed",
+        "expected": "URL เปลี่ยนเป็น /track/TG-20250001, heading แสดง TG-20250001 และชื่อลูกค้า"
+      },
+      {
+        "id": "TRACKING-E2E-003",
+        "module": "Public Tracking",
+        "title": "Tracking detail lists the ordered products",
+        "script": "frontend/e2e/tracking.spec.js › public order tracking › tracking detail lists the ordered products",
+        "status": "Passed",
+        "expected": "แสดง heading 'รายการสินค้าในคำสั่งซื้อนี้' และสินค้า 'ฉลาก Tag อลูมิเนียมพรีเมียม 50×50mm'"
+      },
+      {
+        "id": "AUTH-E2E-001",
+        "module": "Authentication",
+        "title": "Explains an expired session to the user",
+        "script": "frontend/e2e/tracking.spec.js › login screen › explains an expired session to the user",
+        "status": "Passed",
+        "expected": "แสดง 'เซสชันหมดอายุ กรุณาเข้าสู่ระบบใหม่' และปุ่ม Google Account"
+      },
+      {
+        "id": "WORKFLOW-BASIC-E2E-001",
+        "module": "Complete Workflow",
+        "title": "Basic Flow: Sales → production → stock deduction → Tracking",
+        "script": "frontend/e2e/fullstack/complete-workflow.spec.js › complete fullstack user workflow › Basic Flow: Sales → production → stock deduction → Tracking",
+        "status": "Passed",
+        "expected": "สร้างออเดอร์ใน Sales, ยืนยันผลิตและตัดวัตถุดิบ, เปลี่ยนสถานะเข้า Production/Stock และตรวจหน้า Tracking"
+      },
+      {
+        "id": "WORKFLOW-ALTERNATIVE-E2E-001",
+        "module": "Complete Workflow",
+        "title": "Alternative Flow: changing formula and machine preserves the order",
+        "script": "frontend/e2e/fullstack/complete-workflow.spec.js › complete fullstack user workflow › Alternative Flow: changing formula and machine preserves the order",
+        "status": "Passed",
+        "expected": "เปลี่ยนสูตรและเครื่องจักรแล้ว order เดิมยังคงอยู่ พร้อมบันทึก formulaId และ scheduleMachineId"
+      },
+      {
+        "id": "WORKFLOW-EXCEPTION-E2E-001",
+        "module": "Complete Workflow",
+        "title": "Exception Flow: insufficient stock blocks production and keeps the order pending",
+        "script": "frontend/e2e/fullstack/complete-workflow.spec.js › complete fullstack user workflow › Exception Flow: insufficient stock blocks production and keeps the order pending",
+        "status": "Passed",
+        "expected": "API ตอบ 400 พร้อมข้อความวัตถุดิบไม่เพียงพอ และไม่สร้างล็อตผลิต"
+      },
+      {
+        "id": "E2E-ALT-003",
+        "module": "Production",
+        "title": "E2E-ALT-003 rejects an unauthorized formula change",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-ALT-003 rejects an unauthorized formula change",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-ALT-004",
+        "module": "Production",
+        "title": "E2E-ALT-004 rejects an invalid schedule date",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-ALT-004 rejects an invalid schedule date",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-EXC-002",
+        "module": "Production / BOM",
+        "title": "E2E-EXC-002 rejects an incomplete lot confirmation payload",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-EXC-002 rejects an incomplete lot confirmation payload",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-NEG-003",
+        "module": "Production / BOM",
+        "title": "E2E-NEG-003 rejects an unknown formula during confirmation",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-NEG-003 rejects an unknown formula during confirmation",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-RND-001-RUN",
+        "module": "R&D",
+        "title": "E2E-RND-001 creates and approves a formula before Production handoff",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-RND-001 creates and approves a formula before Production handoff",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-QC-001-RUN",
+        "module": "Quality Control",
+        "title": "E2E-QC-001 passes QC and releases finished goods to Stock",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-QC-001 passes QC and releases finished goods to Stock",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-QC-002-RUN",
+        "module": "Quality Control",
+        "title": "E2E-QC-002 rejects QC without evidence",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-QC-002 rejects QC without evidence",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-INVENTORY-001-RUN",
+        "module": "Inventory",
+        "title": "E2E-INVENTORY-001 deducts ingredients exactly once per production confirmation",
+        "script": "frontend/e2e/fullstack/not-run-coverage.spec.js ? runnable Not Run coverage ? E2E-INVENTORY-001 deducts ingredients exactly once per production confirmation",
+        "status": "Passed",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-NEG-004",
+        "module": "Public Tracking",
+        "title": "E2E-NEG-004 rejects an unknown tracking tag",
+        "script": "frontend/e2e/fullstack/missing-cases.spec.js ? remaining E2E coverage ? E2E-NEG-004 rejects an unknown tracking tag",
+        "status": "Not Run",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-SALES-PORTAL-001",
+        "module": "Sales",
+        "title": "E2E-SALES-PORTAL-001 provisions a customer tracking link",
+        "script": "frontend/e2e/fullstack/missing-cases.spec.js ? remaining E2E coverage ? E2E-SALES-PORTAL-001 provisions a customer tracking link",
+        "status": "Not Run",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-SALES-PORTAL-002",
+        "module": "Sales",
+        "title": "E2E-SALES-PORTAL-002 rotates a customer tracking link",
+        "script": "frontend/e2e/fullstack/missing-cases.spec.js ? remaining E2E coverage ? E2E-SALES-PORTAL-002 rotates a customer tracking link",
+        "status": "Not Run",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-SALES-PORTAL-003",
+        "module": "Sales",
+        "title": "E2E-SALES-PORTAL-003 revokes a customer tracking link",
+        "script": "frontend/e2e/fullstack/missing-cases.spec.js ? remaining E2E coverage ? E2E-SALES-PORTAL-003 revokes a customer tracking link",
+        "status": "Not Run",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-RND-002",
+        "module": "R&D",
+        "title": "E2E-RND-002 changes formula version after a Sales adjustment",
+        "script": "frontend/e2e/fullstack/missing-cases.spec.js ? remaining E2E coverage ? E2E-RND-002 changes formula version after a Sales adjustment",
+        "status": "Not Run",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      },
+      {
+        "id": "E2E-PACK-001",
+        "module": "Production / Packaging",
+        "title": "E2E-PACK-001 completes packaging milestones and attaches production evidence",
+        "script": "frontend/e2e/fullstack/missing-cases.spec.js ? remaining E2E coverage ? E2E-PACK-001 completes packaging milestones and attaches production evidence",
+        "status": "Not Run",
+        "expected": "Scenario passes in the fullstack Playwright test with screenshot evidence."
+      }
+    ],
+    "uat": [
+      {
+        "id": "AUTH-UAT-001",
+        "module": "Authentication",
+        "title": "เข้าสู่ระบบด้วย Google Account สำเร็จ",
+        "role": "ผู้ใช้งานทั่วไป",
+        "status": "Planned",
+        "expected": "เข้าสู่ /admin/cockpit สำเร็จ แสดงชื่อผู้ใช้ และไม่พบ error"
+      },
+      {
+        "id": "AUTH-UAT-002",
+        "module": "Authentication",
+        "title": "ผู้ใช้ใหม่ครั้งแรกถูกกันด้วยสถานะ PENDING_APPROVAL",
+        "role": "ผู้ใช้ใหม่ / Admin",
+        "status": "Planned",
+        "expected": "ผู้ใช้ใหม่ไม่สามารถเข้าถึงข้อมูลได้; ระบบแจ้ง PENDING_APPROVAL; Admin เห็นคำขอในรายการ"
+      },
+      {
+        "id": "AUTH-UAT-003",
+        "module": "Authentication",
+        "title": "Admin อนุมัติผู้ใช้ที่รออนุมัติ",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "approvalStatus=approved, role=User; ผู้ใช้เข้า Dashboard ได้; อนุมัติซ้ำถูก block 409"
+      },
+      {
+        "id": "AUTH-UAT-004",
+        "module": "Authentication",
+        "title": "ผู้ใช้สถานะ rejected ไม่สามารถเข้าใช้งาน",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "ระบบตอบ 403 ACCESS_REJECTED; ไม่เห็นข้อมูล; แสดงข้อความเหมาะสม"
+      },
+      {
+        "id": "AUTH-UAT-005",
+        "module": "Authentication",
+        "title": "เมนูตามสิทธิ์และการหมดอายุ session",
+        "role": "Admin / User",
+        "status": "Planned",
+        "expected": "Admin เห็นเมนู Users; User ไม่เห็น; session หมดอายุพาไป /login?expired=1; Logout ล้าง token"
+      },
+      {
+        "id": "DASHBOARD-UAT-001",
+        "module": "Dashboard",
+        "title": "Cockpit แสดง KPI และข้อมูลสรุปถูกต้อง",
+        "role": "Admin / Manager",
+        "status": "Planned",
+        "expected": "ตัวเลข KPI ตรงกับข้อมูล; การ์ด '1. รอเตรียมผลิต' แสดง; ไม่มี error"
+      },
+      {
+        "id": "DASHBOARD-UAT-002",
+        "module": "Dashboard",
+        "title": "คลิกการ์ดบน Dashboard เพื่อไปยังโมดูล",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "ไปยังหน้าปลายทางถูกต้อง; ข้อมูลโหลด; ไม่มี dead link"
+      },
+      {
+        "id": "DASHBOARD-UAT-003",
+        "module": "Dashboard",
+        "title": "Dashboard อัปเดตข้อมูลและแสดง empty state",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "ตัวเลขอัปเดต; empty state แสดงข้อความเหมาะสม; หน้าไม่ crash"
+      },
+      {
+        "id": "SALES-UAT-001",
+        "module": "Sales",
+        "title": "สร้างดีลลูกค้าใหม่",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "ดีลปรากฏในบอร์ด; owner ถูกต้อง; ข้อมูลครบ; มี log SALES_CRM"
+      },
+      {
+        "id": "SALES-UAT-002",
+        "module": "Sales",
+        "title": "แก้ไขข้อมูลดีลลูกค้า",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "ข้อมูลใหม่แสดงและคงอยู่; มี activity log"
+      },
+      {
+        "id": "SALES-UAT-003",
+        "module": "Sales",
+        "title": "ย้ายสถานะดีลใน Pipeline",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "stage เปลี่ยนและคงอยู่; log ระบุ 'ย้ายสถานะ'"
+      },
+      {
+        "id": "SALES-UAT-004",
+        "module": "Sales",
+        "title": "ค้นหาดีลด้วยชื่อหรือเบอร์",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "พบดีลที่ตรงและ locate ไปการ์ด; คำที่ไม่มีแสดง empty state"
+      },
+      {
+        "id": "SALES-UAT-005",
+        "module": "Sales",
+        "title": "สร้างออเดอร์ตัวอย่างและตัดสต็อก",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "สร้างสำเร็จ; stock ลดตามจำนวน; มี movement out; มี log"
+      },
+      {
+        "id": "SALES-UAT-006",
+        "module": "Sales",
+        "title": "สร้างออเดอร์ตัวอย่างเมื่อสต็อกไม่พอ",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "ระบบแจ้ง shortage และไม่สร้างดีล; stock ไม่เปลี่ยน"
+      },
+      {
+        "id": "SALES-UAT-007",
+        "module": "Sales",
+        "title": "อีเมลซ้ำใช้ลูกค้าเดิม",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "ใช้ record เดิม; ชื่ออัปเดต; ไม่มีลูกค้าซ้ำ"
+      },
+      {
+        "id": "SALES-UAT-008",
+        "module": "Sales",
+        "title": "ปรับคอลัมน์ Kanban และลบดีล",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "คอลัมน์คงอยู่; ลบสำเร็จ; ไม่กระทบดีลอื่น"
+      },
+      {
+        "id": "RND-UAT-001",
+        "module": "R&D",
+        "title": "สร้างสูตร BOM ใหม่",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "สร้างสูตร version 1 สำเร็จ; ชื่อถูก trim; แสดงใน BOM matrix"
+      },
+      {
+        "id": "RND-UAT-002",
+        "module": "R&D",
+        "title": "ป้องกันชื่อสูตรซ้ำ",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "ระบบแจ้งชื่อซ้ำ/409 และไม่สร้าง version ใหม่"
+      },
+      {
+        "id": "RND-UAT-003",
+        "module": "R&D",
+        "title": "แก้ไขสูตรและเพิ่ม version",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "version เพิ่มขึ้น 1; BOM ใหม่ถูกบันทึก; ประวัติเดิมไม่หาย"
+      },
+      {
+        "id": "RND-UAT-004",
+        "module": "R&D",
+        "title": "Archive สูตรที่ไม่ใช้งานและป้องกันสูตรที่ถูกใช้งาน",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "สูตรไม่ใช้ถูกซ่อน; สูตรในใบสั่ง pending ถูก block 409 พร้อมจำนวน"
+      },
+      {
+        "id": "RND-UAT-005",
+        "module": "R&D",
+        "title": "คำนวณ BOM และตรวจ shortage",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "น้ำหนักกรัมแม่นไม่ปัดเศษ; shortage ถูกต้อง; จำนวน 0 คืนผลว่าง"
+      },
+      {
+        "id": "RND-UAT-006",
+        "module": "R&D",
+        "title": "รับใบสั่งพัฒนาสูตรและติดตามสถานะ",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "ใบสั่งแสดงในแท็บรับ; ข้อมูลลูกค้า/สูตรถูก; เปลี่ยนสถานะได้"
+      },
+      {
+        "id": "RND-UAT-007",
+        "module": "R&D",
+        "title": "ตรวจ In-process QC และแนบหลักฐาน",
+        "role": "R&D / QC",
+        "status": "Planned",
+        "expected": "ผ่าน QC; งานย้ายไป done; รูปและเวลา QC ถูกบันทึก"
+      },
+      {
+        "id": "RND-UAT-008",
+        "module": "R&D",
+        "title": "ปรับสต็อกวัตถุดิบ",
+        "role": "R&D",
+        "status": "Planned",
+        "expected": "จำนวนใหม่ถูกต้อง; movement in/out ถูกบันทึก; ยอดไม่ติดลบ"
+      },
+      {
+        "id": "PRODUCTION-UAT-001",
+        "module": "Production",
+        "title": "รายการใบสั่งผลิตแสดงตามประเภทและสิทธิ์",
+        "role": "Production",
+        "status": "Planned",
+        "expected": "เห็นเฉพาะ lot/develop ของ owner; ไม่เห็น sample และของ owner อื่น"
+      },
+      {
+        "id": "PRODUCTION-UAT-002",
+        "module": "Production",
+        "title": "จัดคิวเครื่องจักรให้ใบสั่งผลิต",
+        "role": "Production",
+        "status": "Planned",
+        "expected": "schedule ถูกบันทึก; queue เป็นตัวเลข; แสดงบนตาราง/Kanban"
+      },
+      {
+        "id": "PRODUCTION-UAT-003",
+        "module": "Production",
+        "title": "แก้ช่วงวันที่กลับด้านและเคลียร์ schedule",
+        "role": "Production",
+        "status": "Planned",
+        "expected": "ระบบสลับวันที่ให้ถูกต้อง; เคลียร์ schedule เป็นค่าว่าง/null"
+      },
+      {
+        "id": "PRODUCTION-UAT-004",
+        "module": "Production",
+        "title": "อัปเดตขั้นตอนและสถานะผลิต",
+        "role": "Production",
+        "status": "Planned",
+        "expected": "step/status บันทึก; มี log PRODUCTION/PRODUCTION_STEP; UI อัปเดต"
+      },
+      {
+        "id": "PRODUCTION-UAT-005",
+        "module": "Production",
+        "title": "ป้องกันขั้นตอนผลิตนอกช่วง",
+        "role": "Production",
+        "status": "Planned",
+        "expected": "ระบบแจ้ง 0-6/400 และไม่เปลี่ยนข้อมูล"
+      },
+      {
+        "id": "PRODUCTION-UAT-006",
+        "module": "Production",
+        "title": "Final QC สร้าง FG Lot",
+        "role": "Production / QC",
+        "status": "Planned",
+        "expected": "ไม่มีหลักฐาน block 400; มีหลักฐานสร้าง FG lot 1 ครั้ง; status สำเร็จ; กดซ้ำไม่สร้าง lot ซ้ำ"
+      },
+      {
+        "id": "PRODUCTION-UAT-007",
+        "module": "Production",
+        "title": "ส่งมอบงานให้ลูกค้าหรือเข้าคลัง",
+        "role": "Production",
+        "status": "Planned",
+        "expected": "สถานะถูกต้อง; lot/stock ถูกต้อง; มี log ครบ"
+      },
+      {
+        "id": "STOCK-UAT-001",
+        "module": "Stock",
+        "title": "ภาพรวมสต็อกทุกประเภท",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "แต่ละแท็บแสดงข้อมูลถูกต้อง; ตัวเลขสรุปถูก; ไม่ crash"
+      },
+      {
+        "id": "STOCK-UAT-002",
+        "module": "Stock",
+        "title": "รับเข้า/เบิกออกวัตถุดิบ",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "ยอดถูกต้อง; movement มี before/after; มี log"
+      },
+      {
+        "id": "STOCK-UAT-003",
+        "module": "Stock",
+        "title": "รับเข้า/เบิกออกบรรจุภัณฑ์",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "ยอดถูกต้อง; movement out ถูกบันทึก; มี log"
+      },
+      {
+        "id": "STOCK-UAT-004",
+        "module": "Stock",
+        "title": "ป้องกันสต็อกบรรจุภัณฑ์ติดลบ",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "ยอดไม่ติดลบ (clamp 0); มีข้อความแจ้ง; มี log"
+      },
+      {
+        "id": "STOCK-UAT-005",
+        "module": "Stock",
+        "title": "ดู FG Lot และตัวกรอง delivered",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "ค่าเริ่มต้นซ่อน delivered; เปิดแล้วเห็นครบ; owner scope ถูกต้อง"
+      },
+      {
+        "id": "STOCK-UAT-006",
+        "module": "Stock",
+        "title": "คำนวณวันที่ MFG/EXP ของ Lot",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "EXP = MFG + 2 ปี; 29 Feb → 28 Feb; ไม่มีช่องว่าง"
+      },
+      {
+        "id": "STOCK-UAT-007",
+        "module": "Stock",
+        "title": "ประวัติความเคลื่อนไหวและ owner isolation",
+        "role": "Stock",
+        "status": "Planned",
+        "expected": "แสดงเวลาไทย/ทิศทาง/จำนวน; user อื่นได้ 404; ไม่เห็นข้อมูล"
+      },
+      {
+        "id": "CUSTOMERLOG-UAT-001",
+        "module": "Customer Log",
+        "title": "รายชื่อลูกค้าที่มี activity",
+        "role": "Sales / Admin",
+        "status": "Planned",
+        "expected": "แสดงเฉพาะลูกค้าที่มี activity; ไม่มีลูกค้าว่าง; Admin เห็นทั้งหมด"
+      },
+      {
+        "id": "CUSTOMERLOG-UAT-002",
+        "module": "Customer Log",
+        "title": "ตรวจสอบย้อนกลับราย Lot",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "lotNo/formula/วันที่/จำนวนถูกต้อง; trace ได้"
+      },
+      {
+        "id": "CUSTOMERLOG-UAT-003",
+        "module": "Customer Log",
+        "title": "ค้นหาและจำกัดสิทธิ์ Customer Log",
+        "role": "Sales",
+        "status": "Planned",
+        "expected": "ผลค้นหาตรง; user เห็นเฉพาะของตน; Admin เห็นทั้งหมด"
+      },
+      {
+        "id": "ACTIVITYLOG-UAT-001",
+        "module": "Activity Logs",
+        "title": "Activity Logs แสดง total และ counts",
+        "role": "Admin / Manager",
+        "status": "Planned",
+        "expected": "total/counts ตรง; pagination ทำงาน"
+      },
+      {
+        "id": "ACTIVITYLOG-UAT-002",
+        "module": "Activity Logs",
+        "title": "กรองตามหมวดหมู่",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "แสดงเฉพาะ category ที่เลือก; count ถูก"
+      },
+      {
+        "id": "ACTIVITYLOG-UAT-003",
+        "module": "Activity Logs",
+        "title": "ค้นหาและกรองช่วงวันที่",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "ไม่ error regex; ผลถูกต้อง; from/to รวมขอบเขต"
+      },
+      {
+        "id": "ACTIVITYLOG-UAT-004",
+        "module": "Activity Logs",
+        "title": "Audit trail ของรายการสำคัญ",
+        "role": "Admin / Manager",
+        "status": "Planned",
+        "expected": "ทุก action มี log พร้อมผู้ทำ/เวลา/รายละเอียด"
+      },
+      {
+        "id": "SUPPORT-UAT-001",
+        "module": "Support",
+        "title": "สร้าง Ticket แจ้งปัญหา",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "ticket ถูกสร้างและแสดง; status open; reportedBy ถูก; มี log SUPPORT"
+      },
+      {
+        "id": "SUPPORT-UAT-002",
+        "module": "Support",
+        "title": "ค่า severity ที่ไม่ถูกต้องใช้ค่าเริ่มต้น",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "ระบบใช้ low โดยไม่ error"
+      },
+      {
+        "id": "SUPPORT-UAT-003",
+        "module": "Support",
+        "title": "สิทธิ์การมองเห็น Ticket",
+        "role": "Admin / User",
+        "status": "Planned",
+        "expected": "User เห็นของตน; Admin เห็นทั้งหมด; ไม่มีข้อมูลรั่ว"
+      },
+      {
+        "id": "SETTINGS-UAT-001",
+        "module": "Settings",
+        "title": "สร้าง Packaging Type และป้องกันชื่อซ้ำ",
+        "role": "Admin / Stock",
+        "status": "Planned",
+        "expected": "ครั้งแรกสร้างสำเร็จ; ซ้ำแจ้ง 400; list ถูกต้อง"
+      },
+      {
+        "id": "SETTINGS-UAT-002",
+        "module": "Settings",
+        "title": "ลบ Packaging Type ที่ถูกใช้งาน",
+        "role": "Admin / Stock",
+        "status": "Planned",
+        "expected": "ระบบ block 400 และ type ยังอยู่"
+      },
+      {
+        "id": "SETTINGS-UAT-003",
+        "module": "Settings",
+        "title": "สร้าง Packaging Subtype ภายใต้ Parent",
+        "role": "Admin / Stock",
+        "status": "Planned",
+        "expected": "ไม่มี parent ได้ 400; มี parent สร้าง 201 และเชื่อมถูก"
+      },
+      {
+        "id": "SETTINGS-UAT-004",
+        "module": "Settings",
+        "title": "Nozzle ซ้ำไม่สร้างรายการใหม่",
+        "role": "Admin / Stock",
+        "status": "Planned",
+        "expected": "ครั้งแรก 201; ซ้ำ 200 และ id เดิม; ชื่อว่าง 400"
+      },
+      {
+        "id": "SETTINGS-UAT-005",
+        "module": "Settings",
+        "title": "ตั้งค่า Lot Prefix",
+        "role": "Admin / R&D",
+        "status": "Planned",
+        "expected": "prefix กลายเป็น 'BS'; list แสดง; unknown formula 404"
+      },
+      {
+        "id": "SETTINGS-UAT-006",
+        "module": "Settings",
+        "title": "จัดการ Scent และ owner scope",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "CRUD สำเร็จ; owner scope ถูกต้อง; other ได้ 404"
+      },
+      {
+        "id": "USERS-UAT-001",
+        "module": "Users",
+        "title": "รายการผู้ใช้และ Roles",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "เห็น Admin/User; ข้อมูล role ถูก; ไม่มี error"
+      },
+      {
+        "id": "USERS-UAT-002",
+        "module": "Users",
+        "title": "สร้างผู้ใช้ใหม่ด้วย role เริ่มต้น",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "สร้าง 201; role=User; line ถูกบันทึก; ไม่ต้องรออนุมัติ"
+      },
+      {
+        "id": "USERS-UAT-003",
+        "module": "Users",
+        "title": "ป้องกันอีเมลซ้ำและ role ไม่ถูกต้อง",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "อีเมลซ้ำ 400; unknown role 400; ไม่เปลี่ยนข้อมูล"
+      },
+      {
+        "id": "USERS-UAT-004",
+        "module": "Users",
+        "title": "เปลี่ยน Role ผู้ใช้",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "role เปลี่ยนถูกต้อง; สิทธิ์เมนูเปลี่ยน; มี log"
+      },
+      {
+        "id": "USERS-UAT-005",
+        "module": "Users",
+        "title": "อนุมัติ/ปฏิเสธคำขอครั้งแรก",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "ครั้งแรก 200 role=User; ซ้ำ 409; approved แล้ว 409"
+      },
+      {
+        "id": "USERS-UAT-006",
+        "module": "Users",
+        "title": "ความปลอดภัยในการลบผู้ใช้",
+        "role": "Admin",
+        "status": "Planned",
+        "expected": "Admin สุดท้าย block 400; User ปกติลบได้; selfDeleted ถูกต้อง"
+      },
+      {
+        "id": "TRACKING-UAT-001",
+        "module": "Public Tracking",
+        "title": "ตรวจสอบเมื่อไม่ได้กรอกเลขที่แท็ก",
+        "role": "ลูกค้า / Public",
+        "status": "Planned",
+        "expected": "แสดง alert 'กรุณากรอกเลขที่แท็ก หรือเลขที่งานก่อนค้นหา' และ URL เดิม"
+      },
+      {
+        "id": "TRACKING-UAT-002",
+        "module": "Public Tracking",
+        "title": "ค้นหาด้วย Tag และเปิดรายละเอียด",
+        "role": "ลูกค้า / Public",
+        "status": "Planned",
+        "expected": "URL /track/TG-20250001; แสดงลูกค้าและรายการสินค้า"
+      },
+      {
+        "id": "TRACKING-UAT-003",
+        "module": "Public Tracking",
+        "title": "Tag ไม่ถูกต้อง/ถูกเพิกถอนต้องไม่รั่วข้อมูล",
+        "role": "ลูกค้า / Public",
+        "status": "Planned",
+        "expected": "แสดง error มาตรฐาน; ไม่มี stack trace/ข้อมูลภายใน/ราคา/สูตร; เป็น read-only"
+      },
+      {
+        "id": "SECURITY-UAT-001",
+        "module": "Security",
+        "title": "ป้องกันการเข้าถึงโดยไม่ได้รับอนุญาต",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "redirect /login; API 401; ไม่เห็นข้อมูล"
+      },
+      {
+        "id": "SECURITY-UAT-002",
+        "module": "Security",
+        "title": "แยกข้อมูลระหว่าง Owner",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "User B ได้ 404/ไม่เห็นข้อมูล; Admin เห็นตามสิทธิ์; ไม่มีข้อมูลรั่ว"
+      },
+      {
+        "id": "SECURITY-UAT-003",
+        "module": "Security",
+        "title": "Responsive และข้อมูลอ่อนไหวใน Public Portal",
+        "role": "ทุกบทบาท",
+        "status": "Planned",
+        "expected": "layout ไม่แตก/ไม่มี horizontal scroll; ไม่แสดงข้อมูลอ่อนไหว"
+      }
+    ]
+  }
+}

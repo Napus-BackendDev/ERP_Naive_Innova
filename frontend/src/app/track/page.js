@@ -52,7 +52,7 @@ export default function TrackSearchPage() {
               id="tracking-tag"
               value={tag}
               onChange={(event) => { setTag(event.target.value); setMessage(""); }}
-              placeholder="ตัวอย่าง TG-20250001 หรือ JOB-2568-0042"
+              placeholder="ตัวอย่าง PP-151026-001 หรือ PP-151026-002"
               autoComplete="off"
             />
             <button type="submit">ค้นหา <ArrowRight size={18} /></button>

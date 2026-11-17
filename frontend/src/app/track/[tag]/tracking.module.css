@@ -938,3 +938,59 @@ a.contactRow:hover {
         justify-self: start
     }
 }
+
+.skeleton {
+    background: linear-gradient(90deg, #142237 25%, #1e2d46 50%, #142237 75%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.5s infinite;
+    border-radius: 6px;
+}
+
+@keyframes skeletonLoading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeletonText {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.skeletonTitle {
+    height: 32px;
+    width: 60%;
+    margin-bottom: 12px;
+}
+
+.skeletonCard {
+    height: 120px;
+    width: 100%;
+    border-radius: 14px;
+    margin-top: 16px;
+}
+
+.errorBox {
+    text-align: center;
+    padding: 60px 20px;
+    border: 1px dashed #ef444466;
+    border-radius: 14px;
+    background: #ef44440d;
+    margin-top: 40px;
+}
+
+.errorBox h3 {
+    color: #f87171;
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.errorBox p {
+    color: #9ab4cc;
+    font-size: 14px;
+    margin: 0 0 20px;
+}

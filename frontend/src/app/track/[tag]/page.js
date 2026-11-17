@@ -1,12 +1,20 @@
 "use client";
 
-import { use, useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
-  ArrowLeft, Check, ChevronRight, ClipboardList, FileImage, PackageCheck, X, Phone, Mail, MessageCircle, MapPin, Sun, Moon
+  ArrowLeft, Check, ChevronRight, ClipboardList, FileImage, PackageCheck, X, Phone, Mail, MessageCircle, MapPin, Sun, Moon, AlertCircle
 } from "lucide-react";
 import styles from "./tracking.module.css";
-import { mockCustomers, photos } from "../mockCustomers";
+
+const photos = {
+  packaging: "https://images.unsplash.com/photo-1631730359585-38a4935cbec4?w=900&h=500&fit=crop&auto=format",
+  qc: "https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=900&h=500&fit=crop&auto=format",
+  bottle: "https://images.unsplash.com/photo-1631390179406-0bfe17e9f89d?w=900&h=500&fit=crop&auto=format",
+  label: "https://images.unsplash.com/photo-1605718317361-f9326fd262ca?w=900&h=500&fit=crop&auto=format",
+  lot: "https://images.unsplash.com/photo-1602052577122-f73b9710adba?w=900&h=500&fit=crop&auto=format",
+  finish: "https://images.unsplash.com/photo-1670201203208-055d6d79db4a?w=900&h=500&fit=crop&auto=format",
+};
 
 const descriptions = {
   "ออเดอร์": "รับคำสั่งซื้อจากลูกค้าและตรวจสอบความถูกต้องของรายละเอียดออเดอร์ทั้งหมด ได้แก่ ชนิดสินค้า จำนวน ข้อกำหนดพิเศษ และวันที่ต้องการรับสินค้า ก่อนยืนยันเข้าสู่ระบบ",
@@ -206,8 +214,10 @@ function ProductCard({ product, customer, defaultOpen }) {
   const percent = Math.round((done / steps.length) * 100);
 
   const jobNo = product.producedLotId
-    ? `JOB-${product.producedLotId.slice(-4).toUpperCase()}`
-    : `JOB-${customer._id.slice(-4).toUpperCase()}`;
+    ? `JOB-${String(product.producedLotId).slice(-4).toUpperCase()}`
+    : customer._id
+    ? `JOB-${String(customer._id).slice(-4).toUpperCase()}`
+    : "JOB-0000";
 
   return (
     <article className={styles.product}>
@@ -215,16 +225,16 @@ function ProductCard({ product, customer, defaultOpen }) {
         <div className={styles.productTitle}>
           <ChevronRight className={open ? styles.openChevron : ""} size={19} />
           <div>
-            <h3>{product.formulaName}</h3>
+            <h3>{product.formulaName || "สินค้าสั่งผลิต"}</h3>
             <span className={`${styles.flow} ${styles[flowStyle[product.customerFormulaType] || "standard"]}`}>
-              {product.customerFormulaType}
+              {product.customerFormulaType || "ผลิตตามสูตร"}
             </span>
-            <span className={styles.quantity}>{product.quantityPcs?.toLocaleString()} ชิ้น</span>
+            <span className={styles.quantity}>{(Number(product.quantityPcs) || 0).toLocaleString()} ชิ้น</span>
           </div>
         </div>
         <div className={styles.statusWrap}>
           <span className={`${styles.status} ${styles[statusStyle[product.productionStatus] || "ready"]}`}>
-            {product.productionStatus}
+            {product.productionStatus || "รอเตรียมผลิต"}
           </span>
           <small>{product.packagingType || "กำลังดำเนินการ"}</small>
         </div>
@@ -232,8 +242,8 @@ function ProductCard({ product, customer, defaultOpen }) {
       {open && (
         <div className={styles.productContent}>
           <div className={styles.infoGrid}>
-            <Info label="ชื่อสินค้า" value={product.formulaName} />
-            <Info label="จำนวน" value={`${product.quantityPcs?.toLocaleString()} ชิ้น`} />
+            <Info label="ชื่อสินค้า" value={product.formulaName || "สินค้าสั่งผลิต"} />
+            <Info label="จำนวน" value={`${(Number(product.quantityPcs) || 0).toLocaleString()} ชิ้น`} />
             <Info label="เลขที่งาน" value={jobNo} />
             <Info label="วันที่ปรับปรุง" value={formatDate(customer.updatedAt)} />
             {product.lotStampNo ? (
@@ -250,7 +260,7 @@ function ProductCard({ product, customer, defaultOpen }) {
                 <label>หมายเลข LOT</label>
                 <p>
                   <i />
-                  รอกำหนดหมายเลข LOT <span>(รูปแบบ: {product.brand?.slice(0, 2).toUpperCase()}-DDMMYY-XXXX)</span>
+                  รอกำหนดหมายเลข LOT <span>(รูปแบบ: {(product.brand || customer.brand || "NV").slice(0, 2).toUpperCase()}-DDMMYY-XXXX)</span>
                 </p>
               </div>
             )}
@@ -281,20 +291,86 @@ function Info({ label, value }) {
   );
 }
 
+function TrackingSkeleton() {
+  return (
+    <div className={styles.shell}>
+      <div className={styles.orderTitle}>
+        <div style={{ width: "100%" }}>
+          <div className={`${styles.skeleton} ${styles.skeletonText}`} style={{ width: "120px" }} />
+          <div className={`${styles.skeleton} ${styles.skeletonTitle}`} />
+          <div className={`${styles.skeleton} ${styles.skeletonText}`} style={{ width: "70%" }} />
+        </div>
+      </div>
+      <section className={styles.customer}>
+        <div className={`${styles.skeleton} ${styles.skeletonText}`} style={{ width: "100px", marginBottom: "16px" }} />
+        <div>
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className={styles.info}>
+              <div className={`${styles.skeleton} ${styles.skeletonText}`} style={{ width: "50%" }} />
+              <div className={`${styles.skeleton} ${styles.skeletonText}`} style={{ width: "80%" }} />
+            </div>
+          ))}
+        </div>
+      </section>
+      <div className={`${styles.skeleton} ${styles.skeletonText}`} style={{ width: "200px", margin: "32px 0 13px" }} />
+      <div className={styles.products}>
+        <div className={`${styles.skeleton} ${styles.skeletonCard}`} />
+        <div className={`${styles.skeleton} ${styles.skeletonCard}`} />
+      </div>
+    </div>
+  );
+}
+
 export default function TrackingPage({ params }) {
   const resolvedParams = use(params);
-  const tagParam = resolvedParams?.tag ? decodeURIComponent(resolvedParams.tag).toUpperCase() : "TG-20250001";
+  const tagParam = resolvedParams?.tag ? decodeURIComponent(resolvedParams.tag).toUpperCase() : "";
   const [darkMode, setDarkMode] = useState(true);
+  const [customer, setCustomer] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // ค้นหา customer จาก mockCustomers ตาม trackingNo หรือ _id
-  const customer = mockCustomers.find(
-    (c) => c.trackingNo.toUpperCase() === tagParam || c._id.toUpperCase() === tagParam
-  ) || mockCustomers[0];
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+    setError(null);
 
-  const totalProducts = customer.orderedProducts.length;
-  const inProgressCount = customer.orderedProducts.filter((p) => p.productionStatus !== "ส่งมอบสำเร็จ").length;
-  const totalQtyPcs = customer.orderedProducts.reduce((sum, p) => sum + (Number(p.quantityPcs) || 0), 0);
-  const mainPackaging = customer.orderedProducts[0]?.packagingType || "บรรจุภัณฑ์มาตรฐาน";
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+    const fetchUrl = `${apiUrl}/track/${encodeURIComponent(tagParam)}`;
+
+    fetch(fetchUrl)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(res.status === 404 ? "ไม่พบข้อมูลหมายเลขแท็กหรือคำสั่งซื้อนี้" : "เกิดข้อผิดพลาดในการโหลดข้อมูลคำสั่งซื้อ");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted) {
+          if (data.success && data.customer) {
+            setCustomer(data.customer);
+          } else {
+            setError(data.message || "ไม่พบข้อมูลแท็กหรือคำสั่งซื้อนี้");
+          }
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (isMounted) {
+          setError(err.message || "ไม่สามารถเชื่อมต่อกับระบบเพื่อดึงข้อมูลสถานะได้");
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [tagParam]);
+
+  const orderedProducts = customer?.orderedProducts || [];
+  const totalProducts = orderedProducts.length;
+  const inProgressCount = orderedProducts.filter((p) => p.productionStatus !== "ส่งมอบสำเร็จ").length;
+  const totalQtyPcs = orderedProducts.reduce((sum, p) => sum + (Number(p.quantityPcs) || 0), 0);
+  const mainPackaging = orderedProducts[0]?.packagingType || "บรรจุภัณฑ์มาตรฐาน";
 
   return (
     <main className={styles.page}>
@@ -319,41 +395,57 @@ export default function TrackingPage({ params }) {
         </div>
       </header>
 
-      <section className={styles.shell}>
-        <div className={styles.orderTitle}>
-          <div>
-            <p className={styles.eyebrow}>TRACKING NO.</p>
-            <h1>{customer.trackingNo}</h1>
-            <p>
-              สั่งซื้อ {formatDate(customer.createdAt)} <i /> {totalProducts} รายการสินค้า{" "}
-              <strong>กำลังดำเนินการ {inProgressCount}</strong> จาก {totalProducts} รายการจัดส่งสำเร็จแล้ว
-            </p>
-          </div>
-          <PackageCheck size={35} />
-        </div>
-        <section className={styles.customer}>
-          <p className={styles.sectionLabel}>ข้อมูลผู้สั่งซื้อ</p>
-          <div>
-            <Info label="ชื่อ" value={customer.name} />
-            <Info label="สินค้า" value={mainPackaging} />
-            <Info label="จำนวน" value={`${totalQtyPcs.toLocaleString()} ชิ้น`} />
-            <Info label="เลขที่งาน" value={`JOB-${customer._id.slice(-4).toUpperCase()}`} />
-            <Info label="วันที่ปรับปรุง" value={formatDate(customer.updatedAt)} />
-            <Info label="กำหนดเสร็จโดยประมาณ" value={formatDate(customer.dueDate)} />
+      {loading ? (
+        <TrackingSkeleton />
+      ) : error ? (
+        <section className={styles.shell}>
+          <div className={styles.errorBox}>
+            <AlertCircle size={48} color="#f87171" style={{ marginBottom: "16px" }} />
+            <h3>ไม่พบข้อมูลการติดตาม</h3>
+            <p>{error}</p>
+            <Link href="/track" className={styles.backBtn} style={{ display: "inline-flex", background: "#1e2d46", padding: "10px 20px" }}>
+              <ArrowLeft size={16} />
+              <span>กลับไปหน้าค้นหาคำสั่งซื้อ</span>
+            </Link>
           </div>
         </section>
-        <h2><ClipboardList size={18} /> รายการสินค้าในคำสั่งซื้อนี้</h2>
-        <div className={styles.products}>
-          {customer.orderedProducts.map((product, index) => (
-            <ProductCard
-              product={product}
-              customer={customer}
-              defaultOpen={index === 0}
-              key={product.formulaId || index}
-            />
-          ))}
-        </div>
-      </section>
+      ) : customer ? (
+        <section className={styles.shell}>
+          <div className={styles.orderTitle}>
+            <div>
+              <p className={styles.eyebrow}>TRACKING NO.</p>
+              <h1>{customer.trackingNo}</h1>
+              <p>
+                สั่งซื้อ {formatDate(customer.createdAt)} <i /> {totalProducts} รายการสินค้า{" "}
+                <strong>กำลังดำเนินการ {inProgressCount}</strong> จาก {totalProducts} รายการจัดส่งสำเร็จแล้ว
+              </p>
+            </div>
+            <PackageCheck size={35} />
+          </div>
+          <section className={styles.customer}>
+            <p className={styles.sectionLabel}>ข้อมูลผู้สั่งซื้อ</p>
+            <div>
+              <Info label="ชื่อ" value={customer.name} />
+              <Info label="สินค้า" value={mainPackaging} />
+              <Info label="จำนวน" value={`${totalQtyPcs.toLocaleString()} ชิ้น`} />
+              <Info label="เลขที่งาน" value={customer._id ? `JOB-${String(customer._id).slice(-4).toUpperCase()}` : "JOB-0000"} />
+              <Info label="วันที่ปรับปรุง" value={formatDate(customer.updatedAt)} />
+              <Info label="กำหนดเสร็จโดยประมาณ" value={formatDate(customer.dueDate)} />
+            </div>
+          </section>
+          <h2><ClipboardList size={18} /> รายการสินค้าในคำสั่งซื้อนี้</h2>
+          <div className={styles.products}>
+            {orderedProducts.map((product, index) => (
+              <ProductCard
+                product={product}
+                customer={customer}
+                defaultOpen={index === 0}
+                key={product.formulaId || product._id || index}
+              />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <footer className={styles.footer}>
         <div className={styles.footerInner}>
@@ -374,11 +466,11 @@ export default function TrackingPage({ params }) {
               </a>
               <span className={styles.contactRow}>
                 <span className={`${styles.contactIcon} ${styles.contactOdd}`}><MessageCircle size={14} /></span>
-                <span>LINE: {customer.line || "@naivepetcare"}</span>
+                <span>LINE: {customer?.line || "@naivepetcare"}</span>
               </span>
               <span className={styles.contactRow}>
                 <span className={`${styles.contactIcon} ${styles.contactEven}`}><MapPin size={14} /></span>
-                <span>{customer.address}</span>
+                <span>{customer?.address || "โรงงาน Naive Innova"}</span>
               </span>
             </div>
           </div>

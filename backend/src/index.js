@@ -19,6 +19,7 @@ import customerLogRoutes from "./features/customerLog/customerLog.routes.js";
 import machinesRoutes from "./features/machines/machines.routes.js";
 import productsRoutes from "./features/products/products.routes.js";
 import supportRoutes from "./features/support/support.routes.js";
+import trackRoutes from "./features/track/track.routes.js";
 
 import passport from "./config/passport.js";
 import imageSizeGuard from "./middleware/imageSizeGuard.js";
@@ -68,6 +69,7 @@ app.use("/api/customer-log", customerLogRoutes);
 app.use("/api/machines", machinesRoutes);
 app.use("/api/products", productsRoutes);
 app.use("/api/support", supportRoutes);
+app.use("/api/track", trackRoutes);
 
 // Health check endpoint
 app.get("/health", (req, res) => {
